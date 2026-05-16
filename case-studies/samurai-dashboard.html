@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Samurai Dashboard · Case Study · Fazal Karim</title>
+<meta name="description" content="Vue → React Admin migration for a major Gulf retail distribution platform. Led the rewrite, UI overhaul, and live mapping integration."/>
+<meta name="theme-color" content="#f4f1ea"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="logo">FAZAL KARIM</a>
+  <a href="../index.html#work" class="back">← All work</a>
+  <a href="../index.html#contact" class="right-cta">Hire me →</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="top">
+    <div class="crumb"><a href="../index.html">Home</a> / <a href="../index.html#work">Work</a> / <strong>Samurai Dashboard</strong></div>
+    <div class="case-num">CASE 02 / 04</div>
+  </div>
+  <h1>Samurai<br/><span class="accent">Dashboard.</span></h1>
+  <p class="deck">Replatforming a Gulf retail distribution operation from a brittle Vue codebase to a fast, type-safe React Admin stack &mdash; with the lights on.</p>
+  <div class="meta-row">
+    <div class="cell"><span class="lab">Year</span><span class="val">2024 — 2025</span></div>
+    <div class="cell"><span class="lab">Role</span><span class="val">Lead Engineer</span></div>
+    <div class="cell"><span class="lab">Sector</span><span class="val">Retail / Logistics</span></div>
+    <div class="cell"><span class="lab">Status</span><span class="val">Shipped</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Problem</h2><div class="num">// 01</div></div>
+    <p>A major Gulf retail distribution operation was running its day-to-day on a Vue 2 dashboard that had grown organically over years. Multiple teams had bolted on features. The UI was inconsistent. Onboarding new engineers took weeks. Page loads were slow on the heaviest CRUD screens.</p>
+    <p>Leadership wanted a modern stack but couldn't afford a freeze &mdash; the dashboard runs the business in real time, with delivery teams, ops, and admins logged in throughout the day. Any rewrite had to ship incrementally, in production, alongside the legacy app.</p>
+    <div class="pull">"Migrate without freezing. Keep shipping. Don't break the trucks on the road."</div>
+  </div>
+</section>
+
+<section class="cs-section dark">
+  <div class="container">
+    <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
+    <ul class="steps">
+      <li><div class="step-num">01</div><div class="step-body"><strong>Audit &amp; mapping</strong>Catalogued every Vue route, identified the highest-traffic and highest-debt modules, and ranked them by ROI for migration.</div></li>
+      <li><div class="step-num">02</div><div class="step-body"><strong>React Admin foundation</strong>Stood up React Admin with a shared TypeScript types layer that both old and new code could consume, backed by the existing API.</div></li>
+      <li><div class="step-num">03</div><div class="step-body"><strong>Strangler-fig migration</strong>Ported one module at a time. Old and new shipped side-by-side behind a switch &mdash; users hit the new UI, ops could fall back instantly.</div></li>
+      <li><div class="step-num">04</div><div class="step-body"><strong>UI/UX overhaul</strong>Layered Material UI consistently across migrated screens. Killed dead components. Tightened information density without losing legibility.</div></li>
+      <li><div class="step-num">05</div><div class="step-body"><strong>Live mapping</strong>Added Google Maps integration for delivery tracking &mdash; live truck positions, route history, geofence alerts.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
+    <div class="tech-grid">
+      <div class="chip">React Admin</div>
+      <div class="chip">React 18</div>
+      <div class="chip">TypeScript</div>
+      <div class="chip">Vue.js (legacy)</div>
+      <div class="chip">Material UI</div>
+      <div class="chip">Google Maps</div>
+      <div class="chip">REST API</div>
+      <div class="chip">Vite</div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
+    <p>Migration is ongoing &mdash; the project has shipped continuously since early 2024 with zero downtime windows for end users. Every migrated module has lower TTI than its Vue predecessor and noticeably faster turnaround on new feature requests.</p>
+    <div class="outcomes">
+      <div class="stat"><strong>0</strong><span class="lab">Production downtime windows during migration</span></div>
+      <div class="stat"><strong>~3×</strong><span class="lab">Faster feature delivery on migrated modules</span></div>
+      <div class="stat"><strong>Live</strong><span class="lab">Real-time mapping for delivery operations</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-pager">
+  <div class="row">
+    <a href="roxova.html"><span>← Previous</span>Roxova</a>
+    <a href="../index.html" class="home">★ All work</a>
+    <a href="run-buddy.html" class="next"><span>Next →</span>Run Buddy</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 FAZAL KARIM · ALL RIGHTS RESERVED</div>
+  <div>BUILT WITH <span class="red">♥</span> FOR THE WEB</div>
+</footer>
+
+</body>
+</html>

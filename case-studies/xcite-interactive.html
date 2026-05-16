@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Xcite Interactive · Case Study · Fazal Karim</title>
+<meta name="description" content="Web-based interactive games synced live with stadium jumbotron animations. Thousands of fans playing concurrently with sub-second sync."/>
+<meta name="theme-color" content="#f4f1ea"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="logo">FAZAL KARIM</a>
+  <a href="../index.html#work" class="back">← All work</a>
+  <a href="../index.html#contact" class="right-cta">Hire me →</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="top">
+    <div class="crumb"><a href="../index.html">Home</a> / <a href="../index.html#work">Work</a> / <strong>Xcite Interactive</strong></div>
+    <div class="case-num">CASE 04 / 04</div>
+  </div>
+  <h1>Xcite<br/><span class="accent">Interactive.</span></h1>
+  <p class="deck">Web-based interactive games for live stadium audiences &mdash; thousands of fans playing simultaneously, synced sub-second to the jumbotron above the field.</p>
+  <div class="meta-row">
+    <div class="cell"><span class="lab">Year</span><span class="val">2017 — 2018</span></div>
+    <div class="cell"><span class="lab">Role</span><span class="val">Front End Engineer</span></div>
+    <div class="cell"><span class="lab">Sector</span><span class="val">Live Events</span></div>
+    <div class="cell"><span class="lab">Scale</span><span class="val">Thousands concurrent</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Problem</h2><div class="num">// 01</div></div>
+    <p>Stadium operators wanted fans in the stands to participate in live jumbotron experiences &mdash; vote, react, play games, get featured on the big screen &mdash; but every existing solution had unacceptable lag for live audience interaction.</p>
+    <p>The product needed to feel instant from a phone in the stands to the screen 200 meters away, and it had to scale to thousands of concurrent players without falling over mid-game.</p>
+    <div class="pull">"Sub-second from phone to jumbotron. Or it isn't worth shipping."</div>
+  </div>
+</section>
+
+<section class="cs-section dark">
+  <div class="container">
+    <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
+    <ul class="steps">
+      <li><div class="step-num">01</div><div class="step-body"><strong>Web-based, no install</strong>Built on Angular + TypeScript so fans could join via a QR code on the screen &mdash; no app install, no friction.</div></li>
+      <li><div class="step-num">02</div><div class="step-body"><strong>Firebase Realtime + Firestore</strong>Used Firebase Realtime DB for sub-second event propagation and Firestore for persistent state, with careful attention to read/write fan-out.</div></li>
+      <li><div class="step-num">03</div><div class="step-body"><strong>Designed for fan-out</strong>Architected the data model and rules so a single host action could ripple to thousands of clients without blowing the per-client read budget.</div></li>
+      <li><div class="step-num">04</div><div class="step-body"><strong>Jumbotron view</strong>Built a separate operator/jumbotron view that aggregated fan input in real time and rendered to the big screen with the same backend.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
+    <div class="tech-grid">
+      <div class="chip">Angular</div>
+      <div class="chip">TypeScript</div>
+      <div class="chip">Firebase</div>
+      <div class="chip">Firestore</div>
+      <div class="chip">RxJS</div>
+      <div class="chip">Realtime DB</div>
+      <div class="chip">Node.js</div>
+      <div class="chip">Electron</div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
+    <p>Deployed at live stadium events with thousands of fans playing concurrently, sub-second sync to the jumbotron above the field. The product became the foundation of further interactive live-event work at the studio.</p>
+    <div class="outcomes">
+      <div class="stat"><strong>&lt;1s</strong><span class="lab">Phone-to-jumbotron sync target met</span></div>
+      <div class="stat"><strong>1000s</strong><span class="lab">Concurrent fans per event</span></div>
+      <div class="stat"><strong>0</strong><span class="lab">App installs required from fans</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-pager">
+  <div class="row">
+    <a href="go-boon.html"><span>← Previous</span>Go Boon</a>
+    <a href="../index.html" class="home">★ All work</a>
+    <a href="samurai-dashboard.html" class="next"><span>Next →</span>Samurai Dashboard</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 FAZAL KARIM · ALL RIGHTS RESERVED</div>
+  <div>BUILT WITH <span class="red">♥</span> FOR THE WEB</div>
+</footer>
+
+</body>
+</html>

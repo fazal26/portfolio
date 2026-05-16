@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Run Buddy · Case Study · Fazal Karim</title>
+<meta name="description" content="A two-sided mobile marketplace for pet workout scheduling. React Native + Rails, with auth, Stripe, in-app chat, camera, and live maps."/>
+<meta name="theme-color" content="#f4f1ea"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="../index.html" class="logo">FAZAL KARIM</a>
+  <a href="../index.html#work" class="back">← All work</a>
+  <a href="../index.html#contact" class="right-cta">Hire me →</a>
+</nav>
+
+<section class="cs-hero">
+  <div class="top">
+    <div class="crumb"><a href="../index.html">Home</a> / <a href="../index.html#work">Work</a> / <strong>Run Buddy</strong></div>
+    <div class="case-num">CASE 03 / 04</div>
+  </div>
+  <h1>Run<br/><span class="accent">Buddy.</span></h1>
+  <p class="deck">A two-sided mobile marketplace pairing pet owners with vetted runners &mdash; with auth, Stripe payments, in-app chat, camera verification, and live maps.</p>
+  <div class="meta-row">
+    <div class="cell"><span class="lab">Year</span><span class="val">2020 — 2021</span></div>
+    <div class="cell"><span class="lab">Role</span><span class="val">Sr. Full-Stack</span></div>
+    <div class="cell"><span class="lab">Sector</span><span class="val">Marketplace</span></div>
+    <div class="cell"><span class="lab">Platforms</span><span class="val">iOS · Android</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Problem</h2><div class="num">// 01</div></div>
+    <p>Pet owners wanted scheduled workouts with vetted runners, but existing solutions were a hodgepodge of WhatsApp threads and PayPal links. Scheduling was painful, payments were off-platform, and there was no way for either side to verify the run actually happened the way it was supposed to.</p>
+    <p>The brief: build a real two-sided marketplace &mdash; sign up, verify, schedule, pay, run, review &mdash; that lived inside a single mobile app on both iOS and Android.</p>
+    <div class="pull">"Make booking a runner as easy as booking an Uber. Make trust come baked in."</div>
+  </div>
+</section>
+
+<section class="cs-section dark">
+  <div class="container">
+    <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
+    <ul class="steps">
+      <li><div class="step-num">01</div><div class="step-body"><strong>One codebase, two apps</strong>React Native for iOS &amp; Android in a single TypeScript codebase, with Redux managing cross-cutting state.</div></li>
+      <li><div class="step-num">02</div><div class="step-body"><strong>Rails API + Postgres</strong>Modeled users, runners, schedules, runs, payments, and reviews on a Rails backend with a normalized PostgreSQL schema.</div></li>
+      <li><div class="step-num">03</div><div class="step-body"><strong>Stripe for payments</strong>Stripe Connect for split payouts &mdash; platform takes a cut, runner gets the rest, all on rails.</div></li>
+      <li><div class="step-num">04</div><div class="step-body"><strong>In-app chat &amp; camera</strong>Built real-time chat for owner ↔ runner coordination, plus camera flows for run-completion proof.</div></li>
+      <li><div class="step-num">05</div><div class="step-body"><strong>Live maps + geofencing</strong>Google Maps for matching, route preview, and post-run summaries with run path overlay.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
+    <div class="tech-grid">
+      <div class="chip">React Native</div>
+      <div class="chip">Redux</div>
+      <div class="chip">TypeScript</div>
+      <div class="chip">Ruby on Rails</div>
+      <div class="chip">PostgreSQL</div>
+      <div class="chip">Stripe Connect</div>
+      <div class="chip">Google Maps</div>
+      <div class="chip">Push Notif.</div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
+    <p>Shipped to App Store and Play Store with the full marketplace flow live: signup &amp; verification, schedule, pay, run, review. Real-time match notifications, Stripe-backed split payouts, and proof-of-run via camera.</p>
+    <div class="outcomes">
+      <div class="stat"><strong>2</strong><span class="lab">Stores shipped (App Store + Play Store)</span></div>
+      <div class="stat"><strong>1</strong><span class="lab">Codebase serving both iOS &amp; Android</span></div>
+      <div class="stat"><strong>End-to-end</strong><span class="lab">Auth → schedule → pay → run → review</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-pager">
+  <div class="row">
+    <a href="samurai-dashboard.html"><span>← Previous</span>Samurai Dashboard</a>
+    <a href="../index.html" class="home">★ All work</a>
+    <a href="go-boon.html" class="next"><span>Next →</span>Go Boon</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 FAZAL KARIM · ALL RIGHTS RESERVED</div>
+  <div>BUILT WITH <span class="red">♥</span> FOR THE WEB</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Fazal Karim ★ Senior Full-Stack Engineer</title>
+<meta name="description" content="Senior full-stack engineer · 7+ years building scalable web and mobile products with React, Next.js, TypeScript, Node, and Rails."/>
+<meta property="og:title" content="Fazal Karim ★ Senior Full-Stack Engineer"/>
+<meta property="og:description" content="7+ years shipping production web & mobile apps. Open for remote engagements."/>
+<meta property="og:type" content="website"/>
+<meta name="theme-color" content="#f4f1ea"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Archivo+Black&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  :root{
+    --bg:#f4f1ea;
+    --ink:#111;
+    --paper:#fff;
+    --yellow:#facc15;
+    --red:#ef4444;
+    --green:#a3e635;
+    --pink:#fb7185;
+    --blue:#60a5fa;
+    --line:3px solid #111;
+  }
+  html{scroll-behavior:smooth}
+  html,body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5}
+  body{overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--ink);color:var(--yellow)}
+  .display{font-family:'Archivo Black',sans-serif;letter-spacing:-1.5px;text-transform:uppercase;line-height:.9}
+  .mono{font-family:'JetBrains Mono',monospace}
+
+  /* nav */
+  .nav{display:flex;justify-content:space-between;align-items:center;padding:18px 32px;border-bottom:var(--line);background:var(--bg);position:sticky;top:0;z-index:50}
+  @media (max-width:640px){.nav{padding:14px 18px}}
+  .nav .logo{font-family:'Archivo Black',sans-serif;font-size:22px;letter-spacing:-1px}
+  .nav .logo .star{color:var(--red)}
+  .nav ul{display:flex;list-style:none;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+  .nav ul a{padding:8px 12px;border:2px solid var(--ink);background:var(--paper);transition:all .12s;display:inline-block}
+  .nav ul a:hover{background:var(--yellow);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+  .nav .right-cta{font-family:'Archivo Black',sans-serif;background:var(--ink);color:var(--yellow);padding:10px 16px;border:2px solid var(--ink);font-size:12px;letter-spacing:1px;display:inline-flex;align-items:center;gap:6px;transition:transform .12s,box-shadow .12s}
+  .nav .right-cta:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--red)}
+  @media (max-width:880px){.nav ul{display:none}}
+
+  /* hero */
+  .hero{padding:60px 32px 48px;display:grid;grid-template-columns:1.6fr 1fr;gap:40px;align-items:end;border-bottom:var(--line)}
+  @media (max-width:880px){.hero{grid-template-columns:1fr;padding:48px 18px;gap:32px}}
+  h1.head{font-family:'Archivo Black',sans-serif;font-size:clamp(64px,14vw,168px);line-height:.82;letter-spacing:-5px;text-transform:uppercase}
+  h1.head .accent{color:var(--yellow);background:var(--ink);padding:0 14px;display:inline-block}
+  h1.head .red{color:var(--red)}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .hero-cta a{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:14px;padding:14px 22px;border:3px solid var(--ink);transition:transform .12s,box-shadow .12s;display:inline-flex;align-items:center;gap:8px}
+  .hero-cta a.primary{background:var(--ink);color:var(--yellow)}
+  .hero-cta a.primary:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--red)}
+  .hero-cta a.ghost{background:var(--paper);color:var(--ink)}
+  .hero-cta a.ghost:hover{background:var(--yellow);transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+
+  /* photo */
+  .photo-block{margin-bottom:24px;max-width:340px;position:relative}
+  .photo-block img{display:block;width:100%;height:auto;border:var(--line);background:var(--paper);transform:rotate(-1.5deg);transition:transform .25s,box-shadow .25s;box-shadow:8px 8px 0 var(--ink)}
+  .photo-block:hover img{transform:rotate(0deg);box-shadow:12px 12px 0 var(--red)}
+  .photo-block .tape{position:absolute;top:-10px;left:50%;transform:translateX(-50%) rotate(-2deg);background:var(--yellow);border:2px solid var(--ink);padding:3px 14px;font-family:'JetBrains Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;z-index:2}
+  @media (max-width:880px){.photo-block{max-width:280px;margin-left:auto;margin-right:auto}}
+
+  /* hero photo variant — smaller, tilted opposite */
+  .photo-block.hero-photo{max-width:260px;margin:0 0 18px auto}
+  .photo-block.hero-photo img{transform:rotate(2deg);box-shadow:6px 6px 0 var(--ink)}
+  .photo-block.hero-photo:hover img{transform:rotate(0deg);box-shadow:10px 10px 0 var(--red)}
+  .photo-block.hero-photo .tape{background:var(--red);color:var(--paper);transform:translateX(-50%) rotate(2deg)}
+  @media (max-width:880px){.photo-block.hero-photo{margin:0 auto 24px;max-width:220px}}
+
+  .hero .label{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:2px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .hero .label::before{content:'';width:30px;height:3px;background:var(--ink);display:inline-block}
+  .stats{display:flex;flex-direction:column;gap:14px}
+  .stat{border:var(--line);padding:14px 18px;background:var(--paper);display:flex;justify-content:space-between;align-items:center;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;transition:transform .12s,box-shadow .12s}
+  .stat:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--ink)}
+  .stat strong{font-family:'Archivo Black',sans-serif;font-size:30px;letter-spacing:-1px}
+  .stat:nth-child(1){background:var(--yellow)}
+  .stat:nth-child(2){background:var(--green)}
+  .stat:nth-child(3){background:var(--pink);color:var(--paper)}
+  .stat:nth-child(4){background:var(--ink);color:var(--yellow)}
+
+  /* marquee */
+  .marquee{background:var(--ink);color:var(--yellow);padding:14px 0;border-bottom:var(--line);overflow:hidden;white-space:nowrap;font-family:'Archivo Black',sans-serif;font-size:18px;text-transform:uppercase;letter-spacing:1px}
+  .marquee span{display:inline-block;padding-left:100%;animation:scroll 40s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+
+  /* about */
+  .about{display:grid;grid-template-columns:1fr 1fr;border-bottom:var(--line)}
+  @media (max-width:880px){.about{grid-template-columns:1fr}}
+  .about .lhs{padding:60px 32px;border-right:var(--line);background:var(--paper)}
+  .about .rhs{padding:60px 32px;background:var(--yellow)}
+  @media (max-width:880px){.about .lhs{border-right:none;border-bottom:var(--line);padding:48px 24px}.about .rhs{padding:48px 24px}}
+  .about .label{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:2px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
+  .about .label::before{content:'';width:30px;height:3px;background:var(--ink);display:inline-block}
+  .about p{font-size:21px;line-height:1.45;font-weight:500;max-width:520px;margin-bottom:14px}
+  .about p:last-child{margin-bottom:0}
+  .about .meta-list{margin-top:24px;font-family:'JetBrains Mono',monospace;font-size:13px;line-height:2}
+  .about .meta-list span{display:inline-block;width:90px;color:var(--ink);font-weight:500;text-transform:uppercase;letter-spacing:1px;font-size:11px}
+  .about .meta-list strong{font-weight:700}
+
+  /* section base */
+  .section{padding:80px 32px;border-bottom:var(--line)}
+  @media (max-width:640px){.section{padding:56px 18px}}
+  .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:36px;gap:24px;flex-wrap:wrap}
+  .section-head h2{font-family:'Archivo Black',sans-serif;font-size:clamp(48px,8vw,96px);text-transform:uppercase;letter-spacing:-3px;line-height:.85}
+  .section-head h2 .arr{display:inline-block;color:var(--red)}
+  .section-head .meta{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#666;text-align:right}
+
+  /* work */
+  .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  @media (max-width:880px){.work-grid{grid-template-columns:1fr}}
+  .card{background:var(--paper);border:var(--line);padding:24px;position:relative;transition:transform .15s,box-shadow .15s;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;color:inherit;text-decoration:none}
+  .card .read{margin-top:14px;font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px;align-self:flex-start;padding:6px 10px;border:2px solid var(--ink);background:var(--ink);color:var(--yellow);transition:transform .12s}
+  .card:hover .read{transform:translateX(4px)}
+  .card.colored-3 .read{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .card:hover{transform:translate(-5px,-5px);box-shadow:9px 9px 0 var(--ink)}
+  .card .num{position:absolute;top:-3px;right:-3px;background:var(--ink);color:var(--yellow);font-family:'Archivo Black',sans-serif;padding:6px 12px;font-size:14px}
+  .card .when{font-family:'JetBrains Mono',monospace;font-size:11px;color:#666;text-transform:uppercase;letter-spacing:1.5px;margin-top:18px;margin-bottom:6px;font-weight:500}
+  .card h3{font-family:'Archivo Black',sans-serif;font-size:30px;margin-bottom:10px;text-transform:uppercase;letter-spacing:-1px;line-height:.95}
+  .card p{font-size:15px;line-height:1.5;margin-bottom:16px;flex:1}
+  .card .stk{display:flex;flex-wrap:wrap;gap:6px}
+  .card .stk span{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--bg);border:2px solid var(--ink);padding:3px 8px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+  .card.colored-1{background:var(--yellow)}
+  .card.colored-2{background:var(--green)}
+  .card.colored-3{background:var(--pink);color:var(--paper)}
+  .card.colored-3 .when{color:#fff}
+  .card.colored-3 .stk span{background:rgba(255,255,255,.15);border-color:#fff;color:#fff}
+  .card.colored-3 .num{background:#fff;color:var(--ink)}
+  .card.colored-4{background:var(--blue);color:var(--ink)}
+
+  /* services */
+  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  @media (max-width:880px){.svc-grid{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.svc-grid{grid-template-columns:1fr}}
+  .svc{background:var(--paper);border:var(--line);padding:28px 24px;position:relative;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
+  .svc:hover{transform:translate(-5px,-5px);box-shadow:9px 9px 0 var(--ink)}
+  .svc .num{font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:2px;color:#888;font-weight:500;margin-bottom:14px}
+  .svc .icon{font-family:'Archivo Black',sans-serif;font-size:44px;line-height:1;margin-bottom:16px;display:inline-block;background:var(--ink);color:var(--yellow);padding:6px 14px;border:3px solid var(--ink)}
+  .svc h3{font-family:'Archivo Black',sans-serif;font-size:22px;text-transform:uppercase;letter-spacing:-.5px;line-height:1.05;margin-bottom:12px}
+  .svc p{font-size:14px;line-height:1.55;font-weight:500;flex:1;margin-bottom:16px}
+  .svc .tags{display:flex;flex-wrap:wrap;gap:6px}
+  .svc .tags span{font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--bg);border:2px solid var(--ink);padding:3px 7px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+  .svc.colored-y{background:var(--yellow)}
+  .svc.colored-g{background:var(--green)}
+  .svc.colored-p{background:var(--pink);color:var(--paper)}
+  .svc.colored-p .num{color:#fff;opacity:.8}
+  .svc.colored-p .icon{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .svc.colored-p .tags span{background:rgba(255,255,255,.15);color:#fff;border-color:#fff}
+  .svc.colored-b{background:var(--blue)}
+  .svc.colored-d{background:var(--ink);color:var(--bg)}
+  .svc.colored-d .num{color:#888}
+  .svc.colored-d .tags span{background:#1a1a1a;color:var(--bg);border-color:var(--yellow)}
+
+  /* stack */
+  .stack-section{background:var(--ink);color:var(--bg)}
+  .stack-section .section-head h2{color:var(--yellow)}
+  .stack-section .section-head .meta{color:#888}
+  .stack-features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  @media (max-width:880px){.stack-features{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.stack-features{grid-template-columns:1fr}}
+  .stack-features .item{background:#1a1a1a;border:3px solid var(--yellow);padding:26px 24px;display:flex;flex-direction:column;justify-content:space-between;min-height:210px;transition:transform .15s,box-shadow .15s,border-color .15s;position:relative;overflow:hidden}
+  .stack-features .item:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--red);border-color:var(--red)}
+  .stack-features .item .name{font-family:'Archivo Black',sans-serif;font-size:26px;letter-spacing:-1px;text-transform:uppercase;color:var(--yellow);line-height:.95}
+  .stack-features .item .yr{font-family:'Archivo Black',sans-serif;font-size:76px;line-height:.9;color:var(--bg);letter-spacing:-4px;margin-top:14px;display:flex;align-items:flex-end;gap:8px}
+  .stack-features .item .yr small{font-family:'JetBrains Mono',monospace;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#888;font-weight:500;padding-bottom:14px;letter-spacing:1px}
+  .stack-features .item .lab{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:#888;margin-top:auto;padding-top:14px;border-top:2px dashed #333;font-weight:500}
+
+  /* experience */
+  .exp{display:flex;flex-direction:column;gap:0;border:var(--line);background:var(--paper)}
+  .exp-row{display:grid;grid-template-columns:240px 1fr;gap:0;border-bottom:var(--line);transition:background .15s}
+  .exp-row:last-child{border-bottom:none}
+  .exp-row:hover{background:var(--yellow)}
+  @media (max-width:768px){.exp-row{grid-template-columns:1fr}}
+  .exp-row .when-col{padding:24px;border-right:var(--line);font-family:'Archivo Black',sans-serif;font-size:14px;text-transform:uppercase;letter-spacing:1px;background:var(--ink);color:var(--yellow)}
+  .exp-row .when-col span{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:#999;font-weight:400;margin-top:4px;letter-spacing:.5px;text-transform:none}
+  @media (max-width:768px){.exp-row .when-col{border-right:none;border-bottom:var(--line)}}
+  .exp-row .body-col{padding:24px}
+  .exp-row .body-col h3{font-family:'Archivo Black',sans-serif;font-size:24px;margin-bottom:6px;text-transform:uppercase;letter-spacing:-.5px;line-height:1.05}
+  .exp-row .body-col h3 .co{color:var(--red)}
+  .exp-row .body-col p{font-size:15px;line-height:1.55;margin-bottom:12px;max-width:680px;font-weight:500}
+  .exp-row .body-col .stk{display:flex;flex-wrap:wrap;gap:6px}
+  .exp-row .body-col .stk span{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--bg);border:2px solid var(--ink);padding:3px 8px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+
+  /* contact */
+  .contact{background:var(--yellow);padding:100px 32px;border-bottom:var(--line);text-align:center;position:relative;overflow:hidden}
+  @media (max-width:640px){.contact{padding:64px 18px}}
+  .contact .label{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:2px;margin-bottom:18px;display:inline-flex;align-items:center;gap:10px}
+  .contact .label::before,.contact .label::after{content:'';width:40px;height:3px;background:var(--ink);display:inline-block}
+  .contact h2{font-family:'Archivo Black',sans-serif;font-size:clamp(56px,11vw,140px);text-transform:uppercase;letter-spacing:-4px;line-height:.85;margin-bottom:24px}
+  .contact h2 .red{color:var(--red)}
+  .contact p{font-size:20px;font-weight:500;max-width:580px;margin:0 auto 36px;line-height:1.45}
+  .contact .email-btn{display:inline-block;background:var(--ink);color:var(--yellow);font-family:'Archivo Black',sans-serif;font-size:22px;padding:20px 36px;border:4px solid var(--ink);transition:transform .12s,box-shadow .12s;text-transform:uppercase;letter-spacing:1px}
+  .contact .email-btn:hover{transform:translate(-4px,-4px);box-shadow:8px 8px 0 var(--red)}
+  .contact .socials{display:flex;justify-content:center;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .contact .socials a{padding:12px 22px;border:3px solid var(--ink);background:var(--paper);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;transition:transform .12s,box-shadow .12s;display:inline-flex;align-items:center;gap:8px}
+  .contact .socials a:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+
+  /* footer */
+  footer{padding:24px 32px;background:var(--ink);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  footer .star{color:var(--yellow)}
+  footer .red{color:var(--red)}
+  @media (max-width:640px){footer{flex-direction:column;text-align:center;padding:24px 18px}}
+
+  /* reveal */
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:translateY(0)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="#top" class="logo">FAZAL KARIM</a>
+  <ul>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#experience">Resume</a></li>
+  </ul>
+  <a href="#contact" class="right-cta">Hire me →</a>
+</nav>
+
+<section class="hero" id="top">
+  <div>
+    <div class="label">Senior Full-Stack Engineer · 7+ Years · Remote</div>
+    <h1 class="head">I ship<br/><span class="accent">code</span> that<br/><span class="red">earns</span> money.</h1>
+    <div class="hero-cta">
+      <a class="primary" href="#work">View work →</a>
+      <a class="ghost" href="resume.pdf" download="Fazal-Karim-Resume.pdf">Download CV ↓</a>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="stat"><span>Years building</span><strong>07+</strong></div>
+    <div class="stat"><span>Projects shipped</span><strong>30+</strong></div>
+    <div class="stat"><span>Status</span><strong>OPEN</strong></div>
+    <div class="stat"><span>Mode</span><strong>REMOTE</strong></div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <span>★ REACT ★ NEXT.JS ★ TYPESCRIPT ★ NODE ★ RAILS ★ REACT NATIVE ★ POSTGRES ★ MONGO ★ STRIPE ★ FIREBASE ★ TAILWIND ★ REDUX ★ MATERIAL UI ★ GOOGLE MAPS ★ JEST ★ SHOPIFY ★ ELECTRON ★ ANGULAR ★ VUE ★ </span>
+</div>
+
+<!-- ABOUT -->
+<section class="about reveal" id="about">
+  <div class="lhs">
+    <div class="photo-block">
+      <div class="tape">★ FK · 2026</div>
+      <img src="headshot.png" alt="Fazal Karim" loading="lazy"/>
+    </div>
+    <div class="label">About</div>
+    <p>Full-stack engineer with seven years building production web &amp; mobile apps for startups, mid-size companies, and Fortune 500 clients.</p>
+    <p>Remote-first. Pragmatic. Allergic to dead code. I migrate legacy stacks, integrate payments and maps, and ship dashboards that quietly run businesses.</p>
+    <div class="meta-list">
+      <div><span>ROLE</span><strong>Sr. Full-Stack Engineer</strong></div>
+      <div><span>YEARS</span><strong>7+</strong></div>
+      <div><span>BASED</span><strong>Remote · Global</strong></div>
+      <div><span>EDU</span><strong>BS, Software Engineering</strong></div>
+      <div><span>STATUS</span><strong style="color:#16a34a">★ AVAILABLE NOW</strong></div>
+    </div>
+  </div>
+  <div class="rhs">
+    <div class="label">Currently</div>
+    <p>Lead engineer on <strong>Roxova</strong> &mdash; a media content licensing platform with content management, license flow, and a built-in legal layer. Next.js + React + Node.js.</p>
+    <p>Open to new remote engagements: senior full-stack, contract, or rescuing the dashboard nobody wants to touch.</p>
+    <div style="margin-top:24px;padding:16px;background:var(--ink);color:var(--yellow);font-family:'JetBrains Mono',monospace;font-size:13px;line-height:1.6">
+      <div style="color:#888">$ whoami</div>
+      <div>fazal_karim · senior_engineer</div>
+      <div style="color:#888;margin-top:8px">$ availability</div>
+      <div>open · remote · 2026 →</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section reveal" id="work">
+  <div class="section-head">
+    <h2>Selected<br/>work <span class="arr">→</span></h2>
+    <div class="meta">// 04 OF 30+ PROJECTS<br/>// CASE STUDIES ON REQUEST</div>
+  </div>
+  <div class="work-grid">
+    <a class="card colored-1" href="case-studies/roxova.html">
+      <div class="num">01</div>
+      <div>
+        <div class="when">2025 — Now · Live</div>
+        <h3>Roxova</h3>
+        <p>Media content licensing platform &mdash; manage your own catalog, license content in or out, with the legal layer baked in and a pre-licensed library you can opt into directly.</p>
+      </div>
+      <div class="stk"><span>Next.js</span><span>React</span><span>Node.js</span><span>TypeScript</span></div>
+      <div class="read">Read case →</div>
+    </a>
+    <a class="card colored-2" href="case-studies/samurai-dashboard.html">
+      <div class="num">02</div>
+      <div>
+        <div class="when">2024 — 2025</div>
+        <h3>Samurai Dashboard</h3>
+        <p>Retail management system for a Gulf distribution operation. Led the Vue → React Admin migration, UI/UX overhaul, and live mapping integration.</p>
+      </div>
+      <div class="stk"><span>React Admin</span><span>Vue.js</span><span>Material UI</span><span>Google Maps</span><span>TypeScript</span></div>
+      <div class="read">Read case →</div>
+    </a>
+    <a class="card colored-3" href="case-studies/run-buddy.html">
+      <div class="num">03</div>
+      <div>
+        <div class="when">2020 — 2021</div>
+        <h3>Run Buddy</h3>
+        <p>Hybrid mobile app for scheduling pet workouts. Auth, Stripe payments, in-app chat, camera flows, live map matching between owners &amp; runners.</p>
+      </div>
+      <div class="stk"><span>React Native</span><span>Redux</span><span>Rails</span><span>PostgreSQL</span><span>Maps</span><span>Stripe</span></div>
+      <div class="read">Read case →</div>
+    </a>
+    <a class="card colored-4" href="case-studies/go-boon.html">
+      <div class="num">04</div>
+      <div>
+        <div class="when">2019 — 2020</div>
+        <h3>Go Boon</h3>
+        <p>Job vacancy platform with mobile app and admin panel powering an automated hiring pipeline &mdash; sourcing, screening, scheduling &amp; offer flow in one place.</p>
+      </div>
+      <div class="stk"><span>React Native</span><span>Redux</span><span>Rails</span><span>PostgreSQL</span></div>
+      <div class="read">Read case →</div>
+    </a>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="section reveal" id="services">
+  <div class="section-head">
+    <h2>How I<br/>can help <span class="arr">★</span></h2>
+    <div class="meta">// SERVICES &amp; ENGAGEMENTS<br/>// REMOTE · CONTRACT · FULL-TIME</div>
+  </div>
+  <div class="svc-grid">
+    <div class="svc colored-y">
+      <div class="num">01 / SVC</div>
+      <div class="icon">&lt;/&gt;</div>
+      <h3>Full-Stack Delivery</h3>
+      <p>Ship features end-to-end. Schema design, API, business logic, last-mile UI polish &mdash; with proper types, tests, and a clean deploy. The kind of engineering that doesn't need a follow-up PR.</p>
+      <div class="tags"><span>React</span><span>Next.js</span><span>Rails</span><span>Node</span></div>
+    </div>
+    <div class="svc colored-g">
+      <div class="num">02 / SVC</div>
+      <div class="icon">⇄</div>
+      <h3>Legacy Migrations</h3>
+      <p>Vue → React Admin. Angular → React. jQuery → modern. Currently leading exactly this on a major Gulf retail platform. Incremental, low-risk, with the lights on.</p>
+      <div class="tags"><span>Vue→React</span><span>Angular→React</span><span>Codemod</span></div>
+    </div>
+    <div class="svc colored-p">
+      <div class="num">03 / SVC</div>
+      <div class="icon">▦</div>
+      <h3>Dashboards &amp; Internal Tools</h3>
+      <p>Admin panels, ops dashboards, and internal tools that quietly run businesses. CRUD that doesn't suck, charts that load fast, role-aware UIs your ops team won't curse.</p>
+      <div class="tags"><span>React Admin</span><span>MUI</span><span>Custom</span></div>
+    </div>
+    <div class="svc colored-b">
+      <div class="num">04 / SVC</div>
+      <div class="icon">▢</div>
+      <h3>Mobile Apps</h3>
+      <p>React Native for iOS + Android in one codebase. Auth, payments, in-app chat, camera, maps, push &mdash; all shipped before. Backed by Rails or Node where it counts.</p>
+      <div class="tags"><span>React Native</span><span>Stripe</span><span>Maps</span><span>Push</span></div>
+    </div>
+    <div class="svc">
+      <div class="num">05 / SVC</div>
+      <div class="icon">⌥</div>
+      <h3>Integrations</h3>
+      <p>Stripe, Google Maps, Firebase, Shopify, push notifications, OAuth flows, webhooks. The boring plumbing done well, with retries and idempotency where it matters.</p>
+      <div class="tags"><span>Stripe</span><span>Maps</span><span>Shopify</span><span>Firebase</span></div>
+    </div>
+    <div class="svc colored-d">
+      <div class="num">06 / SVC</div>
+      <div class="icon">⚒</div>
+      <h3>Code Rescue</h3>
+      <p>That dashboard nobody wants to touch? I'll touch it. Pragmatic refactors over rewrites, dead-code removal, perf wins, and the discipline to ship a small, testable PR.</p>
+      <div class="tags"><span>Refactor</span><span>Perf</span><span>Audit</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- STACK -->
+<section class="section stack-section reveal" id="stack">
+  <div class="section-head">
+    <h2>Primary<br/>stack <span class="arr">★</span></h2>
+    <div class="meta">// CORE TOOLS · 2026<br/>// TYPED · TESTED · SHIPPED</div>
+  </div>
+  <div class="stack-features">
+    <div class="item">
+      <div class="name">React</div>
+      <div class="yr">07<small>YRS</small></div>
+      <div class="lab">Frontend Library</div>
+    </div>
+    <div class="item">
+      <div class="name">Next.js</div>
+      <div class="yr">03<small>YRS</small></div>
+      <div class="lab">Frontend Framework</div>
+    </div>
+    <div class="item">
+      <div class="name">Angular</div>
+      <div class="yr">03<small>YRS</small></div>
+      <div class="lab">Frontend Framework</div>
+    </div>
+    <div class="item">
+      <div class="name">React Native</div>
+      <div class="yr">05<small>YRS</small></div>
+      <div class="lab">Mobile Framework</div>
+    </div>
+    <div class="item">
+      <div class="name">TypeScript</div>
+      <div class="yr">04<small>YRS</small></div>
+      <div class="lab">Language</div>
+    </div>
+    <div class="item">
+      <div class="name">Node.js</div>
+      <div class="yr">04<small>YRS</small></div>
+      <div class="lab">Backend Runtime</div>
+    </div>
+    <div class="item">
+      <div class="name">Ruby on Rails</div>
+      <div class="yr">05<small>YRS</small></div>
+      <div class="lab">Backend Framework</div>
+    </div>
+    <div class="item">
+      <div class="name">AWS</div>
+      <div class="yr">03<small>YRS</small></div>
+      <div class="lab">Cloud Infrastructure</div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section reveal" id="experience">
+  <div class="section-head">
+    <h2>Resume <span class="arr">▸</span></h2>
+    <div class="meta">// 2017 → 2026<br/>// 5 ROLES · STARTUPS → FORTUNE 500</div>
+  </div>
+  <div class="exp">
+    <div class="exp-row">
+      <div class="when-col">Apr 2022<span>→ PRESENT</span></div>
+      <div class="body-col">
+        <h3>Sr. Software Engineer · <span class="co">Independent Contractor</span></h3>
+        <p>Remote engineering across multiple clients. Currently lead engineer on <strong>Roxova</strong> &mdash; a media content licensing platform built with Next.js, React, and Node.js. Full-stack ownership: architecture, implementation, code review, shipping.</p>
+        <div class="stk"><span>JavaScript</span><span>TypeScript</span><span>React</span><span>Next.js</span><span>RN</span><span>Node</span><span>Rails</span><span>AWS</span></div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="when-col">Aug 2021<span>→ Apr 2022</span></div>
+      <div class="body-col">
+        <h3>Sr. Software Engineer · <span class="co">Nisum</span></h3>
+        <p>Built and maintained client-facing React and React Native apps for enterprise clients. Worked across the stack with TypeScript and Node.</p>
+        <div class="stk"><span>React</span><span>React Native</span><span>TypeScript</span><span>Node</span></div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="when-col">Jan 2019<span>→ Aug 2021</span></div>
+      <div class="body-col">
+        <h3>Sr. Software Engineer · <span class="co">Devsinc</span></h3>
+        <p>Full-stack delivery on multiple long-running engagements: Rails APIs, Angular and React frontends, PostgreSQL data modeling. Mentored juniors and led small delivery pods.</p>
+        <div class="stk"><span>Rails</span><span>Angular 8</span><span>React</span><span>PostgreSQL</span></div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="when-col">Apr 2018<span>→ Dec 2018</span></div>
+      <div class="body-col">
+        <h3>Software Engineer · <span class="co">Codexia</span></h3>
+        <p>Hybrid-mobile and web work for early-stage clients. Ionic + Angular against Firebase backends.</p>
+        <div class="stk"><span>Ionic</span><span>Angular</span><span>Firebase</span></div>
+      </div>
+    </div>
+    <div class="exp-row">
+      <div class="when-col">Sep 2017<span>→ Feb 2018</span></div>
+      <div class="body-col">
+        <h3>Front End Developer · <span class="co">Narsun Studios</span></h3>
+        <p>Front-end on real-time interactive products including Xcite Interactive Games &mdash; web apps synced live with stadium jumbotron animations.</p>
+        <div class="stk"><span>Angular 6</span><span>Firebase</span><span>Node</span><span>Electron</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact reveal" id="contact">
+  <div class="label">Contact</div>
+  <h2>Let's<br/>build <span class="red">something.</span></h2>
+  <p>Open to senior full-stack and contract roles &mdash; product work, platform work, or rescuing the dashboard nobody wants to touch.</p>
+  <a class="email-btn" href="mailto:fazalkarim.dev@gmail.com">fazalkarim.dev@gmail.com →</a>
+  <div class="socials">
+    <a href="https://www.linkedin.com/in/fazalkarim-sl/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://github.com/fazal26" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="resume.pdf" download="Fazal-Karim-Resume.pdf">Download CV ↓</a>
+    <a href="mailto:fazalkarim.dev@gmail.com">Email ↗</a>
+  </div>
+</section>
+
+<footer>
+  <div>© 2026 FAZAL KARIM · ALL RIGHTS RESERVED</div>
+  <div>BUILT WITH <span class="red">♥</span> FOR THE WEB</div>
+</footer>
+
+<script>
+  const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+</body>
+</html>

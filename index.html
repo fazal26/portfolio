@@ -20,9 +20,6 @@
     --paper:#fff;
     --yellow:#facc15;
     --red:#ef4444;
-    --green:#a3e635;
-    --pink:#fb7185;
-    --blue:#60a5fa;
     --line:3px solid #111;
   }
   html{scroll-behavior:smooth}
@@ -50,11 +47,11 @@
   @media (max-width:880px){.hero{grid-template-columns:1fr;padding:48px 18px;gap:32px}}
   h1.head{font-family:'Archivo Black',sans-serif;font-size:clamp(56px,11vw,128px);line-height:.86;letter-spacing:-3px;text-transform:uppercase}
   h1.head .accent{color:var(--yellow);background:var(--ink);padding:0 14px;display:inline-block}
-  h1.head .red{color:var(--ink)}
+  h1.head .red{color:var(--red)}
   .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
   .hero-cta a{font-family:'Archivo Black',sans-serif;text-transform:uppercase;letter-spacing:1px;font-size:14px;padding:14px 22px;border:3px solid var(--ink);transition:transform .12s,box-shadow .12s;display:inline-flex;align-items:center;gap:8px}
   .hero-cta a.primary{background:var(--ink);color:var(--yellow)}
-  .hero-cta a.primary:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+  .hero-cta a.primary:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--red)}
   .hero-cta a.ghost{background:var(--paper);color:var(--ink)}
   .hero-cta a.ghost:hover{background:var(--yellow);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
 
@@ -68,8 +65,8 @@
   /* hero photo variant — smaller, tilted opposite */
   .photo-block.hero-photo{max-width:260px;margin:0 0 18px auto}
   .photo-block.hero-photo img{transform:rotate(2deg);box-shadow:6px 6px 0 var(--ink)}
-  .photo-block.hero-photo:hover img{transform:rotate(0deg);box-shadow:8px 8px 0 var(--ink)}
-  .photo-block.hero-photo .tape{background:var(--ink);color:var(--yellow);transform:translateX(-50%) rotate(2deg)}
+  .photo-block.hero-photo:hover img{transform:rotate(0deg);box-shadow:8px 8px 0 var(--red)}
+  .photo-block.hero-photo .tape{background:var(--red);color:var(--paper);transform:translateX(-50%) rotate(2deg)}
   @media (max-width:880px){.photo-block.hero-photo{margin:0 auto 24px;max-width:220px}}
 
   .hero .label{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:2px;margin-bottom:18px;display:flex;align-items:center;gap:10px}
@@ -100,7 +97,7 @@
   @media (max-width:640px){.section{padding:56px 18px}}
   .section-head{display:flex;justify-content:space-between;align-items:end;margin-bottom:36px;gap:24px;flex-wrap:wrap}
   .section-head h2{font-family:'Archivo Black',sans-serif;font-size:clamp(48px,8vw,96px);text-transform:uppercase;letter-spacing:-3px;line-height:.85}
-  .section-head h2 .arr{display:inline-block;color:var(--ink)}
+  .section-head h2 .arr{display:inline-block;color:var(--red)}
   .section-head .meta{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#666;text-align:right}
 
   /* work */
@@ -117,6 +114,11 @@
   .card .stk{display:flex;flex-wrap:wrap;gap:6px}
   .card .stk span{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--bg);border:2px solid var(--ink);padding:3px 8px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
   .card.colored-1{background:var(--yellow)}
+  .card.colored-r{background:var(--red);color:var(--paper)}
+  .card.colored-r .when{color:rgba(255,255,255,.85)}
+  .card.colored-r .stk span{background:rgba(255,255,255,.12);border-color:#fff;color:#fff}
+  .card.colored-r .num{background:#fff;color:var(--ink)}
+  .card.colored-r .read{background:var(--paper);color:var(--ink);border-color:var(--paper)}
 
   /* services */
   .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -131,9 +133,10 @@
   .svc .tags{display:flex;flex-wrap:wrap;gap:6px}
   .svc .tags span{font-family:'JetBrains Mono',monospace;font-size:10px;background:var(--bg);border:2px solid var(--ink);padding:3px 7px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
   .svc.colored-y{background:var(--yellow)}
-  .svc.colored-d{background:var(--ink);color:var(--bg)}
-  .svc.colored-d .num{color:#888}
-  .svc.colored-d .tags span{background:#1a1a1a;color:var(--bg);border-color:var(--yellow)}
+  .svc.colored-r{background:var(--red);color:var(--paper)}
+  .svc.colored-r .num{color:rgba(255,255,255,.7)}
+  .svc.colored-r .icon{background:var(--paper);color:var(--ink);border-color:var(--paper)}
+  .svc.colored-r .tags span{background:rgba(255,255,255,.12);color:#fff;border-color:#fff}
 
   /* stack */
   .stack-section{background:var(--ink);color:var(--bg)}
@@ -160,7 +163,7 @@
   @media (max-width:768px){.exp-row .when-col{border-right:none;border-bottom:var(--line)}}
   .exp-row .body-col{padding:24px}
   .exp-row .body-col h3{font-family:'Archivo Black',sans-serif;font-size:24px;margin-bottom:6px;text-transform:uppercase;letter-spacing:-.5px;line-height:1.05}
-  .exp-row .body-col h3 .co{color:var(--ink);background:var(--yellow);padding:0 6px}
+  .exp-row .body-col h3 .co{color:var(--red)}
   .exp-row .body-col p{font-size:15px;line-height:1.55;margin-bottom:12px;max-width:680px;font-weight:500}
   .exp-row .body-col .stk{display:flex;flex-wrap:wrap;gap:6px}
   .exp-row .body-col .stk span{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--bg);border:2px solid var(--ink);padding:3px 8px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
@@ -171,10 +174,10 @@
   .contact .label{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:12px;letter-spacing:2px;margin-bottom:18px;display:inline-flex;align-items:center;gap:10px}
   .contact .label::before,.contact .label::after{content:'';width:40px;height:3px;background:var(--ink);display:inline-block}
   .contact h2{font-family:'Archivo Black',sans-serif;font-size:clamp(48px,9vw,108px);text-transform:uppercase;letter-spacing:-2.5px;line-height:.88;margin-bottom:24px}
-  .contact h2 .red{color:var(--ink)}
+  .contact h2 .red{color:var(--red)}
   .contact p{font-size:20px;font-weight:500;max-width:580px;margin:0 auto 36px;line-height:1.45}
   .contact .email-btn{display:inline-block;background:var(--ink);color:var(--yellow);font-family:'Archivo Black',sans-serif;font-size:22px;padding:20px 36px;border:4px solid var(--ink);transition:transform .12s,box-shadow .12s;text-transform:uppercase;letter-spacing:1px}
-  .contact .email-btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+  .contact .email-btn:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--red)}
   .contact .socials{display:flex;justify-content:center;gap:14px;margin-top:32px;flex-wrap:wrap}
   .contact .socials a{padding:12px 22px;border:3px solid var(--ink);background:var(--paper);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;transition:transform .12s,box-shadow .12s;display:inline-flex;align-items:center;gap:8px}
   .contact .socials a:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
@@ -278,7 +281,7 @@
       <div class="stk"><span>React Admin</span><span>Vue.js</span><span>Material UI</span><span>Google Maps</span><span>TypeScript</span></div>
       <div class="read">Read case →</div>
     </a>
-    <a class="card" href="case-studies/run-buddy.html">
+    <a class="card colored-r" href="case-studies/run-buddy.html">
       <div class="num">03</div>
       <div>
         <div class="when">2020 — 2021</div>
@@ -343,7 +346,7 @@
       <p>Stripe, Google Maps, Firebase, Shopify, push notifications, OAuth flows, webhooks. The boring plumbing done well, with retries and idempotency where it matters.</p>
       <div class="tags"><span>Stripe</span><span>Maps</span><span>Shopify</span><span>Firebase</span></div>
     </div>
-    <div class="svc colored-d">
+    <div class="svc colored-r">
       <div class="num">06 / SVC</div>
       <div class="icon">⚒</div>
       <h3>Code Rescue</h3>

@@ -21,26 +21,58 @@
   unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
 
-:root{
-  /* surfaces — every value measured, ratios inline */
-  --bone:#070e10;      /* page            */
-  --bone-2:#0e181b;    /* raised surface  */
-  --panel:#121f22;     /* feature blocks  */
-  --ink:#e8f1ef;       /* text + borders         16.92:1 on page */
+/* ------------------------------------------------------------
+   Two themes. Dark is the default; light follows the system
+   preference unless the visitor has chosen, and data-theme on
+   <html> always wins. Every ratio below was measured.
+   ------------------------------------------------------------ */
 
-  /* accents */
-  --teal:#5ec4d6;      /* primary                 9.58:1 on page */
-  --teal-dp:#8fe0ee;   /* hover / pressed        13.03:1 on page */
+:root{
+  /* ---- DARK (default) ---- */
+  --bone:#070e10;              /* page                                   */
+  --bone-2:#0e181b;            /* raised surface                         */
+  --panel:#121f22;             /* inverted blocks                        */
+  --ink:#e8f1ef;               /* text                     16.92:1 on page */
+
+  --teal:#5ec4d6;              /* primary                   9.58:1 on page */
+  --teal-dp:#8fe0ee;           /* hover                    13.03:1 on page */
   --teal-lt:#5ec4d6;
-  --warm:#f0b429;      /* energy                 10.44:1 on page */
-  --warm-lt:#ff8a4c;   /*                         8.33:1 on page */
-  --violet:#a78bfa;    /*                         7.15:1 on page */
-  --slate:#9fb0b2;     /* secondary text          8.64:1 on page */
+  --warm:#f0b429;              /* energy                   10.44:1 on page */
+  --warm-lt:#ff8a4c;           /*                           8.33:1 on page */
+  --violet:#a78bfa;            /*                           7.15:1 on page */
+  --slate:#9fb0b2;             /* secondary text            8.64:1 on page */
   --slate-lt:#9fb0b2;
+
+  /* inverted blocks keep their own text + accent in both themes */
+  --panel-text:#e8f1ef;        /*                          14.67:1 on panel */
+  --panel-accent:#5ec4d6;      /*                           8.31:1 on panel */
+  --panel-dim:#9fb0b2;         /*                           7.49:1 on panel */
+
+  --surface:rgba(14,24,27,.74);
+  --surface-2:rgba(14,24,27,.6);
+  --surface-sunken:rgba(7,14,16,.6);
+  --border:rgba(232,241,239,.2);
+  --border-soft:rgba(232,241,239,.14);
+  --border-strong:rgba(232,241,239,.35);
+  --accent-border:rgba(94,196,214,.35);
+  --accent-border-strong:rgba(94,196,214,.55);
+  --chip-bg:rgba(94,196,214,.09);
+  --chip-v-bg:rgba(167,139,250,.1);
+  --chip-v-border:rgba(167,139,250,.38);
+  --nav-bg:rgba(7,14,16,.74);
+  --row-hover:rgba(94,196,214,.07);
+  --contact-wash:rgba(94,196,214,.12);
+  --pointer-glow:rgba(94,196,214,.16);
+  --grid-line:rgba(94,196,214,.055);
 
   --glow-teal:rgba(94,196,214,.34);
   --glow-warm:rgba(240,180,41,.30);
   --glow-violet:rgba(167,139,250,.28);
+
+  --shadow-sm:0 6px 20px rgba(0,0,0,.5);
+  --shadow-md:0 8px 26px rgba(0,0,0,.5);
+  --shadow-lg:0 10px 34px rgba(0,0,0,.55);
+  --shadow-xl:0 18px 50px rgba(0,0,0,.6);
 
   /* type */
   --font-display:'Archivo Black',Impact,'Haettenschweiler',sans-serif;
@@ -54,12 +86,112 @@
   --line:2px solid var(--ink);
   --line-2:1px solid var(--ink);
 
-  /* motion */
   --ease:cubic-bezier(.16,.84,.44,1);
   --dur:.55s;
+  color-scheme:dark;
 
   /* breakpoints, for reference: lg 1024px · md 768px · sm 480px */
 }
+
+/* ---- LIGHT ---- */
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    --bone:#f6f2e9;            /* page                                    */
+    --bone-2:#ebe4d6;          /* raised surface                          */
+    --panel:#10211f;           /* inverted blocks stay dark               */
+    --ink:#10211f;             /* text                    14.93:1 on page */
+
+    --teal:#0e5a68;            /* primary                  7.01:1 on page */
+    --teal-dp:#083a44;         /* hover                   11.06:1 on page */
+    --teal-lt:#5ec4d6;
+    --warm:#9a3412;            /* energy                   6.54:1 on page */
+    --warm-lt:#b45309;         /*                          4.49:1 on page */
+    --violet:#5b21b6;          /*                          8.04:1 on page */
+    --slate:#586669;           /* secondary text           5.34:1 on page */
+    --slate-lt:#586669;
+
+    --panel-text:#f6f2e9;      /*                        14.93:1 on panel */
+    --panel-accent:#5ec4d6;    /*                         8.21:1 on panel */
+    --panel-dim:#9fb0b2;       /*                         6.96:1 on panel */
+
+    --surface:rgba(235,228,214,.86);
+    --surface-2:rgba(235,228,214,.6);
+    --surface-sunken:rgba(246,242,233,.75);
+    --border:rgba(16,33,31,.26);
+    --border-soft:rgba(16,33,31,.16);
+    --border-strong:rgba(16,33,31,.45);
+    --accent-border:rgba(14,90,104,.35);
+    --accent-border-strong:rgba(14,90,104,.6);
+    --chip-bg:rgba(14,90,104,.07);
+    --chip-v-bg:rgba(91,33,182,.07);
+    --chip-v-border:rgba(91,33,182,.3);
+    --nav-bg:rgba(246,242,233,.82);
+    --row-hover:rgba(14,90,104,.07);
+    --contact-wash:rgba(14,90,104,.1);
+    --pointer-glow:rgba(14,90,104,.09);
+    --grid-line:rgba(14,90,104,.06);
+
+    --glow-teal:rgba(14,90,104,.2);
+    --glow-warm:rgba(154,52,18,.2);
+    --glow-violet:rgba(91,33,182,.16);
+
+    --shadow-sm:0 4px 14px rgba(16,33,31,.12);
+    --shadow-md:0 8px 22px rgba(16,33,31,.14);
+    --shadow-lg:0 12px 30px rgba(16,33,31,.16);
+    --shadow-xl:0 18px 44px rgba(16,33,31,.18);
+
+    color-scheme:light;
+  }
+}
+
+:root[data-theme="light"]{
+  --bone:#f6f2e9;
+  --bone-2:#ebe4d6;
+  --panel:#10211f;
+  --ink:#10211f;
+
+  --teal:#0e5a68;
+  --teal-dp:#083a44;
+  --teal-lt:#5ec4d6;
+  --warm:#9a3412;
+  --warm-lt:#b45309;
+  --violet:#5b21b6;
+  --slate:#586669;
+  --slate-lt:#586669;
+
+  --panel-text:#f6f2e9;
+  --panel-accent:#5ec4d6;
+  --panel-dim:#9fb0b2;
+
+  --surface:rgba(235,228,214,.86);
+  --surface-2:rgba(235,228,214,.6);
+  --surface-sunken:rgba(246,242,233,.75);
+  --border:rgba(16,33,31,.26);
+  --border-soft:rgba(16,33,31,.16);
+  --border-strong:rgba(16,33,31,.45);
+  --accent-border:rgba(14,90,104,.35);
+  --accent-border-strong:rgba(14,90,104,.6);
+  --chip-bg:rgba(14,90,104,.07);
+  --chip-v-bg:rgba(91,33,182,.07);
+  --chip-v-border:rgba(91,33,182,.3);
+  --nav-bg:rgba(246,242,233,.82);
+  --row-hover:rgba(14,90,104,.07);
+  --contact-wash:rgba(14,90,104,.1);
+  --pointer-glow:rgba(14,90,104,.09);
+  --grid-line:rgba(14,90,104,.06);
+
+  --glow-teal:rgba(14,90,104,.2);
+  --glow-warm:rgba(154,52,18,.2);
+  --glow-violet:rgba(91,33,182,.16);
+
+  --shadow-sm:0 4px 14px rgba(16,33,31,.12);
+  --shadow-md:0 8px 22px rgba(16,33,31,.14);
+  --shadow-lg:0 12px 30px rgba(16,33,31,.16);
+  --shadow-xl:0 18px 44px rgba(16,33,31,.18);
+
+  color-scheme:light;
+}
+
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -73,8 +205,8 @@ img{max-width:100%}
 body::before{
   content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:
-    linear-gradient(to right,rgba(94,196,214,.055) 1px,transparent 1px),
-    linear-gradient(to bottom,rgba(94,196,214,.055) 1px,transparent 1px);
+    linear-gradient(to right,var(--grid-line) 1px,transparent 1px),
+    linear-gradient(to bottom,var(--grid-line) 1px,transparent 1px);
   background-size:72px 72px;
   -webkit-mask-image:radial-gradient(ellipse 120% 80% at 50% 0%,#000 25%,transparent 78%);
   mask-image:radial-gradient(ellipse 120% 80% at 50% 0%,#000 25%,transparent 78%);
@@ -108,24 +240,24 @@ header,main,footer,.cs-pager,.skip-link{position:relative;z-index:1}
 .skip-link:focus{top:var(--s4)}
 
 /* ---------- nav ---------- */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:var(--s4) var(--s6);border-bottom:1px solid rgba(232,241,239,.16);position:sticky;top:0;z-index:50;
-     background:rgba(7,14,16,.74);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:var(--s4) var(--s6);border-bottom:1px solid var(--border-soft);position:sticky;top:0;z-index:50;
+     background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 @media (max-width:768px){.nav{padding:var(--s3) var(--s4)}}
 .nav .logo{font-family:var(--font-display);font-weight:400;font-size:23px;letter-spacing:-1px;text-transform:uppercase}
 .nav ul{display:flex;list-style:none;gap:var(--s1);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.nav ul a{padding:var(--s2) var(--s3);border:1px solid rgba(232,241,239,.22);background:transparent;position:relative;display:inline-block;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.nav ul a{padding:var(--s2) var(--s3);border:1px solid var(--border);background:transparent;position:relative;display:inline-block;transition:color .2s var(--ease),border-color .2s var(--ease)}
 .nav ul a::after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:var(--teal);transition:width .28s var(--ease)}
 .nav ul a:hover{color:var(--teal);border-color:var(--teal)}
 .nav ul a:hover::after{width:100%}
 .nav .right-cta{font-family:var(--font-sans);font-weight:700;background:var(--teal);color:var(--bone);padding:10px var(--s4);border:2px solid var(--teal);font-size:12px;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:box-shadow .25s var(--ease),transform .25s var(--ease)}
 .nav .right-cta:hover{transform:translateY(-2px);box-shadow:0 0 26px var(--glow-teal)}
-.nav .back{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;border:1px solid rgba(232,241,239,.22);padding:var(--s2) 14px;background:transparent;transition:color .2s,border-color .2s;font-weight:500}
+.nav .back{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;border:1px solid var(--border);padding:var(--s2) 14px;background:transparent;transition:color .2s,border-color .2s;font-weight:500}
 .nav .back:hover{color:var(--teal);border-color:var(--teal)}
 @media (max-width:1024px){.nav ul{display:none}}
 
 /* ---------- footer ---------- */
-footer{padding:var(--s5) var(--s6);background:var(--panel);color:var(--ink);border-top:1px solid rgba(232,241,239,.16);font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}
-footer .star,footer .red{color:var(--teal)}
+footer{padding:var(--s5) var(--s6);background:var(--panel);color:var(--panel-text);border-top:1px solid var(--border-soft);font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}
+footer .star,footer .red{color:var(--panel-accent)}
 @media (max-width:768px){footer{flex-direction:column;text-align:center;padding:var(--s5) var(--s4)}}
 
 /* ---------- scroll reveal ---------- */
@@ -147,3 +279,24 @@ html.js .stagger.in > *{opacity:1;transform:none}
   .cs-hero .live-link:hover,.card .live:hover,.cs-pager .home:hover{transform:none!important}
   .card:hover .read{transform:none!important}
 }
+
+/* ---------- theme toggle ---------- */
+.theme-toggle{
+  display:none;align-items:center;justify-content:center;gap:0;
+  width:40px;height:40px;flex:0 0 auto;
+  background:transparent;border:1px solid var(--border);color:inherit;
+  cursor:pointer;font:inherit;line-height:0;
+  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease);
+}
+html.js .theme-toggle{display:inline-flex}
+.theme-toggle:hover{color:var(--teal);border-color:var(--teal);background:var(--chip-bg)}
+.theme-toggle svg{width:19px;height:19px;display:block;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.theme-toggle .i-sun{display:none}
+.theme-toggle .i-moon{display:block}
+:root[data-theme="light"] .theme-toggle .i-sun{display:block}
+:root[data-theme="light"] .theme-toggle .i-moon{display:none}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]) .theme-toggle .i-sun{display:block}
+  :root:not([data-theme="dark"]) .theme-toggle .i-moon{display:none}
+}
+.nav-right{display:flex;align-items:center;gap:var(--s3)}

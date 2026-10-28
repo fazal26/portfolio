@@ -77,3 +77,45 @@
     });
   }
 })();
+
+/* ============================================================
+   Theme toggle
+   The stored choice is applied before first paint by an inline
+   script in <head>, so there is no flash. This only handles the
+   button: flipping, persisting, and keeping its label truthful.
+   ============================================================ */
+(function () {
+  'use strict';
+  var btn = document.getElementById('theme-toggle');
+  if (!btn) return;
+  var root = document.documentElement;
+  var systemLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
+
+  function effective() {
+    var set = root.getAttribute('data-theme');
+    if (set === 'light' || set === 'dark') return set;
+    return systemLight && systemLight.matches ? 'light' : 'dark';
+  }
+
+  function label() {
+    var next = effective() === 'dark' ? 'light' : 'dark';
+    btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+    btn.setAttribute('title', 'Switch to ' + next + ' theme');
+  }
+
+  btn.addEventListener('click', function () {
+    var next = effective() === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch (e) {}
+    label();
+  });
+
+  // follow the system while the visitor has not chosen
+  if (systemLight && systemLight.addEventListener) {
+    systemLight.addEventListener('change', function () {
+      if (!root.getAttribute('data-theme')) label();
+    });
+  }
+
+  label();
+})();

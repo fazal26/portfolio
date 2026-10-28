@@ -40,7 +40,7 @@
 <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../assets/css/base.css"/>
 <link rel="stylesheet" href="../assets/css/case.css"/>
-<script>document.documentElement.className+=" js";</script>
+<script>(function(){var d=document.documentElement;d.className+=" js";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t);}catch(e){}})();</script>
 </head>
 <body>
 
@@ -50,7 +50,7 @@
 <nav class="nav" aria-label="Primary">
   <a href="../index.html" class="logo">FAZAL KARIM</a>
   <a href="../index.html#work" class="back">← All work</a>
-  <a href="../index.html#contact" class="right-cta">Hire me <span aria-hidden="true">→</span></a>
+  <div class="nav-right"><button type="button" class="theme-toggle" id="theme-toggle" aria-label="Switch to light theme"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><g class="i-moon"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></g><g class="i-sun"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.4v2.2M12 19.4v2.2M4.2 4.2l1.6 1.6M18.2 18.2l1.6 1.6M2.4 12h2.2M19.4 12h2.2M4.2 19.8l1.6-1.6M18.2 5.8l1.6-1.6"/></g></svg></button><a href="../index.html#contact" class="right-cta">Hire me <span aria-hidden="true">→</span></a></div>
 </nav>
 </header>
 

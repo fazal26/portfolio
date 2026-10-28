@@ -94,55 +94,9 @@
 }
 
 /* ---- LIGHT ---- */
-@media (prefers-color-scheme:light){
-  :root:not([data-theme="dark"]){
-    --bone:#f6f2e9;            /* page                                    */
-    --bone-2:#ebe4d6;          /* raised surface                          */
-    --panel:#10211f;           /* inverted blocks stay dark               */
-    --ink:#10211f;             /* text                    14.93:1 on page */
-
-    --teal:#0e5a68;            /* primary                  7.01:1 on page */
-    --teal-dp:#083a44;         /* hover                   11.06:1 on page */
-    --teal-lt:#5ec4d6;
-    --warm:#9a3412;            /* energy                   6.54:1 on page */
-    --warm-lt:#b45309;         /*                          4.49:1 on page */
-    --violet:#5b21b6;          /*                          8.04:1 on page */
-    --slate:#586669;           /* secondary text           5.34:1 on page */
-    --slate-lt:#586669;
-
-    --panel-text:#f6f2e9;      /*                        14.93:1 on panel */
-    --panel-accent:#5ec4d6;    /*                         8.21:1 on panel */
-    --panel-dim:#9fb0b2;       /*                         6.96:1 on panel */
-
-    --surface:rgba(235,228,214,.86);
-    --surface-2:rgba(235,228,214,.6);
-    --surface-sunken:rgba(246,242,233,.75);
-    --border:rgba(16,33,31,.26);
-    --border-soft:rgba(16,33,31,.16);
-    --border-strong:rgba(16,33,31,.45);
-    --accent-border:rgba(14,90,104,.35);
-    --accent-border-strong:rgba(14,90,104,.6);
-    --chip-bg:rgba(14,90,104,.07);
-    --chip-v-bg:rgba(91,33,182,.07);
-    --chip-v-border:rgba(91,33,182,.3);
-    --nav-bg:rgba(246,242,233,.82);
-    --row-hover:rgba(14,90,104,.07);
-    --contact-wash:rgba(14,90,104,.1);
-    --pointer-glow:rgba(14,90,104,.09);
-    --grid-line:rgba(14,90,104,.06);
-
-    --glow-teal:rgba(14,90,104,.2);
-    --glow-warm:rgba(154,52,18,.2);
-    --glow-violet:rgba(91,33,182,.16);
-
-    --shadow-sm:0 4px 14px rgba(16,33,31,.12);
-    --shadow-md:0 8px 22px rgba(16,33,31,.14);
-    --shadow-lg:0 12px 30px rgba(16,33,31,.16);
-    --shadow-xl:0 18px 44px rgba(16,33,31,.18);
-
-    color-scheme:light;
-  }
-}
+/* dark is the default; light is opt-in via the toggle, which writes
+   data-theme and persists it. The system preference no longer
+   overrides the intended look. */
 
 :root[data-theme="light"]{
   --bone:#f6f2e9;
@@ -308,10 +262,6 @@ html.js .theme-toggle{display:inline-flex}
 .theme-toggle .i-moon{display:block}
 :root[data-theme="light"] .theme-toggle .i-sun{display:block}
 :root[data-theme="light"] .theme-toggle .i-moon{display:none}
-@media (prefers-color-scheme:light){
-  :root:not([data-theme="dark"]) .theme-toggle .i-sun{display:block}
-  :root:not([data-theme="dark"]) .theme-toggle .i-moon{display:none}
-}
 .nav-right{display:flex;align-items:center;gap:var(--s3)}
 
 /* ---------- scroll progress ---------- */

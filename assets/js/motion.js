@@ -178,7 +178,7 @@
     var effective = function () {
       var set = root.getAttribute('data-theme');
       if (set === 'light' || set === 'dark') return set;
-      return systemLight && systemLight.matches ? 'light' : 'dark';
+      return 'dark';            // dark is the default; the OS no longer decides
     };
     var label = function () {
       var next = effective() === 'dark' ? 'light' : 'dark';

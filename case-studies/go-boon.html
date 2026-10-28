@@ -13,11 +13,17 @@
 </head>
 <body>
 
-<nav class="nav">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+<nav class="nav" aria-label="Primary">
   <a href="../index.html" class="logo">FAZAL KARIM</a>
   <a href="../index.html#work" class="back">← All work</a>
-  <a href="../index.html#contact" class="right-cta">Hire me →</a>
+  <a href="../index.html#contact" class="right-cta">Hire me <span aria-hidden="true">→</span></a>
 </nav>
+</header>
+
+<main id="main">
 
 <section class="cs-hero">
   <div class="top">
@@ -34,7 +40,7 @@
   </div>
   <div class="live-row">
     <span class="live-lab">Live</span>
-    <a class="live-link" href="https://www.goboon.co/" target="_blank" rel="noopener noreferrer">goboon.co ↗</a>
+    <a class="live-link" href="https://www.goboon.co/" target="_blank" rel="noopener noreferrer">goboon.co <span aria-hidden="true">↗</span></a>
   </div>
 </section>
 
@@ -84,17 +90,19 @@
   </div>
 </section>
 
-<section class="cs-pager">
+</main>
+
+<nav class="cs-pager" aria-label="Case studies">
   <div class="row">
     <a href="ananinja.html"><span>← Previous</span>AnaNinja</a>
     <a href="../index.html" class="home">★ All work</a>
-    <a href="klaro.html" class="next"><span>Next →</span>Klaro</a>
+    <a href="klaro.html" class="next"><span>Next <span aria-hidden="true">→</span></span>Klaro</a>
   </div>
-</section>
+</nav>
 
 <footer>
   <div>© 2026 FAZAL KARIM · ALL RIGHTS RESERVED</div>
-  <div>BUILT WITH <span class="red">♥</span> FOR THE WEB</div>
+  <div>BUILT WITH <span class="red" aria-hidden="true">♥</span> FOR THE WEB</div>
 </footer>
 
 </body>

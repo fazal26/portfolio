@@ -80,7 +80,6 @@ h1.head .red{color:var(--teal)}
 .card.colored-1 .read{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .card.colored-1 .live{border-color:var(--bone);color:var(--bone)}
 .card.colored-1 .live:hover{background:var(--bone);color:var(--teal-dp);box-shadow:3px 3px 0 rgba(0,0,0,.35)}
-.card.colored-1 .card-link:focus-visible,.card.colored-1 .live:focus-visible{outline-color:var(--bone)}
 /* alternate card */
 .card.colored-r{background:var(--ink);color:var(--bone)}
 .card.colored-r .when{color:var(--slate-lt)}
@@ -90,7 +89,6 @@ h1.head .red{color:var(--teal)}
 .card.colored-r .read{background:var(--teal-lt);color:var(--ink);border-color:var(--teal-lt)}
 .card.colored-r .live{border-color:var(--teal-lt);color:var(--teal-lt)}
 .card.colored-r .live:hover{background:var(--teal-lt);color:var(--ink);box-shadow:3px 3px 0 rgba(0,0,0,.35)}
-.card.colored-r .card-link:focus-visible,.card.colored-r .live:focus-visible{outline-color:var(--teal-lt)}
 
 /* ---------- services ---------- */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}

@@ -8,7 +8,7 @@ html,body{line-height:1.55}
 .cs-hero{padding:var(--s9) var(--s6);border-bottom:var(--line);background:var(--bone)}
 @media (max-width:768px){.cs-hero{padding:var(--s7) var(--s4)}}
 .cs-hero .top{display:flex;justify-content:space-between;align-items:center;gap:var(--s4);margin-bottom:var(--s5);flex-wrap:wrap;font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px}
-.cs-hero .top .crumb a{color:var(--slate)}
+.cs-hero .top .crumb a{color:var(--slate);text-decoration:underline;text-underline-offset:2px}
 .cs-hero .top .crumb a:hover{color:var(--teal);text-decoration:underline}
 .cs-hero .top .crumb strong{color:var(--ink);font-weight:500}
 .cs-hero .top .case-num{background:var(--ink);color:var(--teal-lt);padding:4px 10px;font-family:var(--font-mono);font-weight:700;letter-spacing:1px}

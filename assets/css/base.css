@@ -63,8 +63,11 @@ img{max-width:100%}
 .label{font-family:var(--font-sans);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:2px}
 
 /* ---------- focus ---------- */
-:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
-.on-ink :focus-visible,.stack-section :focus-visible,footer :focus-visible{outline-color:var(--teal-lt)}
+:focus-visible{outline:3px solid var(--teal-lt);outline-offset:2px;box-shadow:0 0 0 5px var(--ink);transition:none!important}
+
+/* ---------- skip link ---------- */
+.skip-link{position:absolute;left:var(--s4);top:-100px;z-index:200;background:var(--ink);color:var(--teal-lt);font-family:var(--font-sans);font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:1px;padding:var(--s3) var(--s5);border:3px solid var(--teal-lt);transition:top .15s}
+.skip-link:focus{top:var(--s4)}
 
 /* ---------- nav ---------- */
 .nav{display:flex;justify-content:space-between;align-items:center;padding:var(--s4) var(--s6);border-bottom:var(--line);background:var(--bone);position:sticky;top:0;z-index:50}
@@ -88,3 +91,16 @@ footer .red{color:var(--teal-lt)}
 /* ---------- scroll reveal ---------- */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;transition-delay:0ms!important}
+  .reveal{opacity:1!important;transform:none!important}
+  .photo-block img,.photo-block:hover img{transform:none!important}
+  .card:hover,.svc:hover,.craft:hover,.stat:hover,.stack-features .item:hover,
+  .cs-section ul.steps li:hover,.tech-grid .chip:hover,.nav ul a:hover,.nav .back:hover,
+  .nav .right-cta:hover,.hero-cta a:hover,.contact .socials a:hover,.contact .email-btn:hover,
+  .cs-hero .live-link:hover,.card .live:hover,.cs-pager .home:hover{transform:none!important}
+  .card:hover .read{transform:none!important}
+}

@@ -40,6 +40,7 @@
 <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../assets/css/base.css"/>
 <link rel="stylesheet" href="../assets/css/case.css"/>
+<script>document.documentElement.className+=" js";</script>
 </head>
 <body>
 
@@ -62,7 +63,7 @@
   </div>
   <h1><span class="accent">Prologis.</span></h1>
   <p class="deck">A real-estate management platform covering sale, rental and lease operations &mdash; with logistics, measurements and legal-compliance modules, and an accessibility-first UI delivered to WCAG standards.</p>
-  <div class="meta-row">
+  <div class="meta-row stagger reveal">
     <div class="cell"><span class="lab">Role</span><span class="val">Lead Engineer</span></div>
     <div class="cell"><span class="lab">Sector</span><span class="val">Real Estate</span></div>
     <div class="cell"><span class="lab">Focus</span><span class="val">Accessibility</span></div>
@@ -82,7 +83,7 @@
 <section class="cs-section dark">
   <div class="container">
     <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
-    <ul class="steps">
+    <ul class="steps stagger reveal">
       <li><div class="step-num">01</div><div class="step-body"><strong>Accessibility first, not last</strong>The interface was built to WCAG standards from the first component rather than audited at the end. Semantic structure, keyboard operability and focus management were acceptance criteria on every ticket, which is considerably cheaper than retrofitting them.</div></li>
       <li><div class="step-num">02</div><div class="step-body"><strong>One property model, three tracks</strong>Modelled sale, rental and lease as operations over a shared property record rather than as separate entities, so measurements and compliance state stay attached to the property wherever it goes.</div></li>
       <li><div class="step-num">03</div><div class="step-body"><strong>GraphQL for a wide read surface</strong>Property views pull deeply nested, differently shaped data per track. A GraphQL layer let each view request exactly its shape without a proliferation of bespoke endpoints.</div></li>
@@ -95,7 +96,7 @@
 <section class="cs-section">
   <div class="container">
     <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
-    <div class="tech-grid">
+    <div class="tech-grid stagger reveal">
       <div class="chip">React</div>
       <div class="chip">Node.js</div>
       <div class="chip">GraphQL</div>
@@ -109,7 +110,7 @@
     <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
     <p>Sale, rental and lease operations run against one property record, with logistics, measurements and legal compliance handled inside the same platform rather than reconciled across tools afterwards.</p>
     <p>The accessibility work is the part worth naming. Building to WCAG standards from the start meant keyboard operability and semantic structure were design constraints rather than defect reports &mdash; a discipline most frontend work never has to acquire.</p>
-    <div class="outcomes">
+    <div class="outcomes stagger reveal">
       <div class="stat"><strong>WCAG</strong><span class="lab">Standard held across the interface, not retrofitted</span></div>
       <div class="stat"><strong>1</strong><span class="lab">Property record behind three operational tracks</span></div>
       <div class="stat"><strong>GraphQL</strong><span class="lab">One read surface for differently shaped views</span></div>
@@ -132,5 +133,6 @@
   <div>LAHORE, PAKISTAN &middot; REMOTE WORLDWIDE</div>
 </footer>
 
+<script src="../assets/js/motion.js" defer></script>
 </body>
 </html>

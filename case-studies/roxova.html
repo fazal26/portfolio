@@ -40,6 +40,7 @@
 <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../assets/css/base.css"/>
 <link rel="stylesheet" href="../assets/css/case.css"/>
+<script>document.documentElement.className+=" js";</script>
 </head>
 <body>
 
@@ -62,7 +63,7 @@
   </div>
   <h1><span class="accent">Roxova.</span></h1>
   <p class="deck">A media content licensing platform &mdash; manage your own catalog, license content in or out, with the legal layer baked in and a pre-licensed library you can opt into directly.</p>
-  <div class="meta-row">
+  <div class="meta-row stagger reveal">
     <div class="cell"><span class="lab">Year</span><span class="val">2025 — Now</span></div>
     <div class="cell"><span class="lab">Role</span><span class="val">Lead Engineer</span></div>
     <div class="cell"><span class="lab">Sector</span><span class="val">Media / Licensing</span></div>
@@ -86,7 +87,7 @@
 <section class="cs-section dark">
   <div class="container">
     <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
-    <ul class="steps">
+    <ul class="steps stagger reveal">
       <li><div class="step-num">01</div><div class="step-body"><strong>Next.js for the surface</strong>SSR-friendly catalog browse, fast content discovery, and a polished editor for owners to manage their own catalogs.</div></li>
       <li><div class="step-num">02</div><div class="step-body"><strong>Node API for the engine</strong>Modeled content, ownership, licenses, agreements, and parties as first-class objects with clear state transitions and an audit trail.</div></li>
       <li><div class="step-num">03</div><div class="step-body"><strong>License request flow</strong>Discover → request → negotiate → agree → deliver. Each step has its own state, notifications, and permission scope.</div></li>
@@ -99,7 +100,7 @@
 <section class="cs-section">
   <div class="container">
     <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
-    <div class="tech-grid">
+    <div class="tech-grid stagger reveal">
       <div class="chip">Next.js</div>
       <div class="chip">React</div>
       <div class="chip">Node.js</div>
@@ -116,7 +117,7 @@
   <div class="container">
     <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
     <p>Live licensing platform supporting the end-to-end flow from content upload to legal agreement to access delivery. Both creators and licensees operate from one interface &mdash; with the legal paperwork handled by the system, not the inbox.</p>
-    <div class="outcomes">
+    <div class="outcomes stagger reveal">
       <div class="stat"><strong>End-to-end</strong><span class="lab">From upload → agreement → access delivery</span></div>
       <div class="stat"><strong>2-sided</strong><span class="lab">Creator &amp; licensee in a single product</span></div>
       <div class="stat"><strong>Live</strong><span class="lab">In production &amp; iterating</span></div>
@@ -139,5 +140,6 @@
   <div>BUILT WITH <span class="red" aria-hidden="true">♥</span> FOR THE WEB</div>
 </footer>
 
+<script src="../assets/js/motion.js" defer></script>
 </body>
 </html>

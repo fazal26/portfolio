@@ -40,6 +40,7 @@
 <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../assets/css/base.css"/>
 <link rel="stylesheet" href="../assets/css/case.css"/>
+<script>document.documentElement.className+=" js";</script>
 </head>
 <body>
 
@@ -62,7 +63,7 @@
   </div>
   <h1>Go<br/><span class="accent">Boon.</span></h1>
   <p class="deck">A hiring pipeline platform for small businesses &mdash; sourcing, screening, scheduling, and offers stitched into a single tool, with a mobile app for candidates and an admin panel for HR.</p>
-  <div class="meta-row">
+  <div class="meta-row stagger reveal">
     <div class="cell"><span class="lab">Year</span><span class="val">2019 — 2020</span></div>
     <div class="cell"><span class="lab">Role</span><span class="val">Senior Engineer</span></div>
     <div class="cell"><span class="lab">Sector</span><span class="val">HR Tech</span></div>
@@ -86,7 +87,7 @@
 <section class="cs-section dark">
   <div class="container">
     <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
-    <ul class="steps">
+    <ul class="steps stagger reveal">
       <li><div class="step-num">01</div><div class="step-body"><strong>Pipeline-first data model</strong>Modeled vacancies as a state machine: posted → sourced → screened → scheduled → offered → hired. Every transition recorded.</div></li>
       <li><div class="step-num">02</div><div class="step-body"><strong>Rails admin for HR</strong>A clean React + Rails admin panel for HR teams to manage the pipeline, with role-based permissions and team-level views.</div></li>
       <li><div class="step-num">03</div><div class="step-body"><strong>React Native for candidates</strong>A candidate-facing mobile app for application, scheduling, and offer review &mdash; with push notifications at every state change.</div></li>
@@ -98,7 +99,7 @@
 <section class="cs-section">
   <div class="container">
     <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
-    <div class="tech-grid">
+    <div class="tech-grid stagger reveal">
       <div class="chip">Angular</div>
       <div class="chip">React</div>
       <div class="chip">React Native</div>
@@ -112,7 +113,7 @@
   <div class="container">
     <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
     <p>End-to-end hiring funnel managed from one tool. HR teams could see every candidate's exact state, candidates got real-time updates instead of weeks of silence, and time-to-hire dropped meaningfully across the early-stage clients we deployed for.</p>
-    <div class="outcomes">
+    <div class="outcomes stagger reveal">
       <div class="stat"><strong>1</strong><span class="lab">Tool replacing 5+ in the hiring stack</span></div>
       <div class="stat"><strong>↓</strong><span class="lab">Time-to-hire on every deployed client</span></div>
       <div class="stat"><strong>Mobile</strong><span class="lab">Candidate-facing app on iOS &amp; Android</span></div>
@@ -135,5 +136,6 @@
   <div>BUILT WITH <span class="red" aria-hidden="true">♥</span> FOR THE WEB</div>
 </footer>
 
+<script src="../assets/js/motion.js" defer></script>
 </body>
 </html>

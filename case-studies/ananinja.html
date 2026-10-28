@@ -40,6 +40,7 @@
 <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../assets/css/base.css"/>
 <link rel="stylesheet" href="../assets/css/case.css"/>
+<script>document.documentElement.className+=" js";</script>
 </head>
 <body>
 
@@ -62,7 +63,7 @@
   </div>
   <h1>Ana<br/><span class="accent">Ninja.</span></h1>
   <p class="deck">An enterprise retail-management platform covering inventory, warehousing, delivery, payments, returns and wishlists &mdash; replatformed from Vue to React Admin with live mapping, and the lights kept on throughout.</p>
-  <div class="meta-row">
+  <div class="meta-row stagger reveal">
     <div class="cell"><span class="lab">Year</span><span class="val">2024 — 2025</span></div>
     <div class="cell"><span class="lab">Role</span><span class="val">Lead Engineer</span></div>
     <div class="cell"><span class="lab">Sector</span><span class="val">Retail / Logistics</span></div>
@@ -87,7 +88,7 @@
 <section class="cs-section dark">
   <div class="container">
     <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
-    <ul class="steps">
+    <ul class="steps stagger reveal">
       <li><div class="step-num">01</div><div class="step-body"><strong>Audit &amp; mapping</strong>Catalogued every Vue route, identified the highest-traffic and highest-debt modules, and ranked them by ROI for migration.</div></li>
       <li><div class="step-num">02</div><div class="step-body"><strong>React Admin foundation</strong>Stood up React Admin with a shared TypeScript types layer that both old and new code could consume, backed by the existing API.</div></li>
       <li><div class="step-num">03</div><div class="step-body"><strong>Strangler-fig migration</strong>Ported one module at a time. Old and new shipped side-by-side behind a switch &mdash; users hit the new UI, ops could fall back instantly.</div></li>
@@ -100,7 +101,7 @@
 <section class="cs-section">
   <div class="container">
     <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
-    <div class="tech-grid">
+    <div class="tech-grid stagger reveal">
       <div class="chip">React Admin</div>
       <div class="chip">React 18</div>
       <div class="chip">TypeScript</div>
@@ -117,7 +118,7 @@
   <div class="container">
     <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
     <p>Migration is ongoing &mdash; the project has shipped continuously since early 2024 with zero downtime windows for end users. Every migrated module has lower TTI than its Vue predecessor and noticeably faster turnaround on new feature requests.</p>
-    <div class="outcomes">
+    <div class="outcomes stagger reveal">
       <div class="stat"><strong>0</strong><span class="lab">Production downtime windows during migration</span></div>
       <div class="stat"><strong>~3×</strong><span class="lab">Faster feature delivery on migrated modules</span></div>
       <div class="stat"><strong>Live</strong><span class="lab">Real-time mapping for delivery operations</span></div>
@@ -140,5 +141,6 @@
   <div>BUILT WITH <span class="red" aria-hidden="true">♥</span> FOR THE WEB</div>
 </footer>
 
+<script src="../assets/js/motion.js" defer></script>
 </body>
 </html>

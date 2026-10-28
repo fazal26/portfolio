@@ -171,9 +171,12 @@ h1.head .red{color:var(--warm)}
 .card,.craft,.svc,.stack-features .item{position:relative}
 .card::before,.craft::before,.svc::before,.stack-features .item::before{
   content:'';position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .3s var(--ease);
-  background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),var(--pointer-glow),transparent 62%)}
+  z-index:0;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),var(--pointer-glow),transparent 62%)}
 .card:hover::before,.craft:hover::before,.svc:hover::before,.stack-features .item:hover::before{opacity:1}
-.card > *,.craft > *,.svc > *,.stack-features .item > *{position:relative;z-index:1}
+.card > *,.craft > *,.svc > *,.stack-features .item > *{position:relative}
+/* the glow rule above must not flatten the absolutely-positioned
+   overlay link, or the whole card stops being clickable */
+.card > .card-link{position:absolute;inset:0;z-index:1}
 .card-link{z-index:2}
 /* lift instead of the old offset shadow */
 .card,.craft,.svc,.stack-features .item{transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .35s var(--ease)}

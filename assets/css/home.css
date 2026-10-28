@@ -155,3 +155,16 @@ h1.head .red{color:var(--teal)}
 .contact .socials{display:flex;justify-content:center;gap:14px;margin-top:var(--s6);flex-wrap:wrap}
 .contact .socials a{padding:var(--s3) 22px;border:var(--line);background:var(--bone);font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:1px;transition:transform .12s,box-shadow .12s,background .12s,color .12s;display:inline-flex;align-items:center;gap:var(--s2)}
 .contact .socials a:hover{background:var(--teal);color:var(--bone);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+/* ---------- craft: the three standards ---------- */
+.craft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
+@media (max-width:1024px){.craft-grid{grid-template-columns:1fr}}
+.craft{background:var(--bone-2);border:var(--line);padding:var(--s6) var(--s5);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.craft:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+.craft .num{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:var(--slate);font-weight:500;margin-bottom:var(--s4);text-transform:uppercase}
+.craft h3{font-family:var(--font-display);font-weight:700;font-size:30px;letter-spacing:-.5px;line-height:1.1;margin-bottom:var(--s4);color:var(--teal)}
+.craft p{font-size:15px;line-height:1.65;margin-bottom:var(--s3)}
+.craft p a{color:var(--teal);text-decoration:underline;text-underline-offset:2px;font-weight:600}
+.craft p a:hover{color:var(--teal-dp)}
+.craft .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:var(--s4)}
+.craft .tags span{font-family:var(--font-mono);font-size:10px;background:var(--bone);border:var(--line-2);padding:3px 7px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}

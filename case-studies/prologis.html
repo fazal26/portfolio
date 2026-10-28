@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Prologis · Case Study · Fazal Karim</title>
+<meta name="description" content="A real-estate management platform for sale, rental and lease operations, with logistics, measurements and legal-compliance modules — and an accessibility-first UI delivered to WCAG standards. React, Node.js, GraphQL."/>
+<meta name="theme-color" content="#f6f2e9"/>
+<link rel="preload" href="../assets/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href="../assets/fonts/playfair-display-700-latin.woff2" as="font" type="font/woff2" crossorigin/>
+<link rel="stylesheet" href="../assets/css/base.css"/>
+<link rel="stylesheet" href="../assets/css/case.css"/>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header>
+<nav class="nav" aria-label="Primary">
+  <a href="../index.html" class="logo">FAZAL KARIM</a>
+  <a href="../index.html#work" class="back">&larr; All work</a>
+  <a href="../index.html#contact" class="right-cta">Hire me &rarr;</a>
+</nav>
+</header>
+
+<main id="main">
+
+<section class="cs-hero">
+  <div class="top">
+    <div class="crumb"><a href="../index.html">Home</a> / <a href="../index.html#work">Work</a> / <strong>Prologis</strong></div>
+    <div class="case-num">CASE 01 / 06</div>
+  </div>
+  <h1><span class="accent">Prologis.</span></h1>
+  <p class="deck">A real-estate management platform covering sale, rental and lease operations &mdash; with logistics, measurements and legal-compliance modules, and an accessibility-first UI delivered to WCAG standards.</p>
+  <div class="meta-row">
+    <div class="cell"><span class="lab">Role</span><span class="val">Lead Engineer</span></div>
+    <div class="cell"><span class="lab">Sector</span><span class="val">Real Estate</span></div>
+    <div class="cell"><span class="lab">Focus</span><span class="val">Accessibility</span></div>
+    <div class="cell"><span class="lab">Standard</span><span class="val">WCAG</span></div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Problem</h2><div class="num">// 01</div></div>
+    <p>Real-estate operations do not fit one workflow. A property moving through sale behaves differently from one under lease, which behaves differently again from a rental turnover &mdash; and each carries its own logistics, its own measurements, and its own legal paperwork that has to be right.</p>
+    <p>Teams were running those three tracks across separate tools, re-entering the same property data into each, and reconciling the differences by hand. The measurements that drive pricing lived apart from the compliance documents that depend on them.</p>
+    <div class="pull">One property record. Three operational tracks. Compliance that travels with the data instead of chasing it.</div>
+  </div>
+</section>
+
+<section class="cs-section dark">
+  <div class="container">
+    <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
+    <ul class="steps">
+      <li><div class="step-num">01</div><div class="step-body"><strong>Accessibility first, not last</strong>The interface was built to WCAG standards from the first component rather than audited at the end. Semantic structure, keyboard operability and focus management were acceptance criteria on every ticket, which is considerably cheaper than retrofitting them.</div></li>
+      <li><div class="step-num">02</div><div class="step-body"><strong>One property model, three tracks</strong>Modelled sale, rental and lease as operations over a shared property record rather than as separate entities, so measurements and compliance state stay attached to the property wherever it goes.</div></li>
+      <li><div class="step-num">03</div><div class="step-body"><strong>GraphQL for a wide read surface</strong>Property views pull deeply nested, differently shaped data per track. A GraphQL layer let each view request exactly its shape without a proliferation of bespoke endpoints.</div></li>
+      <li><div class="step-num">04</div><div class="step-body"><strong>Measurements as first-class data</strong>Measurement modules feed pricing and legal documents directly, so the numbers in a contract are the numbers in the record &mdash; not a copy that drifted.</div></li>
+      <li><div class="step-num">05</div><div class="step-body"><strong>Compliance built into the flow</strong>Legal-compliance checks sit inside the operational flow rather than beside it, surfacing what a property still needs before it can progress.</div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Stack</h2><div class="num">// 03</div></div>
+    <div class="tech-grid">
+      <div class="chip">React</div>
+      <div class="chip">Node.js</div>
+      <div class="chip">GraphQL</div>
+      <div class="chip">WCAG</div>
+    </div>
+  </div>
+</section>
+
+<section class="cs-section">
+  <div class="container">
+    <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
+    <p>Sale, rental and lease operations run against one property record, with logistics, measurements and legal compliance handled inside the same platform rather than reconciled across tools afterwards.</p>
+    <p>The accessibility work is the part worth naming. Building to WCAG standards from the start meant keyboard operability and semantic structure were design constraints rather than defect reports &mdash; a discipline most frontend work never has to acquire.</p>
+    <div class="outcomes">
+      <div class="stat"><strong>WCAG</strong><span class="lab">Standard held across the interface, not retrofitted</span></div>
+      <div class="stat"><strong>1</strong><span class="lab">Property record behind three operational tracks</span></div>
+      <div class="stat"><strong>GraphQL</strong><span class="lab">One read surface for differently shaped views</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<section class="cs-pager">
+  <div class="row">
+    <a href="run-buddy.html"><span>&larr; Previous</span>Run Buddy</a>
+    <a href="../index.html" class="home">All work</a>
+    <a href="roxova.html" class="next"><span>Next &rarr;</span>Roxova</a>
+  </div>
+</section>
+
+<footer>
+  <div>&copy; 2026 FAZAL KARIM &middot; ALL RIGHTS RESERVED</div>
+  <div>LAHORE, PAKISTAN &middot; REMOTE WORLDWIDE</div>
+</footer>
+
+</body>
+</html>

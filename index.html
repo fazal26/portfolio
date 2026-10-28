@@ -19,7 +19,7 @@
 <nav class="nav">
   <a href="#top" class="logo">FAZAL KARIM</a>
   <ul>
-    <li><a href="#work">Work</a></li>
+    <li><a href="#craft">Craft</a></li><li><a href="#work">Work</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#stack">Stack</a></li>
     <li><a href="#experience">Resume</a></li>
@@ -74,6 +74,37 @@
   </div>
 </section>
 
+<!-- CRAFT -->
+<section class="section craft-section reveal" id="craft">
+  <div class="section-head">
+    <h2>What the<br/>work holds <span class="arr" aria-hidden="true">&#9670;</span></h2>
+    <div class="meta">// THREE STANDARDS<br/>// HELD ON EVERY PROJECT</div>
+  </div>
+  <div class="craft-grid">
+    <article class="craft">
+      <div class="num">01 / STANDARD</div>
+      <h3>Accessibility</h3>
+      <p>Production interfaces delivered to WCAG standards &mdash; built that way from the first component, not audited into compliance at the end. Semantic structure, keyboard operability, managed focus and contrast verified against real numbers rather than assumed.</p>
+      <p>It is the rarest of the three. Most frontend engineers have never had to hold the line on it. <a href="case-studies/prologis.html">Prologis</a> was built accessibility-first from the data model up.</p>
+      <div class="tags"><span>WCAG</span><span>Semantic HTML</span><span>Keyboard operability</span><span>Focus management</span><span>Contrast</span></div>
+    </article>
+    <article class="craft">
+      <div class="num">02 / STANDARD</div>
+      <h3>Testing</h3>
+      <p>A standard set and held, not a list of tools. Unit and component coverage close to the code, end-to-end coverage on the flows that carry revenue, and a clear line about which belongs where &mdash; so the suite stays fast enough that people keep running it.</p>
+      <p>The same review standard applies to AI-generated code as to anything else. Nothing merges because a model wrote it confidently.</p>
+      <div class="tags"><span>Playwright</span><span>Vitest</span><span>Jest</span><span>React Testing Library</span><span>Cypress</span><span>Enzyme</span></div>
+    </article>
+    <article class="craft">
+      <div class="num">03 / STANDARD</div>
+      <h3>Design Systems</h3>
+      <p>Shared component libraries documented in Storybook, with reusable UI architecture that holds products together as teams and surfaces multiply. The alternative is six versions of the same button and nobody certain which one is correct.</p>
+      <p>Consistency is cheaper to build in than to recover, and a documented library is how a team keeps it without a meeting.</p>
+      <div class="tags"><span>Storybook</span><span>Shared component libraries</span><span>Reusable UI architecture</span></div>
+    </article>
+  </div>
+</section>
+
 <!-- WORK -->
 <section class="section reveal" id="work">
   <div class="section-head">
@@ -82,60 +113,84 @@
   </div>
   <div class="work-grid">
     <article class="card colored-1">
-      <a class="card-link" href="case-studies/roxova.html" aria-label="Read the Roxova case study"></a>
+      <a class="card-link" href="case-studies/prologis.html"><span>Read the Prologis case study</span></a>
       <div class="num">01</div>
       <div>
-        <div class="when">2025 — Now · Live</div>
+        <h3>Prologis</h3>
+        <p>Real-estate management platform for sale, rental and lease operations, with logistics, measurements and legal-compliance modules. Accessibility-first UI delivered to WCAG standards.</p>
+      </div>
+      <div class="stk"><span>React</span><span>Node.js</span><span>GraphQL</span><span>WCAG</span></div>
+      <div class="card-cta">
+        <span class="read">Read case &rarr;</span>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card-link" href="case-studies/roxova.html"><span>Read the Roxova case study</span></a>
+      <div class="num">02</div>
+      <div>
+        <div class="when">2025 &mdash; Now &middot; Live</div>
         <h3>Roxova</h3>
-        <p>Media content licensing platform &mdash; manage your own catalog, license content in or out, with the legal layer baked in and a pre-licensed library you can opt into directly.</p>
+        <p>Enterprise media-licensing platform with built-in legal and compliance handling for owned and third-party content, plus a pre-licensed content library.</p>
       </div>
       <div class="stk"><span>Next.js</span><span>React</span><span>Node.js</span><span>TypeScript</span></div>
       <div class="card-cta">
-        <span class="read">Read case →</span>
-        <a class="live" href="https://www.roxova.com/" target="_blank" rel="noopener noreferrer">Visit site ↗</a>
+        <span class="read">Read case &rarr;</span>
+        <a class="live" href="https://www.roxova.com/" target="_blank" rel="noopener noreferrer">Visit site &#8599;</a>
       </div>
     </article>
     <article class="card">
-      <a class="card-link" href="case-studies/ananinja.html" aria-label="Read the AnaNinja case study"></a>
-      <div class="num">02</div>
+      <a class="card-link" href="case-studies/ananinja.html"><span>Read the AnaNinja case study</span></a>
+      <div class="num">03</div>
       <div>
-        <div class="when">2024 — 2025</div>
+        <div class="when">2024 &mdash; 2025</div>
         <h3>AnaNinja</h3>
-        <p>Retail management system for a Gulf distribution operation. Led the Vue → React Admin migration, UI/UX overhaul, and live mapping integration.</p>
+        <p>Enterprise retail-management platform covering inventory, warehousing, delivery, payments, returns and wishlists. Included a Vue to React Admin migration and live mapping.</p>
       </div>
-      <div class="stk"><span>React Admin</span><span>Vue.js</span><span>Material UI</span><span>Google Maps</span><span>TypeScript</span></div>
+      <div class="stk"><span>Vue.js</span><span>React Admin</span><span>Google Maps</span><span>Material UI</span><span>TypeScript</span></div>
       <div class="card-cta">
-        <span class="read">Read case →</span>
-        <a class="live" href="https://suppliers.samurai.delivery/#/login" target="_blank" rel="noopener noreferrer">Supplier portal ↗</a>
-        <a class="live" href="https://ananinja.com/sa/en" target="_blank" rel="noopener noreferrer">Ninja storefront ↗</a>
+        <span class="read">Read case &rarr;</span>
+        <a class="live" href="https://suppliers.samurai.delivery/#/login" target="_blank" rel="noopener noreferrer">Supplier portal &#8599;</a>
+        <a class="live" href="https://ananinja.com/sa/en" target="_blank" rel="noopener noreferrer">Storefront &#8599;</a>
       </div>
     </article>
     <article class="card colored-r">
-      <a class="card-link" href="case-studies/run-buddy.html" aria-label="Read the Run Buddy case study"></a>
-      <div class="num">03</div>
-      <div>
-        <div class="when">2020 — 2021</div>
-        <h3>Run Buddy</h3>
-        <p>Hybrid mobile app for scheduling pet workouts. Auth, Stripe payments, in-app chat, camera flows, live map matching between owners &amp; runners.</p>
-      </div>
-      <div class="stk"><span>React Native</span><span>Redux</span><span>Rails</span><span>PostgreSQL</span><span>Maps</span><span>Stripe</span></div>
-      <div class="card-cta">
-        <span class="read">Read case →</span>
-        <a class="live" href="https://runbuddymobile.com/" target="_blank" rel="noopener noreferrer">Visit site ↗</a>
-      </div>
-    </article>
-    <article class="card">
-      <a class="card-link" href="case-studies/go-boon.html" aria-label="Read the Go Boon case study"></a>
+      <a class="card-link" href="case-studies/go-boon.html"><span>Read the Go Boon case study</span></a>
       <div class="num">04</div>
       <div>
-        <div class="when">2019 — 2020</div>
+        <div class="when">2019 &mdash; 2020</div>
         <h3>Go Boon</h3>
-        <p>Job vacancy platform with mobile app and admin panel powering an automated hiring pipeline &mdash; sourcing, screening, scheduling &amp; offer flow in one place.</p>
+        <p>Referral and candidate-matching platform aggregating job postings from multiple external systems and APIs into personal and corporate profiles.</p>
       </div>
       <div class="stk"><span>Angular</span><span>React</span><span>React Native</span><span>Ruby on Rails</span></div>
       <div class="card-cta">
-        <span class="read">Read case →</span>
-        <a class="live" href="https://www.goboon.co/" target="_blank" rel="noopener noreferrer">Visit site ↗</a>
+        <span class="read">Read case &rarr;</span>
+        <a class="live" href="https://www.goboon.co/" target="_blank" rel="noopener noreferrer">Visit site &#8599;</a>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card-link" href="case-studies/klaro.html"><span>Read the Klaro case study</span></a>
+      <div class="num">05</div>
+      <div>
+        <h3>Klaro</h3>
+        <p>Connected-device mobile app monitoring humidor temperature and humidity with personalised alerts. Architected the React Native app for iOS and Android, built the BLE layer for pairing, sensor reads and reconnection handling, and managed store releases.</p>
+      </div>
+      <div class="stk"><span>React Native</span><span>Redux</span><span>Ruby on Rails</span><span>BLE</span><span>Shopify</span></div>
+      <div class="card-cta">
+        <span class="read">Read case &rarr;</span>
+      </div>
+    </article>
+    <article class="card">
+      <a class="card-link" href="case-studies/run-buddy.html"><span>Read the Run Buddy case study</span></a>
+      <div class="num">06</div>
+      <div>
+        <div class="when">2020 &mdash; 2021</div>
+        <h3>Run Buddy</h3>
+        <p>Pet-fitness app with trainer scheduling, activity tracking, pet profiles, chat and Stripe payments.</p>
+      </div>
+      <div class="stk"><span>React Native</span><span>Ruby on Rails</span><span>Stripe</span></div>
+      <div class="card-cta">
+        <span class="read">Read case &rarr;</span>
+        <a class="live" href="https://runbuddymobile.com/" target="_blank" rel="noopener noreferrer">Visit site &#8599;</a>
       </div>
     </article>
   </div>
@@ -197,40 +252,68 @@
 <section class="section stack-section reveal" id="stack">
   <div class="section-head">
     <h2>Primary<br/>stack <span class="arr">★</span></h2>
-    <div class="meta">// CORE TOOLS · 2026<br/>// TYPED · TESTED · SHIPPED</div>
+    <div class="meta">// CORE TOOLS · 2026<br/>// TYPED · TESTED · ACCESSIBLE</div>
   </div>
   <div class="stack-features">
     <div class="item">
-      <div class="name">React</div>
-      <div class="lab">Frontend Library</div>
+      <div class="name">Languages</div>
+      <div class="list"><span>TypeScript</span><span>JavaScript (ES6+)</span><span>HTML5</span><span>CSS3</span></div>
+      <div class="lab">Core</div>
     </div>
     <div class="item">
-      <div class="name">Next.js</div>
-      <div class="lab">Frontend Framework</div>
+      <div class="name">Frontend</div>
+      <div class="list"><span>React</span><span>Next.js</span><span>Vue.js</span><span>Angular</span><span>React Context</span><span>TanStack Query</span><span>Redux Toolkit</span><span>jQuery</span></div>
+      <div class="lab">Frameworks &amp; state</div>
     </div>
     <div class="item">
-      <div class="name">Angular</div>
-      <div class="lab">Frontend Framework</div>
+      <div class="name">Styling</div>
+      <div class="list"><span>Hand-written CSS3</span><span>Flexbox</span><span>Grid</span><span>Custom properties</span><span>Tailwind CSS</span><span>Material UI</span></div>
+      <div class="lab">Layout &amp; systems</div>
     </div>
     <div class="item">
-      <div class="name">React Native</div>
-      <div class="lab">Mobile Framework</div>
+      <div class="name">Design Systems</div>
+      <div class="list"><span>Storybook</span><span>Shared component libraries</span><span>Reusable UI architecture</span></div>
+      <div class="lab">Consistency at scale</div>
     </div>
     <div class="item">
-      <div class="name">TypeScript</div>
-      <div class="lab">Language</div>
+      <div class="name">Testing</div>
+      <div class="list"><span>Playwright</span><span>Vitest</span><span>Jest</span><span>React Testing Library</span><span>Cypress</span><span>Enzyme</span></div>
+      <div class="lab">Unit to end-to-end</div>
     </div>
     <div class="item">
-      <div class="name">Node.js</div>
-      <div class="lab">Backend Runtime</div>
+      <div class="name">Accessibility</div>
+      <div class="list"><span>WCAG</span><span>Semantic HTML</span><span>Keyboard operability</span><span>Focus management</span></div>
+      <div class="lab">Delivered, not retrofitted</div>
     </div>
     <div class="item">
-      <div class="name">Ruby on Rails</div>
-      <div class="lab">Backend Framework</div>
+      <div class="name">Backend &amp; APIs</div>
+      <div class="list"><span>Node.js</span><span>Express.js</span><span>REST</span><span>GraphQL</span><span>WebSockets</span><span>Socket.IO</span><span>Microservices</span><span>Ruby on Rails</span></div>
+      <div class="lab">Services</div>
     </div>
     <div class="item">
-      <div class="name">AWS</div>
-      <div class="lab">Cloud Infrastructure</div>
+      <div class="name">Data</div>
+      <div class="list"><span>PostgreSQL</span><span>MongoDB</span><span>Redis</span><span>Supabase</span><span>Firebase</span></div>
+      <div class="lab">Storage &amp; cache</div>
+    </div>
+    <div class="item">
+      <div class="name">Build &amp; DevOps</div>
+      <div class="list"><span>Vite</span><span>Docker</span><span>CI/CD</span><span>Git</span><span>GitHub</span><span>Bitbucket</span><span>Vercel</span><span>Heroku</span></div>
+      <div class="lab">Ship &amp; run</div>
+    </div>
+    <div class="item">
+      <div class="name">Integrations &amp; Auth</div>
+      <div class="list"><span>Stripe</span><span>Google Maps</span><span>Push notifications</span><span>JWT</span><span>OAuth 2.0</span><span>Role-based access control</span></div>
+      <div class="lab">Plumbing</div>
+    </div>
+    <div class="item">
+      <div class="name">Mobile</div>
+      <div class="list"><span>React Native</span><span>BLE</span><span>Ionic</span><span>App Store &amp; Play Store releases</span></div>
+      <div class="lab">iOS &amp; Android</div>
+    </div>
+    <div class="item">
+      <div class="name">AI-Assisted Delivery</div>
+      <div class="list"><span>Claude Code</span><span>Cursor</span><span>GitHub Copilot</span></div>
+      <div class="lab">Reviewed to the same standard</div>
     </div>
   </div>
 </section>

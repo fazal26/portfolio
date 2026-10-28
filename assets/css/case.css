@@ -79,3 +79,63 @@ html,body{line-height:1.55}
 .cs-pager a.next{text-align:right;align-items:flex-end}
 .cs-pager .home{font-family:var(--font-mono);font-size:12px;background:var(--panel-accent);color:#10211f;padding:10px var(--s4);border:2px solid var(--panel-accent);text-transform:uppercase;letter-spacing:1.5px;font-weight:700;transition:transform .12s,box-shadow .12s}
 .cs-pager .home:hover{color:#10211f;transform:translate(-2px,-2px);box-shadow:var(--shadow-md),0 0 22px var(--glow-warm)}
+
+/* ============================================================
+   Approach: scroll-linked sticky deck
+   Built by motion.js from the existing steps list. Without JS
+   the markup stays a plain <ul class="steps">, which is why
+   every rule here is scoped under .deck-layout.
+   ============================================================ */
+.deck-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:var(--s8);align-items:start}
+@media (max-width:1024px){.deck-layout{grid-template-columns:1fr;gap:var(--s5)}}
+
+.deck-layout .steps{margin:0;max-width:none}
+.cs-section.dark .deck-layout ul.steps li{
+  background:transparent;border:none;padding:var(--s7) 0 var(--s7) var(--s5);margin:0;
+  border-left:2px solid var(--border-soft);border-radius:0;
+  transition:border-color .5s var(--ease)}
+.cs-section.dark .deck-layout ul.steps li:hover{transform:none;box-shadow:none}
+/* de-emphasis by colour, not opacity: both states clear AA on their own */
+.cs-section.dark .deck-layout ul.steps li .step-body,
+.cs-section.dark .deck-layout ul.steps li .step-body strong{transition:color .5s var(--ease)}
+.cs-section.dark .deck-layout ul.steps li[data-state="idle"] .step-body{color:var(--panel-dim)}
+.cs-section.dark .deck-layout ul.steps li[data-state="idle"] .step-body strong{color:var(--panel-dim)}
+.cs-section.dark .deck-layout ul.steps li[data-state="active"]{border-left-color:var(--panel-accent)}
+.cs-section.dark .deck-layout ul.steps li[data-state="active"] .step-body{color:var(--panel-text)}
+.cs-section.dark .deck-layout ul.steps li[data-state="active"] .step-body strong{color:var(--panel-accent)}
+.cs-section.dark .deck-layout ul.steps li .step-num{color:var(--panel-dim);transition:color .5s var(--ease);font-size:13px;font-family:var(--font-mono);letter-spacing:2px;align-self:start;padding-top:6px}
+.cs-section.dark .deck-layout ul.steps li[data-state="active"] .step-num{color:var(--panel-accent)}
+@media (max-width:1024px){
+  .cs-section.dark .deck-layout ul.steps li{padding:var(--s5) 0 var(--s5) var(--s4)}
+  .cs-section.dark .deck-layout ul.steps li[data-state="idle"] .step-body,
+  .cs-section.dark .deck-layout ul.steps li[data-state="idle"] .step-body strong{color:var(--panel-text)}
+}
+
+/* the pinned deck */
+.approach-deck{position:sticky;top:120px;height:26rem;display:flex;align-items:center;justify-content:center;perspective:1200px}
+@media (max-width:1024px){.approach-deck{display:none}}
+.approach-deck .card-face{
+  position:absolute;width:min(420px,100%);border-radius:14px;padding:var(--s5);
+  background:var(--bone-2);border:1px solid var(--border);box-shadow:var(--shadow-lg);color:var(--ink);
+  transition:transform .6s var(--ease),opacity .6s var(--ease),border-color .6s var(--ease),background .6s var(--ease);
+  transform:translateY(calc(var(--d) * 22px)) translateX(calc(var(--d) * 12px)) rotate(calc(var(--d) * 2.2deg)) scale(calc(1 - var(--d) * .045));
+  opacity:calc(1 - var(--d) * .3);z-index:calc(10 - var(--dabs));min-height:168px;display:flex;flex-direction:column;justify-content:space-between}
+.approach-deck .card-face[data-state="active"]{
+  border-color:var(--teal);background:var(--bone-2);
+  box-shadow:var(--shadow-xl),0 0 0 1px var(--teal),0 0 34px var(--glow-teal);
+  transform:none;opacity:1;z-index:20}
+.approach-deck .card-face .face-idx{font-family:var(--font-mono);font-size:12px;letter-spacing:2px;color:var(--slate)}
+.approach-deck .card-face[data-state="active"] .face-idx{color:var(--teal)}
+.approach-deck .card-face .face-title{font-family:var(--font-display);font-weight:400;font-size:18px;letter-spacing:-.6px;line-height:1.2;text-transform:uppercase;color:var(--ink)}
+.approach-deck .card-face[data-state="idle"] .face-title{opacity:0;transition:opacity .4s var(--ease)}
+.approach-deck .card-face .face-dot{position:absolute;right:16px;top:16px;width:8px;height:8px;border-radius:50%;background:var(--slate);opacity:.5;transition:background .5s var(--ease),opacity .5s var(--ease)}
+.approach-deck .card-face[data-state="active"] .face-dot{background:var(--teal);opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  /* no scroll tracking: every layer reads at full strength, nothing moves */
+  .approach-deck{position:static;height:auto;display:grid;gap:var(--s3);perspective:none}
+  .approach-deck .card-face{position:static;width:100%;transform:none!important;opacity:1!important;min-height:0}
+  .cs-section.dark .deck-layout ul.steps li[data-state="idle"] .step-body,
+  .cs-section.dark .deck-layout ul.steps li[data-state="idle"] .step-body strong{color:var(--panel-text)}
+  .cs-section.dark .deck-layout ul.steps li{border-left-color:var(--panel-accent)}
+}

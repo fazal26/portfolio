@@ -87,7 +87,7 @@
   --line-2:1px solid var(--ink);
 
   --ease:cubic-bezier(.16,.84,.44,1);
-  --dur:.55s;
+  --dur:.7s;
   color-scheme:dark;
 
   /* breakpoints, for reference: lg 1024px · md 768px · sm 480px */
@@ -203,16 +203,15 @@ img{max-width:100%}
 
 /* ---------- ambient layers: fixed, composited, never repaint on scroll ---------- */
 body::before{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;contain:strict;
   background-image:
     linear-gradient(to right,var(--grid-line) 1px,transparent 1px),
     linear-gradient(to bottom,var(--grid-line) 1px,transparent 1px);
   background-size:72px 72px;
-  -webkit-mask-image:radial-gradient(ellipse 120% 80% at 50% 0%,#000 25%,transparent 78%);
-  mask-image:radial-gradient(ellipse 120% 80% at 50% 0%,#000 25%,transparent 78%);
+  opacity:.5;
 }
 body::after{
-  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  content:'';position:fixed;inset:0;z-index:0;pointer-events:none;contain:strict;
   background:
     radial-gradient(58% 44% at 10% 0%,var(--glow-teal),transparent 70%),
     radial-gradient(50% 40% at 92% 14%,var(--glow-violet),transparent 72%);
@@ -261,10 +260,24 @@ footer .star,footer .red{color:var(--panel-accent)}
 @media (max-width:768px){footer{flex-direction:column;text-align:center;padding:var(--s5) var(--s4)}}
 
 /* ---------- scroll reveal ---------- */
-html.js .reveal{opacity:0;transform:translateY(26px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
+html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--dur) var(--ease),transform var(--dur) var(--ease)}
 html.js .reveal.in{opacity:1;transform:none}
-html.js .stagger > *{opacity:0;transform:translateY(20px) scale(.985);transition:opacity .5s var(--ease),transform .5s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+html.js .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .62s var(--ease),transform .62s var(--ease);transition-delay:calc(var(--i,0) * 55ms)}
 html.js .stagger.in > *{opacity:1;transform:none}
+html.js .stagger > *:nth-child(1){--i:0}
+html.js .stagger > *:nth-child(2){--i:1}
+html.js .stagger > *:nth-child(3){--i:2}
+html.js .stagger > *:nth-child(4){--i:3}
+html.js .stagger > *:nth-child(5){--i:4}
+html.js .stagger > *:nth-child(6){--i:5}
+html.js .stagger > *:nth-child(7){--i:6}
+html.js .stagger > *:nth-child(8){--i:7}
+html.js .stagger > *:nth-child(9){--i:8}
+html.js .stagger > *:nth-child(10){--i:9}
+html.js .stagger > *:nth-child(11){--i:10}
+html.js .stagger > *:nth-child(12){--i:11}
+html.js .stagger > *:nth-child(13){--i:12}
+html.js .stagger > *:nth-child(14){--i:13}
 
 /* ---------- reduced motion: every effect above resolves to its end state ---------- */
 @media (prefers-reduced-motion:reduce){
@@ -300,3 +313,8 @@ html.js .theme-toggle{display:inline-flex}
   :root:not([data-theme="dark"]) .theme-toggle .i-moon{display:none}
 }
 .nav-right{display:flex;align-items:center;gap:var(--s3)}
+
+/* ---------- scroll progress ---------- */
+.scroll-progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:70;pointer-events:none;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--teal),var(--violet));will-change:transform}
+html:not(.js) .scroll-progress{display:none}

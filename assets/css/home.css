@@ -57,7 +57,7 @@ h1.head .red{color:var(--warm)}
 /* ---------- work ---------- */
 .work-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s5)}
 @media (max-width:1024px){.work-grid{grid-template-columns:1fr}}
-.card{background:var(--surface);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--border);padding:var(--s5);position:relative;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;color:inherit}
+.card{background:var(--surface);border:1px solid var(--border);padding:var(--s5);position:relative;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;color:inherit}
 .card:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg),0 0 0 1px var(--warm),0 0 24px var(--glow-warm)}
 .card .num{position:absolute;top:-3px;right:-3px;background:var(--warm);color:var(--bone);font-family:var(--font-mono);font-weight:700;padding:6px var(--s3);font-size:14px}
 .card .when{font-family:var(--font-mono);font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:1.5px;margin-top:var(--s4);margin-bottom:6px;font-weight:500}
@@ -157,7 +157,7 @@ h1.head .red{color:var(--warm)}
 /* ---------- craft: the three standards ---------- */
 .craft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5)}
 @media (max-width:1024px){.craft-grid{grid-template-columns:1fr}}
-.craft{background:var(--surface);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:1px solid var(--border);padding:var(--s6) var(--s5);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
+.craft{background:var(--surface);border:1px solid var(--border);padding:var(--s6) var(--s5);display:flex;flex-direction:column;transition:transform .15s,box-shadow .15s}
 .craft:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg),0 0 0 1px var(--warm),0 0 24px var(--glow-warm)}
 .craft .num{font-family:var(--font-mono);font-size:11px;letter-spacing:2px;color:var(--slate);font-weight:500;margin-bottom:var(--s4);text-transform:uppercase}
 .craft h3{font-family:var(--font-display);font-weight:400;font-size:27px;letter-spacing:-1px;line-height:1;margin-bottom:var(--s4);text-transform:uppercase;color:var(--warm)}
@@ -180,4 +180,18 @@ h1.head .red{color:var(--warm)}
 .card:hover,.craft:hover,.svc:hover,.stack-features .item:hover{border-color:var(--accent-border-strong)}
 @media (prefers-reduced-motion:reduce){
   .card::before,.craft::before,.svc::before,.stack-features .item::before{display:none}
+}
+
+/* ---------- year watermark on experience rows ---------- */
+.exp-row{position:relative;overflow:hidden}
+.exp-row[data-year]::after{
+  content:attr(data-year);position:absolute;right:-6px;top:50%;transform:translateY(-50%);
+  font-family:var(--font-display);font-size:clamp(90px,9vw,150px);line-height:1;letter-spacing:-6px;
+  color:var(--ink);opacity:.045;pointer-events:none;z-index:0;user-select:none}
+.exp-row > *{position:relative;z-index:1}
+@media (max-width:768px){.exp-row[data-year]::after{font-size:92px;opacity:.035}}
+
+/* ---------- sticky about column ---------- */
+@media (min-width:1025px){
+  .about .lhs > .sticky-col{position:sticky;top:104px}
 }

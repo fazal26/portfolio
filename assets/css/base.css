@@ -1,43 +1,90 @@
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --bg:#f4f1ea;
-  --ink:#111;
-  --paper:#fff;
-  --yellow:#facc15;
-  --red:#ef4444;
-  --green:#a3e635;
-  --pink:#fb7185;
-  --blue:#60a5fa;
-  --line:3px solid #111;
+/* ============================================================
+   Fazal Karim — base layer
+   tokens, reset, typography, nav, footer
+   ============================================================ */
+
+@font-face{
+  font-family:'Inter';
+  src:url('../fonts/inter-latin-var.woff2') format('woff2-variations'),
+      url('../fonts/inter-latin-var.woff2') format('woff2');
+  font-weight:100 900;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
 }
+@font-face{
+  font-family:'Playfair Display';
+  src:url('../fonts/playfair-display-700-latin.woff2') format('woff2');
+  font-weight:700;
+  font-style:normal;
+  font-display:swap;
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
+}
+
+:root{
+  /* colour */
+  --bone:#f6f2e9;      /* page background */
+  --bone-2:#ebe4d6;    /* raised surfaces, card fills */
+  --ink:#10211f;       /* body text, inverted surfaces */
+  --teal:#0e5a68;      /* primary accent, links, headings      7.01:1 on bone */
+  --teal-dp:#083a44;   /* hover and pressed                   11.06:1 on bone */
+  --teal-lt:#5ec4d6;   /* accent on ink surfaces only          8.21:1 on ink  */
+  --slate:#586669;     /* secondary text on bone               4.72:1 on bone-2 */
+  --slate-lt:#93a3a1;  /* secondary text on ink                7.07:1 on ink  */
+
+  /* type */
+  --font-display:'Playfair Display',Georgia,'Times New Roman',serif;
+  --font-sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,'SF Mono',Menlo,Consolas,'Liberation Mono',monospace;
+
+  /* spacing scale */
+  --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px;
+  --s6:32px; --s7:48px; --s8:64px; --s9:80px; --s10:104px;
+
+  /* lines */
+  --line:3px solid var(--ink);
+  --line-2:2px solid var(--ink);
+
+  /* breakpoints, for reference: lg 1024px · md 768px · sm 480px */
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-html,body{background:var(--bg);color:var(--ink);font-family:'Space Grotesk',sans-serif;-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5}
+html,body{background:var(--bone);color:var(--ink);font-family:var(--font-sans);-webkit-font-smoothing:antialiased;font-size:16px;line-height:1.5}
 body{overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--ink);color:var(--yellow)}
-.display{font-family:'Archivo Black',sans-serif;letter-spacing:-1.5px;text-transform:uppercase;line-height:.9}
-.mono{font-family:'JetBrains Mono',monospace}
+::selection{background:var(--ink);color:var(--teal-lt)}
+img{max-width:100%}
 
-/* nav */
-.nav{display:flex;justify-content:space-between;align-items:center;padding:18px 32px;border-bottom:var(--line);background:var(--bg);position:sticky;top:0;z-index:50}
-@media (max-width:640px){.nav{padding:14px 18px}}
-.nav .logo{font-family:'Archivo Black',sans-serif;font-size:22px;letter-spacing:-1px}
-.nav .logo .star{color:var(--red)}
-.nav ul{display:flex;list-style:none;gap:6px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
-.nav ul a{padding:8px 12px;border:2px solid var(--ink);background:var(--paper);transition:all .12s;display:inline-block}
-.nav ul a:hover{background:var(--yellow);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
-.nav .right-cta{font-family:'Archivo Black',sans-serif;background:var(--ink);color:var(--yellow);padding:10px 16px;border:2px solid var(--ink);font-size:12px;letter-spacing:1px;display:inline-flex;align-items:center;gap:6px;transition:transform .12s,box-shadow .12s}
-.nav .right-cta:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--yellow)}
-@media (max-width:880px){.nav ul{display:none}}
+.display{font-family:var(--font-display);letter-spacing:-.5px;line-height:1}
+.mono{font-family:var(--font-mono)}
 
-/* footer */
-footer{padding:24px 32px;background:var(--ink);color:var(--bg);font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
-footer .star{color:var(--yellow)}
-footer .red{color:var(--red)}
-@media (max-width:640px){footer{flex-direction:column;text-align:center;padding:24px 18px}}
+/* uppercase label — the site's voice, kept */
+.label{font-family:var(--font-sans);font-weight:700;text-transform:uppercase;font-size:12px;letter-spacing:2px}
 
-/* reveal */
+/* ---------- focus ---------- */
+:focus-visible{outline:3px solid var(--teal);outline-offset:3px}
+.on-ink :focus-visible,.stack-section :focus-visible,footer :focus-visible{outline-color:var(--teal-lt)}
+
+/* ---------- nav ---------- */
+.nav{display:flex;justify-content:space-between;align-items:center;padding:var(--s4) var(--s6);border-bottom:var(--line);background:var(--bone);position:sticky;top:0;z-index:50}
+@media (max-width:768px){.nav{padding:var(--s3) var(--s4)}}
+.nav .logo{font-family:var(--font-display);font-size:24px;letter-spacing:-.5px;font-weight:700}
+.nav ul{display:flex;list-style:none;gap:var(--s1);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav ul a{padding:var(--s2) var(--s3);border:var(--line-2);background:var(--bone-2);transition:background .12s,color .12s,transform .12s,box-shadow .12s;display:inline-block}
+.nav ul a:hover{background:var(--teal);color:var(--bone);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.nav .right-cta{font-family:var(--font-sans);font-weight:700;background:var(--ink);color:var(--teal-lt);padding:10px var(--s4);border:2px solid var(--ink);font-size:12px;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:transform .12s,box-shadow .12s}
+.nav .right-cta:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--teal)}
+.nav .back{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;border:var(--line-2);padding:var(--s2) 14px;background:var(--bone-2);transition:background .12s,color .12s,transform .12s,box-shadow .12s;font-weight:500}
+.nav .back:hover{background:var(--teal);color:var(--bone);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+@media (max-width:1024px){.nav ul{display:none}}
+
+/* ---------- footer ---------- */
+footer{padding:var(--s5) var(--s6);background:var(--ink);color:var(--bone);font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}
+footer .star{color:var(--teal-lt)}
+footer .red{color:var(--teal-lt)}
+@media (max-width:768px){footer{flex-direction:column;text-align:center;padding:var(--s5) var(--s4)}}
+
+/* ---------- scroll reveal ---------- */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:translateY(0)}
-.nav .back{font-family:'JetBrains Mono',monospace;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;border:2px solid var(--ink);padding:8px 14px;background:var(--paper);transition:all .12s;font-weight:500}
-.nav .back:hover{background:var(--yellow);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}

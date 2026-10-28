@@ -129,6 +129,7 @@ h1.head .red{color:var(--red)}
 .exp-row .body-col{padding:24px}
 .exp-row .body-col h3{font-family:'Archivo Black',sans-serif;font-size:24px;margin-bottom:6px;text-transform:uppercase;letter-spacing:-.5px;line-height:1.05}
 .exp-row .body-col h3 .co{color:var(--red)}
+.exp-row .body-col .where{font-family:'JetBrains Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:#666;margin-bottom:10px;font-weight:500}
 .exp-row .body-col p{font-size:15px;line-height:1.55;margin-bottom:12px;max-width:680px;font-weight:500}
 .exp-row .body-col .stk{display:flex;flex-wrap:wrap;gap:6px}
 .exp-row .body-col .stk span{font-family:'JetBrains Mono',monospace;font-size:11px;background:var(--bg);border:2px solid var(--ink);padding:3px 8px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}

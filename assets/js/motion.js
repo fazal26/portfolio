@@ -174,6 +174,7 @@
   var toggles = document.querySelectorAll('.theme-toggle');
   if (toggles.length) {
     var root = document.documentElement;
+    var animTimer;
 
     var effective = function () {
       var set = root.getAttribute('data-theme');
@@ -190,6 +191,15 @@
     Array.prototype.forEach.call(toggles, function (b) {
       b.addEventListener('click', function () {
         var next = effective() === 'dark' ? 'light' : 'dark';
+
+        // crossfade the colour change, then take the class back off so
+        // it never interferes with ordinary hover and focus transitions
+        if (!reduced) {
+          clearTimeout(animTimer);
+          root.classList.add('theme-anim');
+          animTimer = setTimeout(function () { root.classList.remove('theme-anim'); }, 420);
+        }
+
         root.setAttribute('data-theme', next);
         try { localStorage.setItem('theme', next); } catch (e) {}
         relabel();

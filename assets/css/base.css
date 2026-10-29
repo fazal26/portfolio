@@ -276,3 +276,23 @@ footer .theme-toggle:hover{color:var(--panel-accent);border-color:var(--panel-ac
 @media (max-width:768px){
   .footer-right{flex-direction:column;gap:var(--s3)}
 }
+
+/* ---------- theme crossfade ----------
+   Applied only for the length of a switch, so normal hover and
+   focus transitions are untouched the rest of the time. Only
+   colour properties are listed: outline and box-shadow stay out of
+   it so the focus ring can never fade in. */
+html.theme-anim,
+html.theme-anim *,
+html.theme-anim *::before,
+html.theme-anim *::after{
+  transition-property:background-color,color,border-color,fill,stroke!important;
+  transition-duration:.34s!important;
+  transition-timing-function:var(--ease)!important;
+  transition-delay:0s!important;
+}
+@media (prefers-reduced-motion:reduce){
+  html.theme-anim,html.theme-anim *,html.theme-anim *::before,html.theme-anim *::after{
+    transition-duration:.01ms!important;
+  }
+}

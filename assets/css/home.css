@@ -322,3 +322,45 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
   .pulse-dot::after{animation:none;opacity:0}
   .email-box,.hero-cta a.primary{animation:none;background-image:none}
 }
+
+/* ---------- contact cards ---------- */
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s5);
+  max-width:980px;margin:var(--s7) auto 0;text-align:left}
+@media (max-width:860px){.contact-grid{grid-template-columns:1fr;max-width:520px}}
+
+.contact-card{display:flex;flex-direction:column;gap:var(--s4);
+  background:var(--surface);border:1px solid var(--border);padding:var(--s6) var(--s5);
+  transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
+.contact-card:hover,.contact-card:focus-within{border-color:var(--accent-border-strong);box-shadow:var(--shadow-md)}
+
+.cc-head{display:flex;align-items:center;gap:14px}
+.cc-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  width:46px;height:46px;border-radius:50%;color:var(--teal);
+  background:var(--chip-bg);border:1px solid var(--accent-border)}
+.cc-icon .ic{width:20px;height:20px}
+.contact-card h3{font-family:var(--font-display);font-weight:400;font-size:21px;
+  letter-spacing:-.7px;text-transform:uppercase;line-height:1}
+.contact .cc-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);margin:5px 0 0;max-width:none}
+.contact-card .cc-body{font-size:14px;line-height:1.6;color:var(--slate);margin:0;max-width:none}
+
+/* the CTA sits at the foot of every card so the four line up */
+.contact-card .cc-cta,.contact-card .email-box{margin-top:auto}
+.contact-card .cc-cta{justify-content:space-between;gap:var(--s3);
+  padding:13px var(--s4);min-height:44px;
+  background:var(--teal);color:var(--bone);border:1px solid var(--teal);
+  font-family:var(--font-mono);font-size:12px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  transition:background .25s var(--ease),box-shadow .25s var(--ease)}
+.contact-card .cc-cta:hover{background:var(--teal-dp);box-shadow:0 0 22px var(--glow-teal)}
+.cc-arrow{transition:transform .28s var(--ease)}
+.contact-card .cc-cta:hover .cc-arrow,.contact-card .cc-cta:focus-visible .cc-arrow{transform:translate(2.5px,-2.5px)}
+.contact-card .cc-cta[download]:hover .cc-arrow,.contact-card .cc-cta[download]:focus-visible .cc-arrow{transform:translateY(3px)}
+
+/* the email card keeps the address box, sized to fit the card */
+.contact-card .email-box{width:100%;border-width:2px}
+.contact-card .email-addr{font-size:clamp(13px,1.35vw,16px);padding:14px var(--s4);gap:10px;flex:1}
+.contact-card .copy-in{width:46px}
+
+@media (prefers-reduced-motion:reduce){
+  .cc-arrow{transition:none!important;transform:none!important}
+}

@@ -365,8 +365,7 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
   .cc-arrow{transition:none!important;transform:none!important}
 }
 
-/* ---------- hero status pill ---------- */
-.stat strong.status-open{display:inline-flex;align-items:center;gap:9px;
-  font-family:var(--font-mono);font-weight:700;font-size:15px;letter-spacing:1.5px;
-  padding:8px 16px;border-radius:999px;
-  background:var(--chip-bg);border:1px solid var(--accent-border);color:var(--ink)}
+/* ---------- hero status ----------
+   Same type as the other two stats; the only addition is the dot. */
+.stat strong.status-open{display:inline-flex;align-items:center;gap:11px}
+.stat strong.status-open .pulse-dot{width:9px;height:9px}

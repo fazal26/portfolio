@@ -64,6 +64,8 @@
   --contact-wash:rgba(94,196,214,.12);
   --pointer-glow:rgba(94,196,214,.16);
   --grid-line:rgba(94,196,214,.055);
+  --sheen:rgba(255,255,255,.16);   /* shimmer: keeps bone text at 10.76:1 */
+  --ok:#22c55e;                    /* availability dot        8.54:1 on page */
 
   --glow-teal:rgba(94,196,214,.34);
   --glow-warm:rgba(240,180,41,.30);
@@ -133,6 +135,8 @@
   --contact-wash:rgba(14,90,104,.1);
   --pointer-glow:rgba(14,90,104,.09);
   --grid-line:rgba(14,90,104,.06);
+  --sheen:rgba(0,0,0,.14);         /* a white sheen would drop bone text to 4.29:1 here */
+  --ok:#15803d;                    /* availability dot        4.49:1 on page */
 
   --glow-teal:rgba(14,90,104,.2);
   --glow-warm:rgba(154,52,18,.2);

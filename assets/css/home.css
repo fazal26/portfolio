@@ -284,3 +284,41 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 @media (max-width:480px){
   .copy-in{width:46px}
 }
+
+/* ---------- pulsing dot ---------- */
+.pulse-dot{position:relative;display:inline-block;width:7px;height:7px;border-radius:50%;
+  background:var(--teal);flex:0 0 auto}
+.pulse-dot.ok{background:var(--ok)}
+.pulse-dot::after{content:'';position:absolute;inset:0;border-radius:50%;
+  background:inherit;animation:dot-pulse 2.4s var(--ease) infinite}
+@keyframes dot-pulse{
+  0%{transform:scale(1);opacity:.7}
+  70%{transform:scale(2.6);opacity:0}
+  100%{transform:scale(2.6);opacity:0}
+}
+
+/* ---------- availability pill ---------- */
+.contact p.availability{display:flex;width:fit-content;align-items:center;gap:10px;margin:var(--s7) auto 0;
+  padding:9px 18px;border:1px solid var(--border);border-radius:999px;
+  background:var(--surface);color:var(--ink);
+  font-family:var(--font-mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+
+/* ---------- shimmer on the primary calls to action ----------
+   A moving sheen on the element's own background, not an overflow
+   clipped pseudo-element, so it cannot cut off the focus ring of
+   anything inside. The sheen colour is a token: white would drop
+   the bone text on teal to 4.29:1 in light mode.                 */
+.email-box,.hero-cta a.primary{
+  background-image:linear-gradient(100deg,transparent 38%,var(--sheen) 50%,transparent 62%);
+  background-size:220% 100%;background-repeat:no-repeat;
+  animation:cta-shimmer 2.8s var(--ease) infinite}
+@keyframes cta-shimmer{
+  0%{background-position:150% 0}
+  60%{background-position:-50% 0}
+  100%{background-position:-50% 0}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .pulse-dot::after{animation:none;opacity:0}
+  .email-box,.hero-cta a.primary{animation:none;background-image:none}
+}

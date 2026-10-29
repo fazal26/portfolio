@@ -166,6 +166,66 @@
     }, { passive: true });
   });
 
+
+  /* ---------- 7. selected work preview (idle) ----------
+     Mirrors the hovered or focused row into a panel. Decorative:
+     every row already links to its case study, and the same copy
+     lives in .wr-detail, which is what mobile shows.            */
+  whenIdle(function () {
+    if (!window.matchMedia('(min-width: 1025px)').matches) return;
+    var list = document.querySelector('.work-list');
+    var split = document.querySelector('.work-split');
+    if (!list || !split) return;
+    var items = Array.prototype.slice.call(list.querySelectorAll('.work-item'));
+    if (items.length < 2) return;
+
+    var panel = document.createElement('aside');
+    panel.className = 'work-preview';
+    panel.setAttribute('aria-hidden', 'true');
+    split.appendChild(panel);
+
+    var active = -1;
+    function render(i) {
+      if (i === active) return;
+      var prev = active;
+      active = i;
+      items.forEach(function (li, n) { li.setAttribute('data-state', n === i ? 'active' : 'idle'); });
+
+      var li = items[i];
+      var num = li.querySelector('.wr-num');
+      var name = li.querySelector('.wr-name');
+      var meta = li.querySelector('.wr-meta');
+      var detail = li.querySelector('.wr-detail');
+      var desc = detail && detail.querySelector('p');
+      var chips = detail && detail.querySelector('.stk');
+
+      var paint = function () {
+        panel.innerHTML = '';
+        var head = document.createElement('div');
+        var n = document.createElement('div'); n.className = 'wp-num'; n.textContent = num ? num.textContent : '';
+        var h = document.createElement('div'); h.className = 'wp-name'; h.textContent = name ? name.textContent : '';
+        var m = document.createElement('div'); m.className = 'wp-meta'; m.innerHTML = meta ? meta.innerHTML : '';
+        head.appendChild(n); head.appendChild(h); head.appendChild(m);
+        panel.appendChild(head);
+        if (desc) { var d = document.createElement('p'); d.className = 'wp-desc'; d.innerHTML = desc.innerHTML; panel.appendChild(d); }
+        if (chips) { var c = chips.cloneNode(true); panel.appendChild(c); }
+        panel.removeAttribute('data-swapping');
+      };
+
+      if (prev === -1 || reduced) { paint(); return; }
+      panel.setAttribute('data-swapping', 'true');
+      setTimeout(paint, 160);
+    }
+
+    items.forEach(function (li, n) {
+      var row = li.querySelector('.work-row');
+      if (!row) return;
+      row.addEventListener('pointerenter', function () { render(n); });
+      row.addEventListener('focus', function () { render(n); });
+    });
+    render(0);
+  });
+
   /* ---------- 6. theme toggles ----------
      There is one in the nav and one in the footer. Both are driven
      from here and kept in sync, so neither can claim the wrong next

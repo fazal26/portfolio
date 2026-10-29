@@ -369,3 +369,83 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
    Same type as the other two stats; the only addition is the dot. */
 .stat strong.status-open{display:inline-flex;align-items:center;gap:11px}
 .stat strong.status-open .pulse-dot{width:9px;height:9px}
+
+/* ============================================================
+   Selected work: master list + hover preview
+   The list is the content. The preview panel is a decorative
+   mirror built by motion.js, so nothing here is the only copy
+   of anything — every row links to its case study regardless.
+   ============================================================ */
+.work-split{display:grid;grid-template-columns:1fr 1.05fr;gap:var(--s8);align-items:start}
+@media (max-width:1024px){.work-split{grid-template-columns:1fr;gap:var(--s5)}}
+
+.work-list{list-style:none;margin:0;padding:0;border-top:1px solid var(--border-soft)}
+.work-item{border-bottom:1px solid var(--border-soft);position:relative}
+
+.work-row{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:var(--s5);
+  padding:var(--s6) var(--s2);color:inherit;
+  transition:background .3s var(--ease),padding-left .3s var(--ease)}
+.work-row:hover,.work-row:focus-visible{background:var(--row-hover);padding-left:var(--s4)}
+.wr-num{font-family:var(--font-mono);font-size:12px;letter-spacing:2px;color:var(--slate);
+  transition:color .3s var(--ease)}
+.wr-body{display:flex;flex-direction:column;gap:5px;min-width:0}
+.wr-name{font-family:var(--font-display);font-weight:400;font-size:clamp(26px,3vw,38px);
+  letter-spacing:-1.2px;line-height:1;text-transform:uppercase;
+  color:var(--slate);transition:color .3s var(--ease)}
+.wr-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--slate)}
+.wr-arrow{font-size:20px;color:var(--teal);opacity:0;transform:translateX(-8px);
+  transition:opacity .3s var(--ease),transform .3s var(--ease)}
+
+/* active row: colour, never opacity, so both states clear AA on their own */
+.work-item[data-state="active"] .wr-name{color:var(--ink)}
+.work-item[data-state="active"] .wr-num{color:var(--teal)}
+.work-item[data-state="active"] .wr-arrow{opacity:1;transform:none}
+.work-row:hover .wr-arrow,.work-row:focus-visible .wr-arrow{opacity:1;transform:none}
+
+.wr-live-row{display:flex;flex-wrap:wrap;gap:var(--s2);padding:0 var(--s2) var(--s5);margin-top:calc(var(--s5) * -1)}
+.wr-live{display:inline-flex;align-items:center;gap:6px;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:700;
+  padding:7px 12px;min-height:34px;border:1px solid var(--accent-border);color:var(--teal);
+  transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
+.wr-live:hover{background:var(--teal);color:var(--bone);border-color:var(--teal)}
+
+/* ---- the preview, desktop only ---- */
+.work-preview{position:sticky;top:120px;border:1px solid var(--border);background:var(--surface);
+  padding:var(--s6);min-height:300px;display:flex;flex-direction:column;gap:var(--s4)}
+.work-preview .wp-num{font-family:var(--font-mono);font-size:12px;letter-spacing:2px;color:var(--teal)}
+.work-preview .wp-name{font-family:var(--font-display);font-weight:400;font-size:34px;
+  letter-spacing:-1.2px;line-height:1;text-transform:uppercase;color:var(--ink)}
+.work-preview .wp-meta{font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--slate);margin-top:6px}
+.work-preview .wp-desc{font-size:15px;line-height:1.65;color:var(--slate);margin:0}
+.work-preview .stk{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto}
+.work-preview .stk span{font-family:var(--font-mono);font-size:11px;background:var(--chip-bg);
+  border:1px solid var(--accent-border);color:var(--teal);padding:3px var(--s2);
+  text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.work-preview > *{transition:opacity .28s var(--ease)}
+.work-preview[data-swapping="true"] > *{opacity:0}
+
+/* the inline detail is what mobile shows; the preview replaces it on desktop */
+.wr-detail{padding:0 var(--s2) var(--s6);display:flex;flex-direction:column;gap:var(--s4)}
+.wr-detail p{font-size:15px;line-height:1.6;color:var(--slate);margin:0}
+.wr-detail .stk{display:flex;flex-wrap:wrap;gap:6px}
+.wr-detail .stk span{font-family:var(--font-mono);font-size:11px;background:var(--chip-bg);
+  border:1px solid var(--accent-border);color:var(--teal);padding:3px var(--s2);
+  text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+@media (min-width:1025px){
+  html.js .wr-detail{display:none}
+  html.js .work-item[data-state="idle"] .wr-name{color:var(--slate)}
+  html.js .work-item[data-state="active"] .wr-name{color:var(--ink)}
+}
+@media (max-width:1024px){
+  .work-preview{display:none}
+  .work-row{padding:var(--s5) var(--s2) var(--s3)}
+  .wr-name{color:var(--ink)}
+  .wr-arrow{opacity:1;transform:none}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .work-row,.wr-name,.wr-num,.wr-arrow,.work-preview > *{transition:none!important}
+  .work-row:hover,.work-row:focus-visible{padding-left:var(--s2)}
+  .wr-arrow{opacity:1;transform:none}
+}

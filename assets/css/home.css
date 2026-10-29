@@ -208,9 +208,9 @@ h1.head .red{color:var(--warm)}
    same affordance.
    ============================================================ */
 .ico-link{display:inline-flex;align-items:center;gap:9px}
-.ico-link .ic{width:17px;height:17px;flex:0 0 auto;display:block;overflow:visible}
-.ico-link .ic g,.ico-link .ic path,.ico-link .ic rect{fill:currentColor}
-.ico-link .ic.ic-stroke path,.ico-link .ic.ic-stroke rect{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.ic{width:17px;height:17px;flex:0 0 auto;display:block;overflow:visible}
+.ic g,.ic path,.ic rect{fill:currentColor}
+.ic.ic-stroke path,.ic.ic-stroke rect{fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .ico-link .ic-ext{display:inline-block;font-size:.9em;line-height:1}
 
 /* shared easing */
@@ -244,32 +244,43 @@ h1.head .red{color:var(--warm)}
     transition:none!important;animation:none!important;transform:none!important}
 }
 
-/* ---------- copy-to-clipboard ---------- */
-.email-row{display:flex;align-items:stretch;justify-content:center;gap:var(--s3);flex-wrap:wrap}
-.copy-btn{
-  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
-  font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;
-  padding:0 var(--s5);min-height:44px;
-  background:transparent;color:var(--ink);border:2px solid var(--border-strong);
-  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
-.copy-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--chip-bg)}
-.copy-btn .ic{width:16px;height:16px}
-.copy-btn .ic-check{display:none}
-.copy-btn[data-copied="true"]{color:var(--teal);border-color:var(--teal)}
-.copy-btn[data-copied="true"] .ic-copy{display:none}
-.copy-btn[data-copied="true"] .ic-check{display:block;animation:copy-pop .34s var(--ease)}
+/* ---------- email address + inline copy ----------
+   One bordered unit: the address is a mailto link, the copy control
+   is a real button beside it. A button cannot nest inside an anchor,
+   so they are siblings styled to read as a single control.          */
+.email-box{display:inline-flex;align-items:stretch;max-width:100%;
+  background:var(--teal);border:4px solid var(--ink);transition:transform .12s var(--ease),box-shadow .12s var(--ease)}
+.email-box:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg),0 0 24px var(--glow-teal)}
+
+.contact .email-addr{display:inline-flex;align-items:center;gap:14px;
+  background:transparent;color:var(--bone);font-family:var(--font-sans);font-weight:700;
+  font-size:clamp(15px,4.3vw,21px);padding:clamp(14px,3.5vw,20px) clamp(16px,5vw,30px);
+  letter-spacing:.3px;max-width:100%;overflow-wrap:anywhere}
+.contact .email-addr .ic{width:1em;height:1em}
+
+.copy-in{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+  flex:0 0 auto;width:52px;min-height:44px;padding:0;
+  background:transparent;color:var(--bone);border:none;border-left:2px solid rgba(255,255,255,.3);
+  transition:background .2s var(--ease),color .2s var(--ease)}
+.copy-in:hover{background:rgba(255,255,255,.16)}
+.copy-in .ic{width:18px;height:18px}
+.copy-in .ic-check{display:none}
+.copy-in[data-copied="true"] .ic-copy{display:none}
+.copy-in[data-copied="true"] .ic-check{display:block;animation:copy-pop .34s var(--ease)}
 @keyframes copy-pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
 
-.copy-status{font-family:var(--font-mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
-  color:var(--teal);min-height:1.4em;margin-top:var(--s3);text-align:center}
+/* no clipboard support: the control never appears, mailto still works */
+html:not(.can-copy) .copy-in{display:none}
+html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 
-/* no clipboard support: the button is never shown, the mailto link still works */
-html:not(.can-copy) .copy-btn{display:none}
+/* announced to assistive tech, shown to nobody */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;border:0}
 
 @media (prefers-reduced-motion:reduce){
-  .copy-btn[data-copied="true"] .ic-check{animation:none}
+  .copy-in[data-copied="true"] .ic-check{animation:none}
+  .email-box:hover{transform:none}
 }
 @media (max-width:480px){
-  .email-row{flex-direction:column}
-  .copy-btn{justify-content:center}
+  .copy-in{width:46px}
 }

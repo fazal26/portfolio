@@ -243,7 +243,7 @@
   Array.prototype.forEach.call(buttons, function (btn) {
     var value = btn.getAttribute('data-copy');
     var label = btn.querySelector('.copy-label');
-    var status = document.querySelector('.copy-status');
+    var status = document.getElementById('copy-status');
     var original = label ? label.textContent : '';
     var timer;
 

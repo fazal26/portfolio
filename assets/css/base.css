@@ -268,3 +268,11 @@ html.js .theme-toggle{display:inline-flex}
 .scroll-progress{position:fixed;left:0;top:0;height:2px;width:100%;z-index:70;pointer-events:none;transform:scaleX(0);transform-origin:0 50%;
   background:linear-gradient(90deg,var(--teal),var(--violet));will-change:transform}
 html:not(.js) .scroll-progress{display:none}
+
+/* ---------- footer theme toggle ---------- */
+.footer-right{display:flex;align-items:center;gap:var(--s4)}
+footer .theme-toggle{border-color:rgba(255,255,255,.26);color:var(--panel-text)}
+footer .theme-toggle:hover{color:var(--panel-accent);border-color:var(--panel-accent);background:rgba(255,255,255,.09)}
+@media (max-width:768px){
+  .footer-right{flex-direction:column;gap:var(--s3)}
+}

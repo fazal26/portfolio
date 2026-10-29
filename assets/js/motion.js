@@ -166,39 +166,37 @@
     }, { passive: true });
   });
 
-  /* ---------- 6. theme toggle ----------
-     The stored choice is applied before first paint by an inline
-     script in <head>, so there is no flash. This only handles the
-     button: flipping, persisting, keeping its label truthful.     */
-  var btn = document.getElementById('theme-toggle');
-  if (btn) {
+  /* ---------- 6. theme toggles ----------
+     There is one in the nav and one in the footer. Both are driven
+     from here and kept in sync, so neither can claim the wrong next
+     state. The stored choice is applied before first paint by an
+     inline script in <head>, so there is no flash.              */
+  var toggles = document.querySelectorAll('.theme-toggle');
+  if (toggles.length) {
     var root = document.documentElement;
-    var systemLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)');
 
     var effective = function () {
       var set = root.getAttribute('data-theme');
-      if (set === 'light' || set === 'dark') return set;
-      return 'dark';            // dark is the default; the OS no longer decides
+      return (set === 'light' || set === 'dark') ? set : 'dark';
     };
-    var label = function () {
+    var relabel = function () {
       var next = effective() === 'dark' ? 'light' : 'dark';
-      btn.setAttribute('aria-label', 'Switch to ' + next + ' theme');
-      btn.setAttribute('title', 'Switch to ' + next + ' theme');
+      Array.prototype.forEach.call(toggles, function (b) {
+        b.setAttribute('aria-label', 'Switch to ' + next + ' theme');
+        b.setAttribute('title', 'Switch to ' + next + ' theme');
+      });
     };
 
-    btn.addEventListener('click', function () {
-      var next = effective() === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      try { localStorage.setItem('theme', next); } catch (e) {}
-      label();
+    Array.prototype.forEach.call(toggles, function (b) {
+      b.addEventListener('click', function () {
+        var next = effective() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem('theme', next); } catch (e) {}
+        relabel();
+      });
     });
 
-    if (systemLight && systemLight.addEventListener) {
-      systemLight.addEventListener('change', function () {
-        if (!root.getAttribute('data-theme')) label();
-      });
-    }
-    label();
+    relabel();
   }
 })();
 

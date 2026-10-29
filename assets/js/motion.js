@@ -201,3 +201,70 @@
     label();
   }
 })();
+
+/* ============================================================
+   Copy to clipboard
+   Progressive enhancement: the button is hidden until this runs
+   and confirms support, so nobody is shown a control that cannot
+   work. The mailto link beside it is always the fallback.
+   ============================================================ */
+(function () {
+  'use strict';
+  var buttons = document.querySelectorAll('[data-copy]');
+  if (!buttons.length) return;
+
+  var secure = window.isSecureContext !== false;
+  var hasAsync = !!(navigator.clipboard && navigator.clipboard.writeText) && secure;
+  var hasLegacy = typeof document.execCommand === 'function';
+  if (!hasAsync && !hasLegacy) return;          // leave the button hidden
+
+  document.documentElement.classList.add('can-copy');
+
+  function legacyCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.setAttribute('readonly', '');
+    ta.style.cssText = 'position:fixed;top:0;left:-9999px;opacity:0';
+    document.body.appendChild(ta);
+    ta.select();
+    ta.setSelectionRange(0, text.length);
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  function copy(text) {
+    if (hasAsync) return navigator.clipboard.writeText(text).then(function () { return true; },
+                                                                  function () { return legacyCopy(text); });
+    return Promise.resolve(legacyCopy(text));
+  }
+
+  Array.prototype.forEach.call(buttons, function (btn) {
+    var value = btn.getAttribute('data-copy');
+    var label = btn.querySelector('.copy-label');
+    var status = document.querySelector('.copy-status');
+    var original = label ? label.textContent : '';
+    var timer;
+
+    btn.setAttribute('aria-label', 'Copy email address ' + value);
+
+    btn.addEventListener('click', function () {
+      copy(value).then(function (ok) {
+        clearTimeout(timer);
+        if (ok) {
+          btn.setAttribute('data-copied', 'true');
+          if (label) label.textContent = 'Copied';
+          if (status) status.textContent = value + ' copied to clipboard';
+        } else {
+          if (status) status.textContent = 'Press Ctrl+C to copy ' + value;
+        }
+        timer = setTimeout(function () {
+          btn.removeAttribute('data-copied');
+          if (label) label.textContent = original;
+          if (status) status.textContent = '';
+        }, 2600);
+      });
+    });
+  });
+})();

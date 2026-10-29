@@ -243,3 +243,33 @@ h1.head .red{color:var(--warm)}
   .ico-link .ic-mark,.ico-link .ic-dl,.ico-link .ic-flap,.ico-link .ic-ext,.ico-link .ic-tray{
     transition:none!important;animation:none!important;transform:none!important}
 }
+
+/* ---------- copy-to-clipboard ---------- */
+.email-row{display:flex;align-items:stretch;justify-content:center;gap:var(--s3);flex-wrap:wrap}
+.copy-btn{
+  display:inline-flex;align-items:center;gap:9px;cursor:pointer;
+  font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;
+  padding:0 var(--s5);min-height:44px;
+  background:transparent;color:var(--ink);border:2px solid var(--border-strong);
+  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
+.copy-btn:hover{color:var(--teal);border-color:var(--teal);background:var(--chip-bg)}
+.copy-btn .ic{width:16px;height:16px}
+.copy-btn .ic-check{display:none}
+.copy-btn[data-copied="true"]{color:var(--teal);border-color:var(--teal)}
+.copy-btn[data-copied="true"] .ic-copy{display:none}
+.copy-btn[data-copied="true"] .ic-check{display:block;animation:copy-pop .34s var(--ease)}
+@keyframes copy-pop{from{transform:scale(.6);opacity:0}to{transform:scale(1);opacity:1}}
+
+.copy-status{font-family:var(--font-mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--teal);min-height:1.4em;margin-top:var(--s3);text-align:center}
+
+/* no clipboard support: the button is never shown, the mailto link still works */
+html:not(.can-copy) .copy-btn{display:none}
+
+@media (prefers-reduced-motion:reduce){
+  .copy-btn[data-copied="true"] .ic-check{animation:none}
+}
+@media (max-width:480px){
+  .email-row{flex-direction:column}
+  .copy-btn{justify-content:center}
+}

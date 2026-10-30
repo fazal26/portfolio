@@ -235,21 +235,21 @@ h1.head .red{color:var(--warm)}
    is a real button beside it. A button cannot nest inside an anchor,
    so they are siblings styled to read as a single control.          */
 .email-box{display:inline-flex;align-items:stretch;max-width:100%;
-  background:var(--teal);border:4px solid var(--ink);
+  background:var(--mail-face);border:4px solid var(--ink);
   transition:box-shadow .34s var(--ease),border-color .34s var(--ease)}
 .email-box:hover,.email-box:focus-within{box-shadow:0 0 0 3px var(--glow-teal),0 0 36px var(--glow-teal);border-color:var(--teal-dp)}
 
 .contact .email-addr{display:inline-flex;align-items:center;gap:14px;
-  background:transparent;color:var(--bone);font-family:var(--font-sans);font-weight:700;
+  background:transparent;color:var(--mail-ink);font-family:var(--font-sans);font-weight:700;
   font-size:clamp(15px,4.3vw,21px);padding:clamp(14px,3.5vw,20px) clamp(16px,5vw,30px);
   letter-spacing:.3px;max-width:100%;overflow-wrap:anywhere}
 .contact .email-addr .ic{width:1em;height:1em}
 
 .copy-in{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
   flex:0 0 auto;width:52px;min-height:44px;padding:0;
-  background:transparent;color:var(--bone);border:none;border-left:2px solid rgba(255,255,255,.3);
+  background:transparent;color:var(--mail-ink);border:none;border-left:2px solid var(--mail-rule);
   transition:background .2s var(--ease),color .2s var(--ease)}
-.copy-in:hover{background:rgba(255,255,255,.16)}
+.copy-in:hover{background:var(--mail-hover)}
 .copy-in .ic{width:18px;height:18px}
 .copy-in .ic-check{display:none}
 .copy-in[data-copied="true"] .ic-copy{display:none}

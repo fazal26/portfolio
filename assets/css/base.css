@@ -48,6 +48,15 @@
   --edge-teal:#237d90;         /* vs face 2.35  vs page 4.08 */
   --edge-violet:#6d4ad6;       /* vs face 2.14  vs page 3.34 */
   --edge-warm:#a8760c;         /* vs face 2.14  vs page 4.87 */
+
+  /* the email box: a light face in both themes, carrying dark text.
+     Dark mode already looked like this; light mode was an inverted
+     dark slab, which read as heavy against the cream panel. The 2px
+     border does the separating, not the fill.                      */
+  --mail-face:var(--teal);     /* #5ec4d6, dark text on it 9.58:1 */
+  --mail-ink:var(--bone);      /* #070e10 */
+  --mail-rule:rgba(0,0,0,.28); /* divider; white was near-invisible here */
+  --mail-hover:rgba(0,0,0,.13);
   --slate:#9fb0b2;             /* secondary text            8.64:1 on page */
   --slate-lt:#9fb0b2;
 
@@ -124,6 +133,11 @@
   --edge-teal:#06303a;         /* vs face 1.80  vs page 12.60 */
   --edge-violet:#38126f;       /* vs face 1.58  vs page 12.66 */
   --edge-warm:#5e1e08;         /* vs face 1.73  vs page 11.29 */
+
+  --mail-face:var(--teal-lt);  /* #5ec4d6, same face as dark */
+  --mail-ink:var(--ink);       /* #10211f, 8.21:1 on that face */
+  --mail-rule:rgba(0,0,0,.28);
+  --mail-hover:rgba(0,0,0,.13);
   --slate:#586669;
   --slate-lt:#586669;
 

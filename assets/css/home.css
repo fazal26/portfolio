@@ -489,3 +489,35 @@ html.js .contact-grid.in .cc-icon .ic .ic-mark{
 @media (prefers-reduced-motion:reduce){
   .stack-features .item::after{transition:none}
 }
+
+/* ============================================================
+   Contact cards: the same two layers as the stack
+   Both pseudo-elements were free here, and the top accent rule
+   lives on the element's own background, so it is unaffected.
+   Children need position:relative or the glow paints over them.
+   ============================================================ */
+.contact-card > *{position:relative}
+.contact-card::before{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),
+    rgba(94,196,214,.22),rgba(167,139,250,.12) 36%,transparent 64%);
+  transition:opacity .3s var(--ease)}
+.contact-card:hover::before,
+.contact-card:focus-within::before{opacity:1}
+
+.contact-card::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(130deg,var(--teal),var(--violet) 48%,var(--warm));
+  padding:1px;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  transition:opacity .3s var(--ease)}
+.contact-card:hover::after,
+.contact-card:focus-within::after{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .contact-card::before{display:none}
+  .contact-card::after{transition:none}
+}

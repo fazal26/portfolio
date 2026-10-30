@@ -64,7 +64,7 @@
   /* ---------- 3. pointer glow (idle) ---------- */
   if (!reduced && window.matchMedia('(hover: hover)').matches) {
     whenIdle(function () {
-      var glowables = document.querySelectorAll('.card, .craft, .svc, .stack-features .item, .contact-card');
+      var glowables = document.querySelectorAll('.card, .craft, .svc, .stack-features .item, .split .primary');
       Array.prototype.forEach.call(glowables, function (el) {
         el.addEventListener('pointermove', function (ev) {
           var r = el.getBoundingClientRect();

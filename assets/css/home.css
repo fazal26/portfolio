@@ -97,17 +97,10 @@ h1.head .red{color:var(--warm)}
 .svc{background:var(--surface);border:1px solid var(--border);padding:28px var(--s5);position:relative;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column}
 .svc:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg),0 0 0 1px var(--warm),0 0 24px var(--glow-warm)}
 .svc .num{font-family:var(--font-mono);font-size:12px;letter-spacing:2px;color:var(--slate);font-weight:500;margin-bottom:14px}
-.svc .icon{font-family:var(--font-display);font-weight:400;font-size:40px;line-height:1;margin-bottom:var(--s4);display:inline-block;background:var(--panel);color:var(--panel-accent);padding:6px 18px;border:1px solid var(--accent-border)}
 .svc h3{font-family:var(--font-display);font-weight:400;font-size:22px;letter-spacing:-.8px;line-height:1.05;text-transform:uppercase;margin-bottom:var(--s3)}
 .svc p{font-size:14px;line-height:1.6;font-weight:400;flex:1;margin-bottom:var(--s4)}
 .svc .tags{display:flex;flex-wrap:wrap;gap:6px}
 .svc .tags span{font-family:var(--font-mono);font-size:10px;background:var(--chip-bg);border:1px solid var(--accent-border);color:var(--teal);padding:3px 7px;text-transform:uppercase;letter-spacing:.5px;font-weight:500}
-.svc.colored-y{background:var(--bone)}
-.svc.colored-r{background:var(--panel);color:var(--panel-text)}
-.svc.colored-r .num{color:var(--panel-dim)}
-.svc.colored-r h3{color:var(--panel-accent)}
-.svc.colored-r .icon{background:var(--panel-accent);color:var(--bone);border-color:var(--panel-accent)}
-.svc.colored-r .tags span{background:rgba(255,255,255,.08);color:var(--panel-text);border-color:var(--panel-dim)}
 
 /* ---------- stack ---------- */
 .stack-section{background:var(--panel);color:var(--panel-text);border-bottom:none}
@@ -369,3 +362,16 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
    Same type as the other two stats; the only addition is the dot. */
 .stat strong.status-open{display:inline-flex;align-items:center;gap:11px}
 .stat strong.status-open .pulse-dot{width:9px;height:9px}
+
+/* ---------- service icons ----------
+   Same ringed circle as the contact cards, so the two icon sets on
+   the page read as one system. Replaces six text glyphs that were
+   stretching to full card width, one of which (U+25A2) rendered as
+   an empty box. */
+.svc-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
+  width:46px;height:46px;border-radius:50%;margin-bottom:var(--s4);
+  color:var(--teal);background:var(--chip-bg);border:1px solid var(--accent-border);
+  transition:background .3s var(--ease),border-color .3s var(--ease)}
+.svc-icon .ic{width:21px;height:21px}
+.svc:hover .svc-icon{background:var(--teal);border-color:var(--teal);color:var(--bone)}
+@media (prefers-reduced-motion:reduce){.svc-icon{transition:none}}

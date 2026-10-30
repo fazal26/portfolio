@@ -200,17 +200,27 @@ header,main,footer,.cs-pager,.skip-link{position:relative;z-index:1}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:var(--s4) var(--s6);border-bottom:1px solid var(--border-soft);position:sticky;top:0;z-index:50;
      background:var(--nav-bg);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 @media (max-width:768px){.nav{padding:var(--s3) var(--s4)}}
-.nav .logo{font-family:var(--font-display);font-weight:400;font-size:23px;letter-spacing:-1px;text-transform:uppercase}
-.nav ul{display:flex;list-style:none;gap:var(--s1);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-.nav ul a{padding:var(--s2) var(--s3);border:1px solid var(--border);background:transparent;position:relative;display:inline-block;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.nav .logo{display:inline-flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:400;font-size:20px;letter-spacing:-.8px;text-transform:uppercase}
+.nav .logo .mark{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;flex:0 0 auto;background:var(--teal);color:var(--bone);font-size:13px;letter-spacing:-.5px;transition:box-shadow .25s var(--ease)}
+.nav .logo:hover .mark{box-shadow:0 0 20px var(--glow-teal)}
+.nav ul{display:flex;list-style:none;gap:2px;font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.nav ul a{padding:var(--s2) 10px;border:none;background:transparent;position:relative;display:inline-block;color:var(--slate);transition:color .2s var(--ease)}
 .nav ul a::after{content:'';position:absolute;left:0;bottom:-1px;width:0;height:2px;background:var(--teal);transition:width .28s var(--ease)}
-.nav ul a:hover{color:var(--teal);border-color:var(--teal)}
+.nav ul a:hover{color:var(--ink)}
+.nav ul a[aria-current]{color:var(--teal)}
+.nav ul a[aria-current]::after{width:100%}
 .nav ul a:hover::after{width:100%}
 .nav .right-cta{font-family:var(--font-sans);font-weight:700;background:var(--teal);color:var(--bone);padding:10px var(--s4);border:2px solid var(--teal);font-size:12px;letter-spacing:1px;text-transform:uppercase;display:inline-flex;align-items:center;gap:6px;transition:box-shadow .25s var(--ease),transform .25s var(--ease)}
 .nav .right-cta:hover{transform:translateY(-2px);box-shadow:0 0 26px var(--glow-teal)}
 .nav .back{font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1.5px;border:1px solid var(--border);padding:var(--s2) 14px;background:transparent;transition:color .2s,border-color .2s;font-weight:500}
 .nav .back:hover{color:var(--teal);border-color:var(--teal)}
-@media (max-width:1024px){.nav ul{display:none}}
+@media (max-width:1024px){
+  .nav{flex-wrap:wrap;row-gap:var(--s3);padding-bottom:var(--s3)}
+  .nav ul{order:3;width:100%;overflow-x:auto;gap:var(--s1);padding-bottom:2px;scrollbar-width:none;-ms-overflow-style:none}
+  .nav ul::-webkit-scrollbar{display:none}
+  .nav ul li{flex:0 0 auto}
+  .nav .logo{font-size:18px}
+}
 
 /* ---------- footer ---------- */
 footer{padding:var(--s5) var(--s6);background:var(--panel);color:var(--panel-text);border-top:1px solid var(--border-soft);font-family:var(--font-mono);font-size:12px;text-transform:uppercase;letter-spacing:1px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:var(--s3)}

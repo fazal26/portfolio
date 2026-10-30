@@ -166,6 +166,58 @@
     }, { passive: true });
   });
 
+
+  /* ---------- 8. scrollspy (idle) ----------
+     Marks the nav link for the section you are in with
+     aria-current, so the indicator is announced and not only seen. */
+  whenIdle(function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.nav ul a[href^="#"]'));
+    if (!links.length || !('IntersectionObserver' in window)) return;
+
+    var map = [];
+    links.forEach(function (a) {
+      var sec = document.getElementById(a.getAttribute('href').slice(1));
+      if (sec) map.push({ link: a, sec: sec });
+    });
+    if (!map.length) return;
+
+    var current = null;
+    function mark(entry) {
+      if (entry === current) return;
+      current = entry;
+      map.forEach(function (m) {
+        if (m === entry) m.link.setAttribute('aria-current', 'true');
+        else m.link.removeAttribute('aria-current');
+      });
+    }
+
+    var io = new IntersectionObserver(function () {
+      // whichever mapped section covers the top third of the viewport wins
+      var line = window.innerHeight * 0.33, best = null, bestTop = -Infinity;
+      map.forEach(function (m) {
+        var r = m.sec.getBoundingClientRect();
+        if (r.top <= line && r.bottom > line && r.top > bestTop) { bestTop = r.top; best = m; }
+      });
+      mark(best);
+    }, { threshold: [0, 0.1, 0.5, 1], rootMargin: '0px' });
+    map.forEach(function (m) { io.observe(m.sec); });
+
+    var ticking = false;
+    addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var line = window.innerHeight * 0.33, best = null, bestTop = -Infinity;
+        map.forEach(function (m) {
+          var r = m.sec.getBoundingClientRect();
+          if (r.top <= line && r.bottom > line && r.top > bestTop) { bestTop = r.top; best = m; }
+        });
+        mark(best);
+        ticking = false;
+      });
+    }, { passive: true });
+  });
+
   /* ---------- 6. theme toggles ----------
      There is one in the nav and one in the footer. Both are driven
      from here and kept in sync, so neither can claim the wrong next

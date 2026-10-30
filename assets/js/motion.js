@@ -218,6 +218,73 @@
     }, { passive: true });
   });
 
+  /* ---------- 9. pointer cursor (idle) ----------
+     A dot pinned to the pointer and a ring that lerps in behind it.
+     Built here rather than in the markup so a page without JS simply
+     never gets it. The loop runs only while there is distance left to
+     close, so a still pointer costs nothing.                        */
+  whenIdle(function () {
+    if (reduced) return;
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    var host = document.createElement('div');
+    host.className = 'cursor-host';
+    host.setAttribute('aria-hidden', 'true');     // decoration, not content
+    var ring = document.createElement('div'); ring.className = 'cursor-ring';
+    var dot = document.createElement('div'); dot.className = 'cursor-dot';
+    host.appendChild(ring); host.appendChild(dot);
+    document.body.appendChild(host);
+
+    var HOT = 'a[href],button,input,select,textarea,summary,[role="button"],' +
+              '[tabindex]:not([tabindex="-1"])';
+    var EASE = 0.15, SCALE_EASE = 0.2, HOT_SCALE = 40 / 26;
+
+    var x = 0, y = 0, rx = 0, ry = 0, scale = 1, target = 1;
+    var started = false, raf = 0, lastAccent = '';
+
+    function frame() {
+      rx += (x - rx) * EASE;
+      ry += (y - ry) * EASE;
+      scale += (target - scale) * SCALE_EASE;
+      dot.style.transform = 'translate3d(' + x + 'px,' + y + 'px,0)';
+      ring.style.transform = 'translate3d(' + rx.toFixed(2) + 'px,' + ry.toFixed(2) + 'px,0) ' +
+                             'scale(' + scale.toFixed(3) + ')';
+      raf = (Math.abs(x - rx) > 0.1 || Math.abs(y - ry) > 0.1 || Math.abs(target - scale) > 0.001)
+        ? requestAnimationFrame(frame) : 0;
+    }
+
+    addEventListener('pointermove', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      x = e.clientX; y = e.clientY;
+      if (!started) {                 // first sighting: place the ring, do not fly it in
+        started = true; rx = x; ry = y;
+        host.setAttribute('data-on', 'true');
+      }
+      var over = e.target && e.target.closest ? e.target.closest(HOT) : null;
+      host.setAttribute('data-hot', over ? 'true' : 'false');
+      target = over ? HOT_SCALE : 1;
+
+      // The ring takes the hovered element's own text colour. That colour
+      // is already required to be readable against that element, so the
+      // ring contrasts with whatever it is sitting on for free. Taking
+      // the card's --face instead looked better in the abstract and put
+      // an amber ring on the amber button, where it disappeared.
+      var accent = over ? getComputedStyle(over).color : '';
+      if (accent !== lastAccent) {
+        lastAccent = accent;
+        if (accent) host.style.setProperty('--cursor-accent', accent);
+        else host.style.removeProperty('--cursor-accent');
+      }
+      if (!raf) raf = requestAnimationFrame(frame);
+    }, { passive: true });
+
+    // leaving the window entirely should take the cursor with it
+    document.addEventListener('mouseleave', function () { host.removeAttribute('data-on'); });
+    document.addEventListener('mouseenter', function () {
+      if (started) host.setAttribute('data-on', 'true');
+    });
+  });
+
   /* ---------- 6. theme toggles ----------
      There is one in the nav and one in the footer. Both are driven
      from here and kept in sync, so neither can claim the wrong next

@@ -305,6 +305,44 @@ html.js .theme-toggle{display:inline-flex}
   background:linear-gradient(90deg,var(--teal),var(--violet));will-change:transform}
 html:not(.js) .scroll-progress{display:none}
 
+/* ---------- pointer cursor ----------
+   A 6px dot pinned exactly to the pointer and a 26px ring that eases in
+   behind it. Over anything interactive the dot hides and the ring opens
+   out, so the cursor itself reports what is clickable.
+
+   The real cursor is deliberately left visible. Hiding it is the usual
+   way to build this, and it costs people every system affordance the
+   pointer carries - the I-beam over text, resize arrows, the drag and
+   disabled states - in exchange for nothing the ring does not already
+   say. These two layers are decoration on top of it.
+
+   Only for a device with a real hovering pointer, and never under
+   reduced motion, where an object that trails the pointer is precisely
+   the kind of movement being asked about. Both are hard exclusions
+   rather than softened versions of the effect.                      */
+.cursor-host{position:fixed;inset:0;z-index:300;pointer-events:none;
+  opacity:0;transition:opacity .25s var(--ease)}
+.cursor-host[data-on="true"]{opacity:1}
+
+.cursor-dot,.cursor-ring{position:absolute;top:0;left:0;border-radius:50%;
+  will-change:transform}
+/* centred on the pointer by margin, so the JS writes a raw coordinate
+   and scaling the ring cannot shift where it sits */
+.cursor-dot{width:6px;height:6px;margin:-3px 0 0 -3px;
+  background:var(--cursor-accent,var(--teal));
+  transition:opacity .2s var(--ease),background-color .22s var(--ease)}
+.cursor-ring{width:26px;height:26px;margin:-13px 0 0 -13px;
+  border:1px solid var(--accent-border-strong);backdrop-filter:blur(1px);
+  transition:border-color .22s var(--ease)}
+
+.cursor-host[data-hot="true"] .cursor-dot{opacity:0}
+/* the ring borrows the hovered element's text colour, which is already
+   readable against that element, so it never sinks into a filled button */
+.cursor-host[data-hot="true"] .cursor-ring{border-color:var(--cursor-accent,var(--teal))}
+
+@media (hover:none),(pointer:coarse){.cursor-host{display:none!important}}
+@media (prefers-reduced-motion:reduce){.cursor-host{display:none!important}}
+
 /* ---------- footer theme toggle ---------- */
 .footer-right{display:flex;align-items:center;gap:var(--s4)}
 footer .theme-toggle{border-color:rgba(255,255,255,.26);color:var(--panel-text)}

@@ -222,6 +222,16 @@ html.js .reveal{opacity:0;transform:translateY(22px);transition:opacity var(--du
 html.js .reveal.in{opacity:1;transform:none}
 html.js .stagger > *{opacity:0;transform:translateY(22px);transition:opacity .62s var(--ease),transform .62s var(--ease);transition-delay:calc(var(--i,0) * 55ms)}
 html.js .stagger.in > *{opacity:1;transform:none}
+/* The reset above lands at (0,3,1) and was silently cancelling every
+   hover lift on stagger children — cards, craft, services, stack
+   items, case-study chips and steps. These out-rank it at (0,4,0).
+   The reduced-motion block still wins, because it uses !important. */
+.stagger.in > .card:hover,
+.stagger.in > .craft:hover,
+.stagger.in > .item:hover,
+.stagger.in > .chip:hover{transform:translate(-3px,-3px)}
+.stagger.in > .svc:hover{transform:translateY(-4px)}
+.stagger.in > li:hover{transform:translate(-3px,-3px)}
 html.js .stagger > *:nth-child(1){--i:0}
 html.js .stagger > *:nth-child(2){--i:1}
 html.js .stagger > *:nth-child(3){--i:2}

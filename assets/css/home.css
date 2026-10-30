@@ -462,3 +462,30 @@ html.js .contact-grid.in .cc-icon .ic .ic-mark{
   /* declared last so it out-ranks the pop rule above on source order */
   html.js .contact-grid.in .cc-icon .ic .ic-mark{animation:none!important;opacity:1;transform:none}
 }
+
+/* ============================================================
+   Primary stack cards
+   Two layered hover effects, after the pattern on ahmadshafiq.me:
+   a pointer-tracked radial wash inside, and a gradient edge that
+   fades in. ::before is already the shared pointer glow, so the
+   edge uses ::after with a mask so only the 1px ring shows.
+   ============================================================ */
+.stack-features .item::before{
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),
+    rgba(94,196,214,.22),rgba(167,139,250,.12) 36%,transparent 64%)}
+
+.stack-features .item::after{
+  content:'';position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:linear-gradient(130deg,var(--teal),var(--violet) 48%,var(--warm));
+  padding:1px;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude;
+  transition:opacity .3s var(--ease)}
+.stack-features .item:hover::after,
+.stack-features .item:focus-within::after{opacity:1}
+
+@media (prefers-reduced-motion:reduce){
+  .stack-features .item::after{transition:none}
+}

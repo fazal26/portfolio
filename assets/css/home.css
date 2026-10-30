@@ -313,7 +313,7 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 }
 
 /* ---------- contact cards ---------- */
-.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);align-items:start;gap:var(--s5);
+.contact-grid{display:grid;grid-template-columns:repeat(2,1fr);grid-auto-rows:1fr;align-items:stretch;gap:var(--s5);
   max-width:980px;margin:var(--s7) auto 0;text-align:left}
 @media (max-width:860px){.contact-grid{grid-template-columns:1fr;max-width:520px}}
 
@@ -338,7 +338,7 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 .contact-card .cc-body{font-size:14px;line-height:1.6;color:var(--slate);margin:0;max-width:none}
 
 /* the CTA sits at the foot of every card so the four line up */
-.contact-card .cc-cta,.contact-card .email-box{margin-top:var(--s2)}
+.contact-card .cc-cta,.contact-card .email-box{margin-top:auto}
 .contact-card .cc-cta{justify-content:space-between;gap:var(--s3);padding:12px var(--s4);min-height:44px;background:transparent;color:var(--teal);border:1px solid var(--accent-border);font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
 .contact-card .cc-cta:hover,.contact-card .cc-cta:focus-visible{background:var(--teal);color:var(--bone);border-color:var(--teal)}
 .cc-arrow{transition:transform .28s var(--ease)}

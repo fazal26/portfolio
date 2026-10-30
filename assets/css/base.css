@@ -40,6 +40,14 @@
   --warm:#f0b429;              /* energy                   10.44:1 on page */
   --warm-lt:#ff8a4c;           /*                           8.33:1 on page */
   --violet:#a78bfa;            /*                           7.15:1 on page */
+
+  /* button edge shades: the lit face sits on these, so a 3D button is
+     one solid colour plus its own shadow, never a gradient. Each is
+     1.5-2.6:1 against its face (reads as depth, not a second colour)
+     and >=3:1 against the page, so the edge is visible at all.      */
+  --edge-teal:#237d90;         /* vs face 2.35  vs page 4.08 */
+  --edge-violet:#6d4ad6;       /* vs face 2.14  vs page 3.34 */
+  --edge-warm:#a8760c;         /* vs face 2.14  vs page 4.87 */
   --slate:#9fb0b2;             /* secondary text            8.64:1 on page */
   --slate-lt:#9fb0b2;
 
@@ -112,6 +120,10 @@
   --warm:#9a3412;
   --warm-lt:#b45309;
   --violet:#5b21b6;
+
+  --edge-teal:#06303a;         /* vs face 1.80  vs page 12.60 */
+  --edge-violet:#38126f;       /* vs face 1.58  vs page 12.66 */
+  --edge-warm:#5e1e08;         /* vs face 1.73  vs page 11.29 */
   --slate:#586669;
   --slate-lt:#586669;
 

@@ -317,9 +317,21 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
   max-width:980px;margin:var(--s7) auto 0;text-align:left}
 @media (max-width:860px){.contact-grid{grid-template-columns:1fr;max-width:520px}}
 
+/* Each card picks its accent once and the icon, kicker, top rule and
+   button all read it, so a card is one colour rather than two. The
+   accent says what kind of action the card offers, not whose brand it
+   is: teal to reach me, violet to view a profile, amber to take a file
+   away. :has() is the only thing choosing it, so a browser without
+   :has() simply gets the teal default everywhere, which is the look
+   this section had before.                                          */
+.contact-card{--face:var(--teal);--edge:var(--edge-teal)}
+.contact-card:has(.cc-cta[href*="linkedin"]),
+.contact-card:has(.cc-cta[href*="github"]){--face:var(--violet);--edge:var(--edge-violet)}
+.contact-card:has(.cc-cta[download]){--face:var(--warm);--edge:var(--edge-warm)}
+
 .contact-card{position:relative;display:flex;flex-direction:column;gap:var(--s4);
   background-color:var(--surface);
-  background-image:linear-gradient(to right,var(--teal),var(--teal));
+  background-image:linear-gradient(to right,var(--face),var(--face));
   background-repeat:no-repeat;background-position:top left;background-size:0 2px;
   border:1px solid var(--border);padding:var(--s6) var(--s5);
   transition:background-size .45s var(--ease),border-color .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease)}
@@ -327,31 +339,71 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 
 .cc-head{display:flex;align-items:center;gap:14px}
 .cc-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
-  width:54px;height:54px;border-radius:50%;color:var(--teal);
+  width:54px;height:54px;border-radius:50%;color:var(--face);
   background:var(--chip-bg);border:1px solid var(--accent-border);
   transition:background .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)}
 .cc-icon .ic{width:24px;height:24px}
-.contact-card:hover .cc-icon,.contact-card:focus-within .cc-icon{background:var(--teal);border-color:var(--teal);color:var(--bone);transform:rotate(-7deg) scale(1.07)}
+.contact-card:hover .cc-icon,.contact-card:focus-within .cc-icon{background:var(--face);border-color:var(--face);color:var(--bone);transform:rotate(-7deg) scale(1.07)}
 .contact-card h3{font-family:var(--font-display);font-weight:400;font-size:21px;
   letter-spacing:-.7px;text-transform:uppercase;line-height:1}
-.contact .cc-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);margin:5px 0 0;max-width:none}
+.contact .cc-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--face);margin:5px 0 0;max-width:none}
 .contact-card .cc-body{font-size:14px;line-height:1.6;color:var(--slate);margin:0;max-width:none}
 
 /* the CTA sits at the foot of every card so the four line up */
 .contact-card .cc-cta,.contact-card .email-box{margin-top:auto}
-.contact-card .cc-cta{justify-content:space-between;gap:var(--s3);padding:12px var(--s4);min-height:44px;background:transparent;color:var(--teal);border:1px solid var(--accent-border);font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;transition:background .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease)}
-.contact-card .cc-cta:hover,.contact-card .cc-cta:focus-visible{background:var(--teal);color:var(--bone);border-color:var(--teal)}
+
+/* ---------- 3D action buttons ----------
+   The face is one flat colour and the depth is a hard offset shadow in
+   the matching edge shade, so there is no gradient to go muddy when the
+   theme flips. At rest the face floats 5px above its edge, lifts to 7px
+   under the pointer, and on press is driven right down onto it: that
+   collapse is what makes the click feel physical.
+
+   Colour encodes the kind of action rather than any brand, so the two
+   buttons that do the same thing look the same:
+     teal   reach me          violet  view a profile
+     amber  take a file away
+   Every face carries var(--bone) text at 6.5:1 or better in both
+   themes; the edge shades and their ratios are noted in base.css.   */
+.contact-card .cc-cta{
+  justify-content:space-between;gap:var(--s3);
+  padding:13px var(--s4);min-height:46px;
+  background:var(--face);color:var(--bone);border:none;
+  font-family:var(--font-mono);font-size:12px;font-weight:700;
+  letter-spacing:1.5px;text-transform:uppercase;
+  box-shadow:0 5px 0 var(--edge);
+  transition:transform .12s var(--ease),box-shadow .12s var(--ease)}
+
+.contact-card .cc-cta:hover{transform:translateY(-2px);box-shadow:0 7px 0 var(--edge)}
+.contact-card .cc-cta:active{transform:translateY(5px);box-shadow:0 0 0 var(--edge)}
+/* While focused the button gives up its edge and shows only the ring.
+   This rule is not optional: the base rule above sets box-shadow at
+   (0,2,0) and so outranks the shared :focus-visible at (0,1,0), which
+   silently suppressed the bone separator ring the teal outline needs.
+   Keeping the edge here instead is no good either, because the edge
+   shade then fills the 3px outline gap along the bottom and drops the
+   ring to 2.87:1 in dark and 1.81:1 in light. Against bone the same
+   outline measures 9.58:1 and 7.01:1, so the edge goes.            */
+.contact-card .cc-cta:focus-visible{box-shadow:0 0 0 6px var(--bone),0 0 22px var(--glow-teal)}
 .cc-arrow{transition:transform .28s var(--ease)}
 .contact-card .cc-cta:hover .cc-arrow,.contact-card .cc-cta:focus-visible .cc-arrow{transform:translate(2.5px,-2.5px)}
 .contact-card .cc-cta[download]:hover .cc-arrow,.contact-card .cc-cta[download]:focus-visible .cc-arrow{transform:translateY(3px)}
 
 /* the email card keeps the address box, sized to fit the card */
-.contact-card .email-box{width:100%;border-width:2px;border-color:var(--teal)}
+.contact-card .email-box{width:100%;border-width:2px;border-color:var(--teal);
+  box-shadow:0 5px 0 var(--edge-teal)}
+.contact-card .email-box:hover,.contact-card .email-box:focus-within{
+  box-shadow:0 5px 0 var(--edge-teal),0 0 0 3px var(--glow-teal),0 0 36px var(--glow-teal)}
 .contact-card .email-addr{font-size:clamp(13px,1.35vw,16px);padding:14px var(--s4);gap:10px;flex:1}
 .contact-card .copy-in{width:46px}
 
 @media (prefers-reduced-motion:reduce){
   .cc-arrow{transition:none!important;transform:none!important}
+  /* the buttons keep their depth and still answer a press, they just
+     do not travel or animate getting there */
+  .contact-card .cc-cta{transition:none!important}
+  .contact-card .cc-cta:hover,.contact-card .cc-cta:active{transform:none}
+  .contact-card .cc-cta:active{box-shadow:0 1px 0 var(--edge)}
 }
 
 /* ---------- hero status ----------

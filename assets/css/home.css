@@ -322,7 +322,7 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
    a rail that is scannable without competing with it.
    ============================================================ */
 .split{display:grid;grid-template-columns:1.25fr 1fr;gap:var(--s6);
-  max-width:1060px;margin:var(--s7) auto 0;align-items:start;text-align:left}
+  max-width:1060px;margin:var(--s7) auto 0;align-items:stretch;text-align:left}
 @media (max-width:900px){.split{grid-template-columns:1fr;max-width:560px}}
 
 /* .contact p centres and adds a section-lede bottom gap; every
@@ -356,8 +356,14 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 .split .primary .email-addr{font-size:clamp(13px,1.5vw,17px);padding:16px var(--s4);gap:10px;flex:1}
 .split .primary .copy-in{width:48px}
 
-/* ---------- rail: the three secondary links ---------- */
-.rail{display:flex;flex-direction:column;gap:12px}
+/* ---------- rail: the three secondary links ----------
+   Three equal rows filling the primary's height, so the rail ends
+   level with the email panel instead of stopping short of it. 1fr
+   rather than flex:1 because the rows have to be equal to each other
+   as well as add up, and the sublabels are not the same length.
+   Stacked below 900px there is no primary to match, so the rows fall
+   back to equal-to-the-tallest, which is what they already were.   */
+.rail{display:grid;grid-template-rows:repeat(3,1fr);gap:12px}
 .rail a{--face:var(--violet);--edge:var(--edge-violet);
   position:relative;display:grid;grid-template-columns:46px 1fr auto;
   align-items:center;gap:var(--s4);padding:18px var(--s4);min-height:44px;

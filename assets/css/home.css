@@ -314,16 +314,21 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
   max-width:980px;margin:var(--s7) auto 0;text-align:left}
 @media (max-width:860px){.contact-grid{grid-template-columns:1fr;max-width:520px}}
 
-.contact-card{display:flex;flex-direction:column;gap:var(--s4);
-  background:var(--surface);border:1px solid var(--border);padding:var(--s6) var(--s5);
-  transition:border-color .3s var(--ease),box-shadow .3s var(--ease)}
-.contact-card:hover,.contact-card:focus-within{border-color:var(--accent-border-strong);box-shadow:var(--shadow-md)}
+.contact-card{position:relative;display:flex;flex-direction:column;gap:var(--s4);
+  background-color:var(--surface);
+  background-image:linear-gradient(to right,var(--teal),var(--teal));
+  background-repeat:no-repeat;background-position:top left;background-size:0 2px;
+  border:1px solid var(--border);padding:var(--s6) var(--s5);
+  transition:background-size .45s var(--ease),border-color .35s var(--ease),transform .35s var(--ease),box-shadow .35s var(--ease)}
+.contact-card:hover,.contact-card:focus-within{background-size:100% 2px;border-color:var(--accent-border-strong);box-shadow:var(--shadow-lg),0 0 26px var(--glow-teal)}
 
 .cc-head{display:flex;align-items:center;gap:14px}
 .cc-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
-  width:46px;height:46px;border-radius:50%;color:var(--teal);
-  background:var(--chip-bg);border:1px solid var(--accent-border)}
-.cc-icon .ic{width:20px;height:20px}
+  width:54px;height:54px;border-radius:50%;color:var(--teal);
+  background:var(--chip-bg);border:1px solid var(--accent-border);
+  transition:background .35s var(--ease),border-color .35s var(--ease),color .35s var(--ease),transform .35s var(--ease)}
+.cc-icon .ic{width:24px;height:24px}
+.contact-card:hover .cc-icon,.contact-card:focus-within .cc-icon{background:var(--teal);border-color:var(--teal);color:var(--bone);transform:rotate(-7deg) scale(1.07)}
 .contact-card h3{font-family:var(--font-display);font-weight:400;font-size:21px;
   letter-spacing:-.7px;text-transform:uppercase;line-height:1}
 .contact .cc-kicker{font-family:var(--font-mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);margin:5px 0 0;max-width:none}
@@ -412,7 +417,7 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
 
 /* stroke draws itself in as the card reveals; pathLength="1" on every
    shape makes the timing identical regardless of path length */
-html.js .svc-grid.in .svc-icon .ic > *{
+html.js .svc-grid.in .svc-icon .ic.ic-stroke > *{
   stroke-dasharray:1;stroke-dashoffset:1;
   animation:icon-draw .9s var(--ease) forwards;
   animation-delay:calc(var(--i,0) * 55ms + 160ms)}
@@ -422,5 +427,38 @@ html.js .svc-grid.in .svc-icon .ic > *{
   .svc,.svc::after,.svc-icon,.svc .tags span{transition:none!important}
   .svc:hover{transform:none}
   .svc:hover .svc-icon{transform:none}
-  html.js .svc-grid.in .svc-icon .ic > *{animation:none;stroke-dashoffset:0}
+  html.js .svc-grid.in .svc-icon .ic.ic-stroke > *{animation:none;stroke-dashoffset:0}
+}
+
+/* the contact grid is a .stagger too, so its lift needs to clear the
+   (0,3,1) reset the same way the service cards do */
+.stagger.in > .contact-card:hover,
+.stagger.in > .contact-card:focus-within{transform:translateY(-4px)}
+
+/* icons draw in on reveal, matching the services */
+html.js .contact-grid.in .cc-icon .ic.ic-stroke > *{
+  stroke-dasharray:1;stroke-dashoffset:1;
+  animation:icon-draw .9s var(--ease) forwards;
+  animation-delay:calc(var(--i,0) * 55ms + 160ms)}
+
+@media (prefers-reduced-motion:reduce){
+  .contact-card,.cc-icon{transition:none!important}
+  .stagger.in > .contact-card:hover,
+  .stagger.in > .contact-card:focus-within{transform:none!important}
+  .contact-card:hover .cc-icon,.contact-card:focus-within .cc-icon{transform:none!important}
+  html.js .contact-grid.in .cc-icon .ic.ic-stroke > *{animation:none;stroke-dashoffset:0}
+  html.js .contact-grid.in .cc-icon .ic .ic-mark{animation:none}
+}
+
+/* the LinkedIn and GitHub marks are filled, not stroked, so a draw
+   animation would do nothing on them — they pop in instead */
+html.js .contact-grid.in .cc-icon .ic .ic-mark{
+  transform-origin:center;
+  animation:icon-pop .5s var(--ease) backwards;
+  animation-delay:calc(var(--i,0) * 55ms + 200ms)}
+@keyframes icon-pop{from{opacity:0;transform:scale(.55)}to{opacity:1;transform:none}}
+
+@media (prefers-reduced-motion:reduce){
+  /* declared last so it out-ranks the pop rule above on source order */
+  html.js .contact-grid.in .cc-icon .ic .ic-mark{animation:none!important;opacity:1;transform:none}
 }

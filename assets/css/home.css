@@ -139,7 +139,56 @@ h1.head .red{color:var(--warm)}
 .exp-row .body-col .where{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;color:var(--slate);margin-bottom:10px;font-weight:500}
 .exp-row .body-col p{font-size:15px;line-height:1.6;margin-bottom:var(--s3);max-width:680px;font-weight:400}
 .exp-row .body-col .stk{display:flex;flex-wrap:wrap;gap:6px}
-.exp-row .body-col .stk span{font-family:var(--font-mono);font-size:11px;background:var(--chip-bg);border:1px solid var(--accent-border);color:var(--teal);padding:3px var(--s2);text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.exp-row .body-col .stk span{display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-mono);font-size:11px;background:var(--chip-bg);
+  border:1px solid var(--accent-border);color:var(--teal);padding:3px var(--s2);
+  text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.exp-row .body-col .stk .ti{width:12px;height:12px;flex:0 0 auto;fill:var(--brand,currentColor)}
+
+/* ---------- brand colours on the resume marks ----------
+   Each mark carries its project's own colour, which the Primary Stack
+   chips deliberately do not. The catch is that a brand hex is picked
+   for the brand's own backgrounds, not for these chips, and the chips
+   invert between themes: rgb(19,37,41) in dark, rgb(221,220,209) in
+   light. Nine of the fifteen fail 3:1 against one of those.
+
+   So each is tuned per theme rather than used raw. The near-black
+   brands carry no hue to preserve and become the page's own ink; the
+   rest keep their hue and saturation and shift lightness only as far
+   as it takes to clear the bar.
+
+   Every ratio below is measured off the rendered page. Deriving the
+   chip background by hand instead put six of these a few hundredths
+   under 3:1, because the real composite has more layers than the two
+   tokens suggest; the measurement caught it, the arithmetic did not.
+   ------------------------------------------------------------------ */
+.exp-row .stk [data-tech="typescript"] {--brand:#3178C6}  /* 3.77 */
+.exp-row .stk [data-tech="react"]      {--brand:#61DAFB}  /* 10.52 */
+.exp-row .stk [data-tech="nodedotjs"]  {--brand:#5FA04E}  /* 5.39 */
+.exp-row .stk [data-tech="postgresql"] {--brand:#4169E1}  /* 3.52 */
+.exp-row .stk [data-tech="docker"]     {--brand:#2496ED}  /* 5.42 */
+.exp-row .stk [data-tech="graphql"]    {--brand:#E10098}  /* 3.79 */
+.exp-row .stk [data-tech="storybook"]  {--brand:#FF4785}  /* 5.28 */
+.exp-row .stk [data-tech="rubyonrails"]{--brand:#ec0001}  /* 2.85 raw -> 3.46 */
+.exp-row .stk [data-tech="stripe"]     {--brand:#635BFF}  /* 3.64 */
+.exp-row .stk [data-tech="firebase"]   {--brand:#DD2C00}  /* 3.61 */
+.exp-row .stk [data-tech="ionic"]      {--brand:#3880FF}  /* 4.64 */
+/* black brands: nothing to preserve, so they take the page's ink */
+.exp-row .stk [data-tech="nextdotjs"],
+.exp-row .stk [data-tech="express"],
+.exp-row .stk [data-tech="angular"]    {--brand:var(--ink)}        /* 14.86 */
+.exp-row .stk [data-tech="jest"]       {--brand:#e7172c}  /* 2.78 raw -> 3.44 */
+
+:root[data-theme="light"] .exp-row .stk [data-tech="react"]     {--brand:#0487aa}  /* 1.30 raw -> 3.02 */
+:root[data-theme="light"] .exp-row .stk [data-tech="nodedotjs"] {--brand:#4c7f3e}  /* 2.55 raw -> 3.44 */
+:root[data-theme="light"] .exp-row .stk [data-tech="docker"]    {--brand:#1076c4}  /* 2.53 raw -> 3.46 */
+:root[data-theme="light"] .exp-row .stk [data-tech="storybook"] {--brand:#e5004d}  /* 2.60 raw -> 3.43 */
+:root[data-theme="light"] .exp-row .stk [data-tech="ionic"]     {--brand:#1268ff}  /* 2.96 raw -> 3.44 */
+/* in light the black brands are legible as themselves again */
+:root[data-theme="light"] .exp-row .stk [data-tech="nextdotjs"],
+:root[data-theme="light"] .exp-row .stk [data-tech="express"]   {--brand:#000000}  /* 16.87 */
+:root[data-theme="light"] .exp-row .stk [data-tech="angular"]   {--brand:#0F0F11}  /* 15.38 */
+:root[data-theme="light"] .exp-row .stk [data-tech="jest"]      {--brand:#C21325}  /* 4.94 */
 
 /* ---------- contact ---------- */
 .contact{background:radial-gradient(70% 120% at 50% 0%,var(--contact-wash),transparent 70%);padding:var(--s10) var(--s6);border-bottom:1px solid var(--border-soft);text-align:center;position:relative}

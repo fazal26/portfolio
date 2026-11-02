@@ -64,7 +64,11 @@ h1.head .red{color:var(--warm)}
 .card h3{font-family:var(--font-display);font-weight:400;font-size:30px;margin-bottom:10px;letter-spacing:-1px;line-height:.98;text-transform:uppercase}
 .card p{font-size:15px;line-height:1.55;margin-bottom:var(--s4);flex:1}
 .card .stk{display:flex;flex-wrap:wrap;gap:6px}
-.card .stk span{font-family:var(--font-mono);font-size:11px;background:var(--chip-bg);border:1px solid var(--accent-border);color:var(--teal);padding:3px var(--s2);text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.card .stk span{display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-mono);font-size:11px;background:var(--chip-bg);
+  border:1px solid var(--accent-border);color:var(--teal);padding:3px var(--s2);
+  text-transform:uppercase;letter-spacing:.5px;font-weight:500}
+.card .stk .ti{width:11px;height:11px;flex:0 0 auto;fill:var(--brand,currentColor)}
 .card .read{font-family:var(--font-mono);font-size:11px;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border:1px solid var(--teal);background:var(--teal);color:var(--bone);transition:transform .12s}
 .card:hover .read{transform:translateX(4px)}
 .card-link{position:absolute;inset:0;z-index:1}
@@ -76,6 +80,11 @@ h1.head .red{color:var(--warm)}
 .card.colored-1{background:var(--teal);color:var(--bone)}
 .card.colored-1 .when{color:var(--bone)}
 .card.colored-1 .stk span{background:rgba(255,255,255,.12);border-color:var(--bone);color:var(--bone)}
+/* The lead and alternate cards are a solid teal and a solid amber, and
+   invert everything on them to bone. A brand colour on those fills has
+   nowhere to go: React's cyan on teal is about 1.1:1, Node's green on
+   amber little better. The marks follow the chip text instead. */
+.card.colored-1 .stk .ti,.card.colored-r .stk .ti{--brand:currentColor}
 .card.colored-1 .num{background:var(--bone);color:var(--ink)}
 .card.colored-1 .read{background:var(--bone);color:var(--ink);border-color:var(--bone)}
 .card.colored-1 .live{border-color:var(--bone);color:var(--bone)}
@@ -182,6 +191,8 @@ h1.head .red{color:var(--warm)}
 [data-tech="mui"]        {--brand:#007FFF}  /* 4.14 */
 [data-tech="shopify"]    {--brand:#7AB55C}  /* 6.49 */
 [data-tech="googlemaps"] {--brand:#4285F4}  /* 4.45 */
+[data-tech="redux"]      {--brand:#8760c4}  /* 2.62 raw -> 3.41 */
+[data-tech="bluetooth"]  {--brand:#0082FC}  /* 4.23 */
 
 :root[data-theme="light"] [data-tech="react"]     {--brand:#0487aa}  /* 1.30 raw -> 3.02 */
 :root[data-theme="light"] [data-tech="nodedotjs"] {--brand:#4c7f3e}  /* 2.55 raw -> 3.44 */
@@ -197,6 +208,8 @@ h1.head .red{color:var(--warm)}
 :root[data-theme="light"] [data-tech="mui"]        {--brand:#0071e3}  /* 2.78 raw -> 3.41 */
 :root[data-theme="light"] [data-tech="shopify"]    {--brand:#517e39}  /* 1.77 raw -> 3.45 */
 :root[data-theme="light"] [data-tech="googlemaps"] {--brand:#1b6cf2}  /* 2.58 raw -> 3.40 */
+:root[data-theme="light"] [data-tech="redux"]      {--brand:#764ABC}  /* 4.38 */
+:root[data-theme="light"] [data-tech="bluetooth"]  {--brand:#0072dd}  /* 2.72 raw -> 3.41 */
 
 /* ---------- contact ---------- */
 .contact{background:radial-gradient(70% 120% at 50% 0%,var(--contact-wash),transparent 70%);padding:var(--s10) var(--s6);border-bottom:1px solid var(--border-soft);text-align:center;position:relative}

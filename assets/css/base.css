@@ -319,6 +319,82 @@ html.js .theme-toggle{display:inline-flex}
   background:linear-gradient(90deg,var(--teal),var(--violet));will-change:transform}
 html:not(.js) .scroll-progress{display:none}
 
+/* ============================================================
+   Boot overlay
+
+   Decorative, so it is built to cost nothing real:
+   - no JS            -> .boot stays display:none and the page is
+                         simply there, never hidden behind a loader
+                         that can no longer dismiss itself
+   - reduced motion   -> removed outright rather than softened
+   - already seen     -> .booted is set from sessionStorage before
+                         first paint, so moving between pages does
+                         not replay it
+   The page underneath is fully rendered the whole time; this only
+   covers it, and any key or click dismisses it early.
+   ============================================================ */
+.boot{display:none}
+html.js .boot{display:flex;position:fixed;inset:0;z-index:400;
+  align-items:center;justify-content:center;
+  background:var(--bone);
+  background-image:
+    radial-gradient(58% 44% at 50% 40%,var(--glow-teal),transparent 70%),
+    linear-gradient(var(--border-soft) 1px,transparent 1px),
+    linear-gradient(90deg,var(--border-soft) 1px,transparent 1px);
+  background-size:100% 100%,64px 64px,64px 64px;
+  clip-path:inset(0 0 0 0);
+  transition:clip-path .62s var(--ease)}
+html.js.booted .boot{display:none}
+
+.boot-core{display:flex;flex-direction:column;align-items:center;gap:var(--s5);
+  width:min(300px,78vw);
+  transition:opacity .3s var(--ease),transform .3s var(--ease)}
+
+/* the monogram, with the gradient ring used elsewhere on the site
+   and a sweep passing over it so the mark itself reads as working */
+.boot-mark{position:relative;display:grid;place-items:center;width:84px;height:84px;
+  font-family:var(--font-display);font-size:30px;letter-spacing:-1.5px;
+  color:var(--ink);background:var(--surface);overflow:hidden}
+.boot-mark::before{content:'';position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(130deg,var(--teal),var(--violet) 48%,var(--warm));
+  padding:2px;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+  mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  mask-composite:exclude}
+/* transform, not top: animating top relayouts the mark every frame and
+   cost ~200ms of blocking time on a throttled mobile CPU. This version
+   stays on the compositor. */
+.boot-mark::after{content:'';position:absolute;left:0;right:0;top:0;height:38%;
+  background:linear-gradient(180deg,transparent,var(--glow-teal),transparent);
+  transform:translateY(-120%);
+  animation:boot-sweep 1.5s var(--ease) infinite}
+@keyframes boot-sweep{from{transform:translateY(-120%)}to{transform:translateY(300%)}}
+
+.boot-bar{width:100%;height:2px;background:var(--border);overflow:hidden}
+.boot-bar i{display:block;width:100%;height:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--teal),var(--violet) 55%,var(--warm))}
+
+.boot-meta{display:flex;justify-content:space-between;align-items:baseline;width:100%;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:1.8px;text-transform:uppercase}
+.boot-label{color:var(--slate)}
+.boot-pct{color:var(--teal);font-weight:700}
+
+/* content leaves first, then the panel wipes up off the page */
+.boot.out .boot-core{opacity:0;transform:translateY(-8px)}
+.boot.out{clip-path:inset(0 0 100% 0)}
+
+/* Failsafe. The script that dismisses this is the only thing standing
+   between a visitor and a page they cannot see, so CSS takes the
+   overlay away on its own at 6s whatever happens to that script - a
+   404 on motion.js, a throw, a browser that never fires load. */
+html.js .boot{animation:boot-failsafe 0s linear 6s forwards}
+@keyframes boot-failsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+@media (prefers-reduced-motion:reduce){
+  html.js .boot{display:none!important}
+}
+
 /* ---------- pointer cursor ----------
    A 6px dot pinned exactly to the pointer and a 26px ring that eases in
    behind it. Over anything interactive the dot hides and the ring opens

@@ -9,6 +9,86 @@
    Work is split deliberately: revealing content is on the critical
    path, decoration waits for idle so it cannot block interaction.
    ============================================================ */
+/* ============================================================
+   Boot overlay
+
+   Drives the counter and takes the overlay away. The page behind is
+   already rendered, so every path here ends in the overlay going:
+   on load, on a hard cap, on any key or click, and from a CSS
+   animation at 6s if this script never runs at all.
+   ============================================================ */
+(function () {
+  'use strict';
+  var boot = document.querySelector('.boot');
+  if (!boot) return;
+
+  var root = document.documentElement;
+  var seen = root.classList.contains('booted');
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function remember() { try { sessionStorage.setItem('booted', '1'); } catch (e) {} }
+
+  // nothing to play: already shown this session, reduced motion, or no
+  // JS class, which means the CSS never showed it in the first place
+  if (seen || reduced || !root.classList.contains('js')) {
+    boot.parentNode && boot.parentNode.removeChild(boot);
+    remember();
+    return;
+  }
+
+  var fill = boot.querySelector('.boot-bar i');
+  var pct = boot.querySelector('.boot-pct');
+  var label = boot.querySelector('.boot-label');
+  var STEPS = [[0, 'Initialising'], [34, 'Loading styles'], [66, 'Mounting'], [92, 'Ready']];
+  var MIN = 620;      // below this it reads as a flicker, not a load
+  var MAX = 2200;     // past this the page has waited long enough
+  var start = (window.performance && performance.now) ? performance.now() : Date.now();
+  var now = function () { return ((window.performance && performance.now) ? performance.now() : Date.now()) - start; };
+
+  var p = 0, loaded = false, finished = false, lastV = -1;
+  if (document.readyState === 'complete') loaded = true;
+  else addEventListener('load', function () { loaded = true; }, { once: true });
+
+  function finish() {
+    if (finished) return;
+    finished = true;
+    remember();
+    boot.classList.add('out');
+    var gone = function () { boot.parentNode && boot.parentNode.removeChild(boot); };
+    boot.addEventListener('transitionend', gone, { once: true });
+    setTimeout(gone, 900);            // in case the transition never fires
+  }
+
+  // a keyboard user tabbing during the hold would be moving focus behind
+  // an opaque panel, so any key or pointer press skips the rest
+  addEventListener('keydown', finish, { once: true });
+  addEventListener('pointerdown', finish, { once: true });
+
+  function tick() {
+    var el = now();
+    // creeps to 92 while waiting so it never sits still, then runs out
+    var target = loaded ? 100 : Math.min(92, (el / MAX) * 100);
+    p += (target - p) * 0.12;
+    if (loaded && p > 99.3) p = 100;
+
+    var v = Math.round(p);
+    fill.style.transform = 'scaleX(' + (p / 100).toFixed(3) + ')';
+    // the text only changes 100 times, not once a frame; writing it
+    // every frame was re-laying out the counter for no visible gain
+    if (v !== lastV) {
+      lastV = v;
+      pct.textContent = v < 10 ? '0' + v : String(v);
+      for (var i = STEPS.length - 1; i >= 0; i--) {
+        if (v >= STEPS[i][0]) { if (label.textContent !== STEPS[i][1]) label.textContent = STEPS[i][1]; break; }
+      }
+    }
+
+    if ((v >= 100 && el >= MIN) || el > MAX + 1000) { finish(); return; }
+    requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+})();
+
 (function () {
   'use strict';
 

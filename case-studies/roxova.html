@@ -41,9 +41,16 @@
 <link rel="preload" href="../assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin/>
 <link rel="stylesheet" href="../assets/css/base.css"/>
 <link rel="stylesheet" href="../assets/css/case.css"/>
-<script>(function(){var d=document.documentElement;d.className+=" js";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t);}catch(e){}})();</script>
+<script>(function(){var d=document.documentElement;d.className+=" js";try{var t=localStorage.getItem("theme");if(t==="light"||t==="dark")d.setAttribute("data-theme",t);if(sessionStorage.getItem("booted"))d.className+=" booted";}catch(e){}})();</script>
 </head>
 <body>
+<div class="boot" aria-hidden="true">
+  <div class="boot-core">
+    <div class="boot-mark">FK</div>
+    <div class="boot-bar"><i></i></div>
+    <div class="boot-meta"><span class="boot-label">Initialising</span><span class="boot-pct">00</span></div>
+  </div>
+</div>
 
 <a class="skip-link" href="#main">Skip to content</a>
 

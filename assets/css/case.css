@@ -70,7 +70,16 @@ html,body{line-height:1.55}
 /* ---------- tech grid ---------- */
 .tech-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:780px}
 @media (max-width:768px){.tech-grid{grid-template-columns:repeat(2,1fr)}}
-.tech-grid .chip{background:var(--chip-bg);border:1px solid var(--accent-border);color:var(--teal);padding:14px var(--s4);font-family:var(--font-mono);font-size:13px;font-weight:500;text-transform:uppercase;letter-spacing:1px;text-align:center;transition:transform .15s,box-shadow .15s}
+.tech-grid .chip{display:flex;align-items:center;justify-content:center;gap:8px;
+  background:var(--chip-bg);border:1px solid var(--accent-border);color:var(--teal);
+  padding:14px var(--s4);font-family:var(--font-mono);font-size:13px;font-weight:500;
+  text-transform:uppercase;letter-spacing:1px;text-align:center;
+  transition:transform .15s,box-shadow .15s}
+/* brand marks, coloured from the [data-tech] table in base.css. These
+   chips sit straight on the page with no surface layer beneath them,
+   which makes the light theme the tightest background on the site, so
+   that is what those values are fitted to. */
+.tech-grid .chip .ti{width:15px;height:15px;flex:0 0 auto;fill:var(--brand,currentColor)}
 .tech-grid .chip:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg),0 0 26px var(--glow-teal)}
 
 /* ---------- pager ---------- */

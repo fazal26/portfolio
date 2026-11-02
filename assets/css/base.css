@@ -395,6 +395,73 @@ html.js .boot{animation:boot-failsafe 0s linear 6s forwards}
   html.js .boot{display:none!important}
 }
 
+/* ---------- brand colours for the [data-tech] marks ----------
+   Each mark carries its project's own colour, which the Primary Stack
+   chips deliberately do not. The catch is that a brand hex is picked
+   for the brand's own backgrounds, not for these chips, and the chips
+   invert between themes: rgb(19,37,41) in dark, rgb(221,220,209) in
+   light. Nine of the fifteen fail 3:1 against one of those.
+
+   So each is tuned per theme rather than used raw. The near-black
+   brands carry no hue to preserve and become the page's own ink; the
+   rest keep their hue and saturation and shift lightness only as far
+   as it takes to clear the bar.
+
+   Every ratio below is measured off the rendered page. Deriving the
+   chip background by hand instead put six of these a few hundredths
+   under 3:1, because the real composite has more layers than the two
+   tokens suggest; the measurement caught it, the arithmetic did not.
+   ------------------------------------------------------------------ */
+[data-tech="typescript"] {--brand:#3178C6}  /* 3.77 */
+[data-tech="react"]      {--brand:#61DAFB}  /* 10.52 */
+[data-tech="nodedotjs"]  {--brand:#5FA04E}  /* 5.39 */
+[data-tech="postgresql"] {--brand:#4169E1}  /* 3.52 */
+[data-tech="docker"]     {--brand:#2496ED}  /* 5.42 */
+[data-tech="graphql"]    {--brand:#E10098}  /* 3.79 */
+[data-tech="storybook"]  {--brand:#FF4785}  /* 5.28 */
+[data-tech="rubyonrails"]{--brand:#ec0001}  /* 2.85 raw -> 3.46 */
+[data-tech="stripe"]     {--brand:#635BFF}  /* 3.64 */
+[data-tech="firebase"]   {--brand:#DD2C00}  /* 3.61 */
+[data-tech="ionic"]      {--brand:#3880FF}  /* 4.64 */
+/* black brands: nothing to preserve, so they take the page's ink */
+[data-tech="nextdotjs"],
+[data-tech="express"],
+[data-tech="angular"]    {--brand:var(--ink)}        /* 14.86 */
+[data-tech="jest"]       {--brand:#e7172c}  /* 2.78 raw -> 3.44 */
+[data-tech="vuedotjs"]   {--brand:#4FC08D}  /* 6.99 */
+[data-tech="mui"]        {--brand:#007FFF}  /* 4.14 */
+[data-tech="shopify"]    {--brand:#7AB55C}  /* 6.49 */
+[data-tech="googlemaps"] {--brand:#4285F4}  /* 4.45 */
+[data-tech="redux"]      {--brand:#8760c4}  /* 2.62 raw -> 3.41 */
+[data-tech="bluetooth"]  {--brand:#0082FC}  /* 4.23 */
+[data-tech="tailwindcss"]{--brand:#06B6D4}  /* 7.04 */
+[data-tech="vite"]       {--brand:#646CFF}  /* 4.17 */
+[data-tech="vercel"]     {--brand:var(--ink)}        /* black brand, 1.23 raw */
+
+:root[data-theme="light"] [data-tech="react"]     {--brand:#0487aa}  /* 1.30 raw -> 3.02 */
+:root[data-theme="light"] [data-tech="nodedotjs"] {--brand:#4c7f3e}  /* 2.55 raw -> 3.44 */
+:root[data-theme="light"] [data-tech="docker"]    {--brand:#1076c4}  /* 2.53 raw -> 3.46 */
+:root[data-theme="light"] [data-tech="storybook"] {--brand:#e5004d}  /* 2.60 raw -> 3.43 */
+:root[data-theme="light"] [data-tech="ionic"]     {--brand:#1268ff}  /* 2.96 raw -> 3.44 */
+/* in light the black brands are legible as themselves again */
+:root[data-theme="light"] [data-tech="nextdotjs"],
+:root[data-theme="light"] [data-tech="express"]   {--brand:#000000}  /* 16.87 */
+:root[data-theme="light"] [data-tech="angular"]   {--brand:#0F0F11}  /* 15.38 */
+:root[data-theme="light"] [data-tech="jest"]      {--brand:#C21325}  /* 4.94 */
+:root[data-theme="light"] [data-tech="vuedotjs"]   {--brand:#2f825c}  /* 1.65 raw -> 3.41 */
+:root[data-theme="light"] [data-tech="mui"]        {--brand:#0071e3}  /* 2.78 raw -> 3.41 */
+:root[data-theme="light"] [data-tech="shopify"]    {--brand:#517e39}  /* 1.77 raw -> 3.45 */
+:root[data-theme="light"] [data-tech="googlemaps"] {--brand:#1b6cf2}  /* 2.58 raw -> 3.40 */
+:root[data-theme="light"] [data-tech="redux"]      {--brand:#764ABC}  /* 4.38 */
+:root[data-theme="light"] [data-tech="bluetooth"]  {--brand:#0072dd}  /* 2.72 raw -> 3.41 */
+:root[data-theme="light"] [data-tech="tailwindcss"]{--brand:#04879d}  /* 1.95 raw -> 3.39 */
+:root[data-theme="light"] [data-tech="vercel"]     {--brand:#000000}  /* 16.87 */
+/* These are fitted to the tightest background any of them lands on,
+   which is the case study chip: rgb(15,30,34) dark and the lighter
+   rgb(230,231,224) in light, where there is no surface layer under
+   the chip as there is on the homepage. One value per theme then
+   serves every page rather than each page carrying its own. */
+
 /* ---------- pointer cursor ----------
    A 6px dot pinned exactly to the pointer and a 26px ring that eases in
    behind it. Over anything interactive the dot hides and the ring opens

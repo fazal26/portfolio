@@ -60,7 +60,6 @@ h1.head .red{color:var(--warm)}
 .card{background:var(--surface);border:1px solid var(--border);padding:var(--s5);position:relative;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;justify-content:space-between;min-height:280px;color:inherit}
 .card:hover{transform:translate(-3px,-3px);box-shadow:var(--shadow-lg),0 0 0 1px var(--warm),0 0 24px var(--glow-warm)}
 .card .num{position:absolute;top:-3px;right:-3px;background:var(--warm);color:var(--bone);font-family:var(--font-mono);font-weight:700;padding:6px var(--s3);font-size:14px}
-.card .when{font-family:var(--font-mono);font-size:11px;color:var(--slate);text-transform:uppercase;letter-spacing:1.5px;margin-top:var(--s4);margin-bottom:6px;font-weight:500}
 .card h3{font-family:var(--font-display);font-weight:400;font-size:30px;margin-bottom:10px;letter-spacing:-1px;line-height:.98;text-transform:uppercase}
 .card p{font-size:15px;line-height:1.55;margin-bottom:var(--s4);flex:1}
 .card .stk{display:flex;flex-wrap:wrap;gap:6px}
@@ -78,7 +77,6 @@ h1.head .red{color:var(--warm)}
 .card .live:hover{background:var(--teal);color:var(--bone);transform:translate(-2px,-2px);box-shadow:var(--shadow-sm),0 0 18px var(--glow-teal)}
 /* lead card */
 .card.colored-1{background:var(--teal);color:var(--bone)}
-.card.colored-1 .when{color:var(--bone)}
 .card.colored-1 .stk span{background:rgba(255,255,255,.12);border-color:var(--bone);color:var(--bone)}
 /* The lead and alternate cards are a solid teal and a solid amber, and
    invert everything on them to bone. A brand colour on those fills has
@@ -91,7 +89,6 @@ h1.head .red{color:var(--warm)}
 .card.colored-1 .live:hover{background:var(--bone);color:var(--teal-dp);box-shadow:var(--shadow-sm)}
 /* alternate card */
 .card.colored-r{background:var(--warm);color:var(--bone)}
-.card.colored-r .when{color:rgba(255,255,255,.85)}
 .card.colored-r h3{color:var(--bone)}
 .card.colored-r .stk span{background:rgba(0,0,0,.14);border-color:var(--bone);color:var(--bone)}
 .card.colored-r .num{background:var(--warm-lt);color:var(--ink)}

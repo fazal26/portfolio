@@ -107,7 +107,22 @@ h1.head .red{color:var(--warm)}
 .stack-features .item .name{font-family:var(--font-display);font-weight:400;font-size:23px;letter-spacing:-1px;color:var(--panel-accent);line-height:1;text-transform:uppercase}
 .stack-features .item .lab{font-family:var(--font-mono);font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--panel-dim);margin-top:auto;padding-top:14px;border-top:2px dashed #2d4a46;font-weight:500}
 .stack-features .item .list{display:flex;flex-wrap:wrap;gap:6px}
-.stack-features .item .list span{font-family:var(--font-mono);font-size:11px;background:rgba(94,196,214,.1);border:1px solid rgba(94,196,214,.34);color:var(--panel-accent);padding:3px var(--s2);letter-spacing:.3px;font-weight:500}
+.stack-features .item .list span{display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-mono);font-size:11px;background:rgba(94,196,214,.1);
+  border:1px solid rgba(94,196,214,.34);color:var(--panel-accent);padding:3px var(--s2);
+  letter-spacing:.3px;font-weight:500}
+
+/* Brand marks, drawn in currentColor rather than their own brand colours.
+   Several of these are near-black by brand (Next.js, Express, GitHub) and
+   would disappear against this panel; the rest would turn one dense grid
+   of chips into a colour chart. Monochrome also means they inherit the
+   chip's contrast, which is already measured.
+   Not every chip gets one: WCAG, REST, Flexbox and the other concepts are
+   not products and have no mark, so they stay text-only. */
+.stack-features .item .list .ti{width:12px;height:12px;flex:0 0 auto;fill:currentColor}
+/* the sprite must stay in the layout for <use> to resolve in every
+   browser, so it is collapsed rather than display:none */
+.ti-sprite{position:absolute;width:0;height:0;overflow:hidden}
 
 /* ---------- experience ---------- */
 .exp{display:flex;flex-direction:column;border:1px solid var(--border);background:var(--surface)}

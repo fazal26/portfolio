@@ -4,20 +4,20 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Klaro · Case Study · Fazal Karim</title>
-<meta name="description" content="A connected-device mobile app monitoring humidor temperature and humidity with personalised alerts — React Native for iOS and Android, a hand-built BLE layer, and store releases on both platforms."/>
+<meta name="description" content="A connected-device mobile app monitoring humidor temperature and humidity with personalised alerts. React Native for iOS and Android, a hand-built BLE layer, and store releases on both platforms."/>
 <link rel="canonical" href="https://fazal26.github.io/portfolio/case-studies/klaro.html"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Fazal Karim"/>
 <meta property="og:title" content="Klaro · Case Study · Fazal Karim"/>
-<meta property="og:description" content="A connected-device mobile app monitoring humidor temperature and humidity with personalised alerts — React Native for iOS and Android, a hand-built BLE layer, and store releases on both platforms."/>
+<meta property="og:description" content="A connected-device mobile app monitoring humidor temperature and humidity with personalised alerts. React Native for iOS and Android, a hand-built BLE layer, and store releases on both platforms."/>
 <meta property="og:url" content="https://fazal26.github.io/portfolio/case-studies/klaro.html"/>
 <meta property="og:image" content="https://fazal26.github.io/portfolio/assets/img/og-card.png"/>
 <meta property="og:image:width" content="1200"/>
 <meta property="og:image:height" content="630"/>
-<meta property="og:image:alt" content="Fazal Karim — Staff Software Engineer"/>
+<meta property="og:image:alt" content="Fazal Karim | Staff Software Engineer"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:title" content="Klaro · Case Study · Fazal Karim"/>
-<meta name="twitter:description" content="A connected-device mobile app monitoring humidor temperature and humidity with personalised alerts — React Native for iOS and Android, a hand-built BLE layer, and store releases on both platforms."/>
+<meta name="twitter:description" content="A connected-device mobile app monitoring humidor temperature and humidity with personalised alerts. React Native for iOS and Android, a hand-built BLE layer, and store releases on both platforms."/>
 <meta name="twitter:image" content="https://fazal26.github.io/portfolio/assets/img/og-card.png"/>
 
 
@@ -70,7 +70,7 @@
     <div class="case-num">CASE 05 / 06</div>
   </div>
   <h1><span class="accent">Klaro.</span></h1>
-  <p class="deck">A connected-device mobile app monitoring humidor temperature and humidity, with personalised alerts when conditions drift &mdash; architected for iOS and Android, with the Bluetooth layer built by hand.</p>
+  <p class="deck">A connected-device mobile app monitoring humidor temperature and humidity, with personalised alerts when conditions drift, architected for iOS and Android, with the Bluetooth layer built by hand.</p>
   <div class="meta-row stagger reveal">
     <div class="cell"><span class="lab">Role</span><span class="val">Mobile Architect</span></div>
     <div class="cell"><span class="lab">Sector</span><span class="val">Connected Device</span></div>
@@ -92,7 +92,7 @@
   <div class="container">
     <div class="head"><h2>Approach</h2><div class="num">// 02</div></div>
     <ul class="steps stagger reveal">
-      <li><div class="step-num">01</div><div class="step-body"><strong>One React Native codebase, two platforms</strong>Architected the app so iOS and Android share product logic while the parts that genuinely differ &mdash; Bluetooth permissions, background behaviour, store requirements &mdash; stay isolated rather than smeared through the UI.</div></li>
+      <li><div class="step-num">01</div><div class="step-body"><strong>One React Native codebase, two platforms</strong>Architected the app so iOS and Android share product logic while the parts that genuinely differ (Bluetooth permissions, background behaviour, store requirements) stay isolated rather than smeared through the UI.</div></li>
       <li><div class="step-num">02</div><div class="step-body"><strong>A BLE layer built, not borrowed</strong>Pairing, sensor reads and reconnection were written as a dedicated layer with explicit state, so the rest of the app consumes readings without knowing anything about radio conditions.</div></li>
       <li><div class="step-num">03</div><div class="step-body"><strong>Reconnection as the default case</strong>Dropped connections are normal, not exceptional. The layer treats reconnection as routine and recovers quietly, instead of surfacing every blip to the user or going silently dead.</div></li>
       <li><div class="step-num">04</div><div class="step-body"><strong>Alerts tied to the owner's thresholds</strong>Personalised alerting on temperature and humidity drift, so the notification means something to that owner's box rather than firing on a generic range.</div></li>
@@ -117,7 +117,7 @@
 <section class="cs-section">
   <div class="container">
     <div class="head"><h2>Outcome</h2><div class="num">// 04</div></div>
-    <p>Owners see live temperature and humidity from their own humidor and get told when it drifts, on either platform, from one codebase &mdash; with the connection handling itself rather than asking to be managed.</p>
+    <p>Owners see live temperature and humidity from their own humidor and get told when it drifts, on either platform, from one codebase, with the connection handling itself rather than asking to be managed.</p>
     <div class="outcomes stagger reveal">
       <div class="stat"><strong>iOS + Android</strong><span class="lab">One React Native codebase, released on both stores</span></div>
       <div class="stat"><strong>BLE</strong><span class="lab">Pairing, sensor reads and reconnection built by hand</span></div>

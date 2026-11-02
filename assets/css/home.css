@@ -145,7 +145,7 @@ h1.head .red{color:var(--warm)}
   text-transform:uppercase;letter-spacing:.5px;font-weight:500}
 .exp-row .body-col .stk .ti{width:12px;height:12px;flex:0 0 auto;fill:var(--brand,currentColor)}
 
-/* ---------- brand colours on the resume marks ----------
+/* ---------- brand colours, shared by Resume and How Can I Help ----------
    Each mark carries its project's own colour, which the Primary Stack
    chips deliberately do not. The catch is that a brand hex is picked
    for the brand's own backgrounds, not for these chips, and the chips
@@ -162,33 +162,41 @@ h1.head .red{color:var(--warm)}
    under 3:1, because the real composite has more layers than the two
    tokens suggest; the measurement caught it, the arithmetic did not.
    ------------------------------------------------------------------ */
-.exp-row .stk [data-tech="typescript"] {--brand:#3178C6}  /* 3.77 */
-.exp-row .stk [data-tech="react"]      {--brand:#61DAFB}  /* 10.52 */
-.exp-row .stk [data-tech="nodedotjs"]  {--brand:#5FA04E}  /* 5.39 */
-.exp-row .stk [data-tech="postgresql"] {--brand:#4169E1}  /* 3.52 */
-.exp-row .stk [data-tech="docker"]     {--brand:#2496ED}  /* 5.42 */
-.exp-row .stk [data-tech="graphql"]    {--brand:#E10098}  /* 3.79 */
-.exp-row .stk [data-tech="storybook"]  {--brand:#FF4785}  /* 5.28 */
-.exp-row .stk [data-tech="rubyonrails"]{--brand:#ec0001}  /* 2.85 raw -> 3.46 */
-.exp-row .stk [data-tech="stripe"]     {--brand:#635BFF}  /* 3.64 */
-.exp-row .stk [data-tech="firebase"]   {--brand:#DD2C00}  /* 3.61 */
-.exp-row .stk [data-tech="ionic"]      {--brand:#3880FF}  /* 4.64 */
+[data-tech="typescript"] {--brand:#3178C6}  /* 3.77 */
+[data-tech="react"]      {--brand:#61DAFB}  /* 10.52 */
+[data-tech="nodedotjs"]  {--brand:#5FA04E}  /* 5.39 */
+[data-tech="postgresql"] {--brand:#4169E1}  /* 3.52 */
+[data-tech="docker"]     {--brand:#2496ED}  /* 5.42 */
+[data-tech="graphql"]    {--brand:#E10098}  /* 3.79 */
+[data-tech="storybook"]  {--brand:#FF4785}  /* 5.28 */
+[data-tech="rubyonrails"]{--brand:#ec0001}  /* 2.85 raw -> 3.46 */
+[data-tech="stripe"]     {--brand:#635BFF}  /* 3.64 */
+[data-tech="firebase"]   {--brand:#DD2C00}  /* 3.61 */
+[data-tech="ionic"]      {--brand:#3880FF}  /* 4.64 */
 /* black brands: nothing to preserve, so they take the page's ink */
-.exp-row .stk [data-tech="nextdotjs"],
-.exp-row .stk [data-tech="express"],
-.exp-row .stk [data-tech="angular"]    {--brand:var(--ink)}        /* 14.86 */
-.exp-row .stk [data-tech="jest"]       {--brand:#e7172c}  /* 2.78 raw -> 3.44 */
+[data-tech="nextdotjs"],
+[data-tech="express"],
+[data-tech="angular"]    {--brand:var(--ink)}        /* 14.86 */
+[data-tech="jest"]       {--brand:#e7172c}  /* 2.78 raw -> 3.44 */
+[data-tech="vuedotjs"]   {--brand:#4FC08D}  /* 6.99 */
+[data-tech="mui"]        {--brand:#007FFF}  /* 4.14 */
+[data-tech="shopify"]    {--brand:#7AB55C}  /* 6.49 */
+[data-tech="googlemaps"] {--brand:#4285F4}  /* 4.45 */
 
-:root[data-theme="light"] .exp-row .stk [data-tech="react"]     {--brand:#0487aa}  /* 1.30 raw -> 3.02 */
-:root[data-theme="light"] .exp-row .stk [data-tech="nodedotjs"] {--brand:#4c7f3e}  /* 2.55 raw -> 3.44 */
-:root[data-theme="light"] .exp-row .stk [data-tech="docker"]    {--brand:#1076c4}  /* 2.53 raw -> 3.46 */
-:root[data-theme="light"] .exp-row .stk [data-tech="storybook"] {--brand:#e5004d}  /* 2.60 raw -> 3.43 */
-:root[data-theme="light"] .exp-row .stk [data-tech="ionic"]     {--brand:#1268ff}  /* 2.96 raw -> 3.44 */
+:root[data-theme="light"] [data-tech="react"]     {--brand:#0487aa}  /* 1.30 raw -> 3.02 */
+:root[data-theme="light"] [data-tech="nodedotjs"] {--brand:#4c7f3e}  /* 2.55 raw -> 3.44 */
+:root[data-theme="light"] [data-tech="docker"]    {--brand:#1076c4}  /* 2.53 raw -> 3.46 */
+:root[data-theme="light"] [data-tech="storybook"] {--brand:#e5004d}  /* 2.60 raw -> 3.43 */
+:root[data-theme="light"] [data-tech="ionic"]     {--brand:#1268ff}  /* 2.96 raw -> 3.44 */
 /* in light the black brands are legible as themselves again */
-:root[data-theme="light"] .exp-row .stk [data-tech="nextdotjs"],
-:root[data-theme="light"] .exp-row .stk [data-tech="express"]   {--brand:#000000}  /* 16.87 */
-:root[data-theme="light"] .exp-row .stk [data-tech="angular"]   {--brand:#0F0F11}  /* 15.38 */
-:root[data-theme="light"] .exp-row .stk [data-tech="jest"]      {--brand:#C21325}  /* 4.94 */
+:root[data-theme="light"] [data-tech="nextdotjs"],
+:root[data-theme="light"] [data-tech="express"]   {--brand:#000000}  /* 16.87 */
+:root[data-theme="light"] [data-tech="angular"]   {--brand:#0F0F11}  /* 15.38 */
+:root[data-theme="light"] [data-tech="jest"]      {--brand:#C21325}  /* 4.94 */
+:root[data-theme="light"] [data-tech="vuedotjs"]   {--brand:#2f825c}  /* 1.65 raw -> 3.41 */
+:root[data-theme="light"] [data-tech="mui"]        {--brand:#0071e3}  /* 2.78 raw -> 3.41 */
+:root[data-theme="light"] [data-tech="shopify"]    {--brand:#517e39}  /* 1.77 raw -> 3.45 */
+:root[data-theme="light"] [data-tech="googlemaps"] {--brand:#1b6cf2}  /* 2.58 raw -> 3.40 */
 
 /* ---------- contact ---------- */
 .contact{background:radial-gradient(70% 120% at 50% 0%,var(--contact-wash),transparent 70%);padding:var(--s10) var(--s6);border-bottom:1px solid var(--border-soft);text-align:center;position:relative}
@@ -518,11 +526,16 @@ html:not(.can-copy) .contact .email-addr{padding-right:clamp(16px,5vw,36px)}
   letter-spacing:-.8px;line-height:1.05;text-transform:uppercase;margin-bottom:var(--s3)}
 .svc p{font-size:14px;line-height:1.65;color:var(--slate);flex:1;margin-bottom:var(--s5)}
 .svc .tags{display:flex;flex-wrap:wrap;gap:6px}
-.svc .tags span{font-family:var(--font-mono);font-size:10px;background:var(--chip-bg);
+.svc .tags span{display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--font-mono);font-size:10px;background:var(--chip-bg);
   border:1px solid var(--accent-border);color:var(--teal);padding:4px var(--s2);
   text-transform:uppercase;letter-spacing:.5px;font-weight:500;
   transition:background .3s var(--ease),color .3s var(--ease)}
 .svc:hover .tags span{background:var(--teal);color:var(--bone);border-color:var(--teal)}
+.svc .tags .ti{width:11px;height:11px;flex:0 0 auto;fill:var(--brand,currentColor)}
+/* hover fills the chip with teal, which no brand colour survives, so
+   the marks invert with the chip instead of fighting it */
+.svc:hover .tags .ti{--brand:var(--bone)}
 
 /* ---- icon ---- */
 .svc-icon{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;
